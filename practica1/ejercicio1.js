@@ -14,8 +14,8 @@ masaJuan=67;
 alturaMarcos=189;
 alturaJuan=170;
 
-imcMarcos=masaMarcos/alturaMarcos^2;
-imcJuan=masaJuan/alturaJuan^2;
+imcMarcos=masaMarcos/(alturaMarcos*alturaMarcos);
+imcJuan=masaJuan/(alturaJuan*alturaJuan);
 
 imcMarcosMayorJuan=true;
 
