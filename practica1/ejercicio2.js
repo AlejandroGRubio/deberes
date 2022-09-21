@@ -41,17 +41,21 @@ mediaMiguel=(partido1Miguel+partido2Miguel+partido3Miguel)/3;
 mediaMaria=(partido1Maria+partido2Maria+partido3Maria)/3;
 
 
-if(mediaJuan === mediaMiguel){
-    mejorMedia="Empate";
+if(mediaJuan == mediaMiguel && mediaJuan == mediaMaria && mediaMiguel == mediaMaria){
+    mejorMedia="ninguno, ha sido empate";
     mejorPuntuacion=mediaJuan;
 }
-else if(mediaJuan > mediaMiguel){
+else if(mediaJuan > mediaMiguel && mediaJuan > mediaMaria){
     mejorMedia="Juan";
     mejorPuntuacion=mediaJuan;
 }
-else{
+else if(mediaMiguel > mediaJuan && mediaMiguel > mediaMaria){
     mejorMedia="Miguel";
     mejorPuntuacion=mediaMiguel;
+}
+else{
+    mejorMedia="Maria";
+    mejorPuntuacion=mediaMaria;
 }
 
 
