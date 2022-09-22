@@ -16,20 +16,19 @@ function sumar() {
 
         }
         else{
-            sumado =+ arguments[i];
+            sumado = sumado + arguments[i];
         }
 
-
-
-        
         
     }
+
+    return `El resultado de su operacion es ${sumado}`;
 
 
 
 }
 
-
+console.log(sumar(44, 1));
 
 
 
