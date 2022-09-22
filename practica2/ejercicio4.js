@@ -17,5 +17,3 @@ function generarCurso(nomCurso, anyo, desc, alumnArray) {
 
 }
 
-let array = [`Juan`, `Pepe`];
-console.log(generarCurso(`2doB`, 2022, `Mucho texto`, array));
