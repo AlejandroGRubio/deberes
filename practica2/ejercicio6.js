@@ -1,5 +1,14 @@
 "use strict";
 
+let array = [`Juan`, `Pepe`];
+let array2 = {
+        nombreAlumno: `Juan Perez`,
+        año: 2002,
+        descripcion: `desc`,
+}
+let curso1 = generarCurso(`2doB`, 2022, `Mucho texto`, array2);
+
+
 
 function generarCurso(nomCurso, anyo, desc, alumnArray) {
     
@@ -38,11 +47,5 @@ function generarInformeDato(objCurso) {
 }
 
 
-let array = [`Juan`, `Pepe`];
-let array2 = {
-        nombreAlumno: `Juan Perez`,
-        año: 2002,
-        descripcion: `desc`,
-}
-let curso1 = generarCurso(`2doB`, 2022, `Mucho texto`, array2);
+
 console.log(`Los datos del curso son: ${generarInformeDato(curso1)}`);
