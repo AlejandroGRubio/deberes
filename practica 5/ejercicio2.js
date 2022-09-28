@@ -1,28 +1,48 @@
 "use strict";
 
-let minutos = 0;
-let segundos = 0;
+const id = setInterval(temporizador, 1000);
+var minutos = 1;
+var segundos = 5;
 
-function temporizador(tiempoA, tiempoB = 0) {
+function temporizador() {
     
-    let seg = 0;
-    let min = 0;
+   if (minutos >= 0 && segundos == undefined) {
+       segundos = minutos;
+       minutos = 0;
+   }
+   else if (minutos < 0 || segundos < 0) {
+        console.log(`Error. No se pueden usar números negativos.`);
+   }
+   else if (segundos > 59){
+        console.log(`Los segundos no pueden ser mayor a 59.`);
+   }
+   else if (minutos == 0 && segundos == 0){
+        clearInterval(id);
+   }
+   
 
-
-    if (tiempoA > 0 && tiempoB > 0) { //Si tiempoA y tiempoB es mayor que 0 se le asigan a min y a seg respectivamente.
-        seg = tiempoB;
-        min = tiempoA;
+    if (segundos < 10) {
+        console.log(`${minutos}:0${segundos}`);
     }
-    else if (tiempoA > 0 && tiempoB == 0) { //Si solo se le introduce a tiempoA lo guardamos en segundos (si solo se le añade a tiempoA se le agrega solo a segundos).
-        min = 0;
-        seg = tiempoA;
-    }
-    else if (tiempoA == 0 && tiempoB == 0) {//Si los dos estan a 0, son 0 segundos y acaba.
-        return 0;
+    else{
+        console.log(`${minutos}:${segundos}`);
     }
 
-    //Window buscar esperar intervalo
+    segundos--;
 
+    if (segundos == -1) {
+        segundos = 59;
+        if (minutos > 0) {
+            minutos--;
+        }
+        else{
+            minutos = 0;
+        }
+    }
+
+    
 
 
 }
+
+
