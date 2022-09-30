@@ -1,5 +1,5 @@
 "use strict";
-
+//Se guarda la letra.
 let letraDni = prompt(`Introduce una letra para sacar los DNI: `);
 
 
@@ -7,11 +7,11 @@ function sacarDni(letra) {
     
 let num = 48357001;
 let listaDni = ``;
-
+//Hacemos un bucle para comprobar los valores disponibles.
 while (num < 48357999) {
-    
+    //Sacamos el resto para comparar la letra.
     let valor = num % 23;
-
+//Con el switch sacamos la letra que esta relacionada a ese valor y guardamos en la lista el número.
 switch (valor) {
     case 0:
         if (letra == `T`){
