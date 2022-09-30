@@ -9,7 +9,8 @@ setTimeout(fechaActual, 3000);
 const d = new Date();
 
 function fechaActual() {
-    
+ 
+//Sacamos los valores del date a cada variable.
 let dia = d.getDate();
 let mes = d.getMonth();
 let mesEscrito = ``;
@@ -17,6 +18,7 @@ let anyo = d.getFullYear();
 let hora = d.getHours();
 let min = d.getMinutes();
 
+//Guardamos el mes correspondiente a su número de mes.
 switch (mes) {
     case 1:
         mesEscrito = `Enero`;
