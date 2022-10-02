@@ -8,9 +8,9 @@ let arrayNum = [];
 let contar = 0;
 let listaNum = ``;
 
-
+//Hacemos esta condicion para hacer un bucle y contra los números.
 while (num <= 100000) {
-    
+    //Para saber si los números son divisibles entre ellos.
     if ((num%num)==0) {
 
         if (num == 2 || num == 3 ) {
@@ -22,8 +22,9 @@ while (num <= 100000) {
                 
             }
             else{
+                //Guardamos el número al revés para comparar luego.
                 let revesNum = num.toString().split("").reverse().join("");
-
+            //Sabemos si es palindromo si son iguales, y los guardamos.
             if (revesNum == num.toString()) {
                 arrayNum[contar] = num;
                 contar++;
@@ -39,7 +40,7 @@ while (num <= 100000) {
     
 
 }
-
+//Los guardamos en una lista, para luego imprimirlos por pantalla.
 for (let i = 0; i < arrayNum.length; i++) {
     listaNum = `${listaNum} ${arrayNum[i]}`
     
