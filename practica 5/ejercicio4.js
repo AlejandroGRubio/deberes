@@ -74,7 +74,7 @@ switch (mes) {
 
 
 
-console.log(`Hoy es ${dia} de ${mesEscrito} de ${anyo}, con hora ${hora}:${min}`);
+console.log(`Hoy es ${dia} de ${mesEscrito} de ${anyo}, con hora ${hora}:${min}.`);
 
 
 

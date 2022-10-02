@@ -6,7 +6,7 @@ var segundos = 5;
 
 function temporizador() {
     
-    //Comnprueba si solo le has dado un parametro.
+    //Comprueba si solo le has dado un parámetro.
    if (minutos >= 0 && segundos == undefined) {
        segundos = minutos;
        minutos = 0;
@@ -33,7 +33,7 @@ function temporizador() {
     }
 
     segundos--;
-    //Cambien el minuto cuando los segundos bajan de 0 y lo vuelve a 59 los segundos.
+    //Cambia el minuto cuando los segundos bajan de 0 y lo vuelve a 59 los segundos.
     if (segundos == -1) {
         segundos = 59;
         if (minutos > 0) {

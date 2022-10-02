@@ -22,7 +22,7 @@ function pedirDNI() {
             
         }
 
-        console.log(`Las letras de los DNI introducidos son:${imprimirLetrasDNI}`);
+        console.log(`Las letras de los DNI introducidos son:${imprimirLetrasDNI}.`);
 
 
     }

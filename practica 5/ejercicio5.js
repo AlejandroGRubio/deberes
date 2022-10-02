@@ -11,7 +11,7 @@ let listaDni = ``;
 while (num <= 48357999) {
     //Sacamos el resto para comparar la letra.
     let valor = num % 23;
-//Con el switch sacamos la letra que esta relacionada a ese valor y guardamos en la lista el número.
+//Con el switch sacamos la letra que está relacionada con ese valor y guardamos en la lista el número.
 switch (valor) {
     case 0:
         if (letra == `T`){
@@ -162,7 +162,7 @@ switch (valor) {
 
 }
 
-console.log(`Los DNI con ${letra} son:${listaDni}`);
+console.log(`Los DNI con ${letra} son:${listaDni}.`);
 
 
 }

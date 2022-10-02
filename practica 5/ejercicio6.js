@@ -8,7 +8,7 @@ let arrayNum = [];
 let contar = 0;
 let listaNum = ``;
 
-//Hacemos esta condicion para hacer un bucle y contra los números.
+//Hacemos esta condición para hacer un bucle y contar los números.
 while (num <= 100000) {
     //Para saber si los números son divisibles entre ellos.
     if ((num%num)==0) {
@@ -24,7 +24,7 @@ while (num <= 100000) {
             else{
                 //Guardamos el número al revés para comparar luego.
                 let revesNum = num.toString().split("").reverse().join("");
-            //Sabemos si es palindromo si son iguales, y los guardamos.
+            //Sabemos si es palíndromo si son iguales, y los guardamos.
             if (revesNum == num.toString()) {
                 arrayNum[contar] = num;
                 contar++;
@@ -52,4 +52,4 @@ return listaNum;
 }
 
 
-console.log(`Los números primos y palíndromos (0 al 100000) son:${primPalin()}`);
+console.log(`Los números primos y palíndromos (0 al 100000) son:${primPalin()}.`);
