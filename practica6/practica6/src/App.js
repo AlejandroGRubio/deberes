@@ -1,24 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import './Ejercicio1/Taquilla';
+import Taquilla from './Ejercicio1/Taquilla';
 
 function App() {
+  
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Taquilla titulo = "Spider-Man 2" direccion = "Sam Raimi" cartelera = "https://i.etsystatic.com/6285100/r/il/7eb1c4/3503053230/il_570xN.3503053230_if9p.jpg">
+      Como si Peter Parker no tuviera suficiente con sus propios problemas, estudios y su amor por Mary Jane, ahora tiene que salvar a la ciudad de un nuevo villano, el Doctor Octopus.
+    </Taquilla>
   );
 }
 
