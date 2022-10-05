@@ -1,14 +1,19 @@
+//Importamos React.
 import React from "react";
+//Ejercicio 2 - Importamos Actores, para incluirlos después.
 import "../Ejercicio2/Actores";
 import Actores from "../Ejercicio2/Actores";
 
 
 
-
+//Creamos la función.
 function Taquilla(props) {
-    
+
+//Ponemos el return, para incluir el código JSX.
 return (
+    //Abrimos la etiqueta de React Fragment.
     <React.Fragment>
+        {/**Introducimos el código JSX junto a donde van las variables */}
         <h1>
             <strong>{props.titulo}</strong>
         </h1>
@@ -22,6 +27,7 @@ return (
             {props.children}
         </p>
 
+        {/**Incluimos los actores correspondientes para el ejercicio 2 */}
         <Actores actor = "Tobey Maguire" foto = "https://media.gq.com.mx/photos/5e457648b925380008d0bf8d/3:4/w_900,h_1200,c_limit/tobey-maguire-sera-spider-man-otra-vez-en-doctor-strange-2.jpg">
         Tobias Vincent Maguire es un actor y productor de cine estadounidense, conocido principalmente por interpretar a Peter Parker en la trilogía de Spider-Man de Sam Raimi y en la vigésimo séptima película del Universo cinematográfico de Marvel, Spider-Man: No Way Home.
         </Actores>
