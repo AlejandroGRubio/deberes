@@ -7,7 +7,9 @@ function Opciones(props) {
 
         <React.Fragment>
 
-        <a>{props.nombre}</a>
+        <li><a>{props.nombre}</a></li>
+
+        
 
 
 

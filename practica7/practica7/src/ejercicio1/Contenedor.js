@@ -3,6 +3,7 @@ import Cabecera from "./Cabecera";
 import Menu from "./Menu";
 import Informacion from "./Informacion";
 import Pie from "./Pie";
+import "./css/Contenedor.css"
 
 
 

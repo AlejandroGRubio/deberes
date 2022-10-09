@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/Informacion.css"
 
 
 
@@ -9,10 +10,10 @@ return(
 
     <React.Fragment>
 
-        <h2>
+        <h2 className="titulo">
             {props.nombre}
         </h2>
-        <p>
+        <p className="descripcion">
             {props.desc}
         </p>
         <figure>

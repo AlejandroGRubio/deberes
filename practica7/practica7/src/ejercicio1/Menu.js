@@ -1,6 +1,7 @@
 import React from "react";
 import "./Opciones";
 import Opciones from "./Opciones";
+import "./css/Menu.css"
 
 function Menu(props) {
     
@@ -31,16 +32,24 @@ function Menu(props) {
         <React.Fragment>
 
             <div>
-                {opciones.map((v) => {
-                    return (
-                        <Opciones
-                            key={v.id}
-                            nombre={v.nombre}
-                        >
+
+
+                <ul>
+                    {opciones.map((v) => {
+                        return (
+                            <Opciones
+                                key={v.id}
+                                nombre={v.nombre}
+                            >
               
-                        </Opciones>
-                    );
-                })}
+                            </Opciones>
+                        );
+                    })}
+
+
+
+                </ul>
+                
 
 
 
