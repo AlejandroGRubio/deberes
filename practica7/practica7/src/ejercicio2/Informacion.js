@@ -9,7 +9,7 @@ function Informacion(props) {
     
 
 
-
+//Por aquí van pasando los datos de las películas.
 return(
 
     <React.Fragment>

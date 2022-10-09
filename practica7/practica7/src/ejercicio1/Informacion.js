@@ -3,7 +3,7 @@ import "./css/Informacion.css"
 
 
 
-
+//Se le introducen los datos de las películas.
 function Informacion(props) {
     
 return(

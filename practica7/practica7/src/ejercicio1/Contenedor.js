@@ -6,7 +6,7 @@ import Pie from "./Pie";
 import "./css/Contenedor.css"
 
 
-
+//Donde se guardan todos los componentes y se le da forma.
 function Contenedor(props) {
     
 return (

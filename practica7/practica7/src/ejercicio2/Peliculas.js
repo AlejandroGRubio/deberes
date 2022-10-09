@@ -1,4 +1,5 @@
 import React from "react";
+//Importamos el .JSON.
 import pelis from "./Ejercicio2.json";
 import Pelicula from "./Pelicula";
 
@@ -9,7 +10,7 @@ function Peliculas(props) {
     
 
 
-
+    //Importamos los datos del .JSON y lo recorremos para pasar los datos de las películas.
     return(
 
        <React.Fragment>

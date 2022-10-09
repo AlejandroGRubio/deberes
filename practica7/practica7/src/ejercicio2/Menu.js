@@ -4,7 +4,7 @@ import Opciones from "./Opciones";
 import "./css/Menu.css"
 
 function Menu(props) {
-    
+    //Se crea un objeto con los datos del menú.
     const opciones = [
 
         {
@@ -26,7 +26,7 @@ function Menu(props) {
     
     
     
-    
+    //Se hace una funcion para recorrer e insertar los datos del menú.
     return(
 
         <React.Fragment>

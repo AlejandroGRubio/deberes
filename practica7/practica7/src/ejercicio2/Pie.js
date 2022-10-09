@@ -5,7 +5,7 @@ import "./css/Pie.css"
 
 
 function Pie(props) {
-    
+    //Introduce los datos del pie de página.
     return(
 
         <React.Fragment>

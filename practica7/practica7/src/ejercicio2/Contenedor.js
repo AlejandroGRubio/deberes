@@ -8,7 +8,7 @@ import "./css/Contenedor.css"
 
 
 function Contenedor(props) {
-    
+    //Donde se guardan todos los componentes y se le da forma.
 return (
     <React.Fragment>
 
