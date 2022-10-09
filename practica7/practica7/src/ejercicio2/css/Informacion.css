@@ -1,0 +1,16 @@
+.titulo{
+    text-align: center;
+    font-size:xx-large;
+}
+
+.descripcion{
+    font-family: verdana;
+    margin: 1.5em;
+}
+
+img{
+    display: block;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}

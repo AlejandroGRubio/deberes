@@ -1,0 +1,18 @@
+.nombre{
+    text-align: center;
+    font-size:xx-large;
+}
+
+.desc{
+    font-family: verdana;
+    margin: 1.5em;
+}
+.dir, .clasif{
+    margin: 1em;
+    font-size: 1.2em;
+}
+
+
+.estrellas{
+    font-size: 2.3em;
+}
