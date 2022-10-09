@@ -18,6 +18,8 @@ function Opciones(props) {
 
 }
 
+export default Opciones;
+
 
 
 
