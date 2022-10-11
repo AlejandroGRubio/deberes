@@ -184,7 +184,7 @@ return `Has resuelto el sudoku correctamente.`;
 }
 
 
-console.log(comprobarSudoku(sudokuIncorrecto));
+console.log(comprobarSudoku(sudokuCorrecto));
 
 
 
