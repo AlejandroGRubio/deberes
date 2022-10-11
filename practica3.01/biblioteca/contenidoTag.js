@@ -7,7 +7,7 @@ export function contenidoTag(tag, linea) {
     
     var cont = doc.getElementsByTagName(tag);
 
-
+    
     return cont[linea].nodeType;
 
 }
