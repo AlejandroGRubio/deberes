@@ -20,3 +20,14 @@ export function contenidoTag(tag, linea) {
     return cont[linea - 1].textContent;
 
 }
+
+
+export function numAttr(attr) {
+    
+
+
+
+
+}
+
+
