@@ -12,4 +12,11 @@ export function numTag(tag){
 
 }
 
+export function contenidoTag(tag, linea) {
+    
+    var cont = doc.getElementsByTagName(tag);
 
+    
+    return cont[linea - 1].textContent;
+
+}
