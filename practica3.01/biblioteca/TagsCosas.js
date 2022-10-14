@@ -8,7 +8,7 @@ export function numTag(tag){
 
     var cont = doc.getElementsByTagName(tag);
 
-    return cont.length;
+    return cont.length - 1;
 
 }
 
@@ -22,11 +22,12 @@ export function contenidoTag(tag, linea) {
 }
 
 
-export function contenidoAttr(attr, linea) {
+export function contenidoAttr(tag ,attr, linea) {
     
-    var cont = doc.querySelectorAll([attr]);
+    var cont = doc.querySelectorAll([tag]);
     
-    return cont.item(linea);
+    
+    return cont.item(linea).getAttribute(attr);
 
 
 
