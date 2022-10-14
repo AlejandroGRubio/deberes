@@ -22,9 +22,11 @@ export function contenidoTag(tag, linea) {
 }
 
 
-export function numAttr(attr) {
+export function contenidoAttr(attr, linea) {
     
-
+    var cont = doc.querySelectorAll([attr]);
+    
+    return cont.item(linea);
 
 
 
