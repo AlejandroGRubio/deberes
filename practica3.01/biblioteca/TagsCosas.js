@@ -3,7 +3,7 @@
 
 var doc = window.document;
 
-
+//Cuenta las etiquetas especificas de un HTML.
 export function numTag(tag){
 
     var cont = doc.getElementsByTagName(tag);
@@ -11,7 +11,7 @@ export function numTag(tag){
     return cont.length - 1;
 
 }
-
+//Muestra el contenido de una linea con etiqueta concretos.
 export function contenidoTag(tag, linea) {
     
     var cont = doc.getElementsByTagName(tag);
@@ -21,7 +21,7 @@ export function contenidoTag(tag, linea) {
 
 }
 
-
+//Muestra el contenido de una linea con etiqueta y atributo concretos.
 export function contenidoAttr(tag ,attr, linea) {
     
     var cont = doc.querySelectorAll([tag]);
@@ -33,7 +33,7 @@ export function contenidoAttr(tag ,attr, linea) {
 
 }
 
-
+//Añade el texto con etiqueta que quieras indicando la id de un HTML.
 export function anyadirById(id, texto){
 
     var cont = doc.getElementById(id);
