@@ -2,7 +2,7 @@
 
 var doc = window.document;
 
-//Genera un número aleatorio de 1 a 1000
+//Genera un número aleatorio de 1 a 1000.
 function GenNum() {
     
     var num = Math.floor((Math.random() * 1000) +1);

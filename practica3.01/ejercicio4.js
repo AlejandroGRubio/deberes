@@ -4,7 +4,7 @@ var doc = window.document;
 
 
 
-//No entendia bien lo que queria que hiciera en el HTML, así que he hecho que el texto que le pasaras se mande con el orden que has indicado
+//No entendía bien lo que quería que hiciera en el HTML, así que he hecho que el texto que le pasaras se mande con el orden que has indicado.
 function insertAfter(nuevoElemento, existenteElemento) {
     
 var cont = doc.getElementById(`texto`);
