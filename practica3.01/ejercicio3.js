@@ -55,7 +55,7 @@ function canieador(frase) {
 
 
 
-//La funcion para añadir un texto, que ha sido modificada para que no use etiqueta, solo texto.
+//La funcion para añadir un texto, que ha sido modificada para que no use etiquetas, solo texto.
 function anyadirById(id, texto){
 
     var cont = doc.getElementById(id);
@@ -68,7 +68,7 @@ function anyadirById(id, texto){
 }
 
 
-//Usa el boton para pasar el texto desde la linea donde esta el texto hasta el li de abajo, eso si, lo limpia cada vez para que no se agrupen el texto en el li.
+//Usa el botón para pasar el texto desde la linea donde esta el texto hasta el li de abajo, eso si, lo limpia cada vez para que no se agrupen el texto en el li.
 const pasarALinea = () => {
 
    var cont = doc.getElementById(`texto`).value;
