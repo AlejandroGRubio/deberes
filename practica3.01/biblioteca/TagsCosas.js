@@ -34,3 +34,16 @@ export function contenidoAttr(tag ,attr, linea) {
 }
 
 
+export function anyadirById(id, texto){
+
+    var cont = doc.getElementById(id);
+
+
+    return cont.insertAdjacentHTML(`beforeend`,texto);
+
+
+
+}
+
+
+
