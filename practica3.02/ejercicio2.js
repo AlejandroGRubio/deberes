@@ -56,7 +56,7 @@ function generarTabla(largo, ancho) {
 
 
 
-
+//Genera la tabla.
 generarTabla(100,100);
 
 //Pinta los primos.
