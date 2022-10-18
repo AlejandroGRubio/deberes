@@ -5,7 +5,7 @@ var doc = window.document;
 let imagenes = ["./img/feo.jpg", "./img/fea.jpg", "./img/feos.jpg", "./img/feas.jpg"];
 //Variable para contar las imágenes.
 let contar = 0;
-//Variable para controlar la opacidad.s
+//Variable para controlar la opacidad.
 let opacidad = 1;
 
 //Intervalos para que se ejecute las funciones.

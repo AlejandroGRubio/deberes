@@ -5,7 +5,7 @@ var doc = window.document;
 
 
 
-//Cambia de id del dato a desaparecido
+//Cambia de id del dato a desaparecido.
 function clickeado(dato) {
 
     
@@ -14,7 +14,7 @@ function clickeado(dato) {
 
 }
 
-//Cambia la id que sena desaparecido (dato: parece que el onmouseout es muy agresivo, y da igual que le des click, que de forma inmediata te va a cambiar a eliminado, no he encontrado solución para eso).
+//Cambia la id del elemento que ha desaparecido (dato: parece que el onmouseout es muy agresivo, y da igual que le des click, que de forma inmediata te va a cambiar a eliminado, no he encontrado solución para eso).
 const reaparecer = () => {
 
     
@@ -39,7 +39,7 @@ const reaparecer = () => {
 
 
 }
-//Cambia de id del dato a eliminado.
+//Cambia de id del elemento a eliminado.
 function eliminar(dato){
 
     dato.id = `eliminado`;

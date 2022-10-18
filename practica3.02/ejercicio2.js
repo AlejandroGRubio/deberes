@@ -1,7 +1,7 @@
 "use strict";
 
 var doc = window.document;
-//Busca el númerp primo y devuelve true o false
+//Busca el número primo y devuelve true o false.
 function esPrimo(num) {
     
     if (num == 0 || num == 1 || num == 4) {
