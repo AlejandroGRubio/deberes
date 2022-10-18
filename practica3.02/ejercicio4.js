@@ -3,15 +3,16 @@
 var doc = window.document;
 
 let imagenes = ["./img/feo.jpg", "./img/fea.jpg", "./img/feos.jpg", "./img/feas.jpg"];
-
+//Variable para contar las imágenes.
 let contar = 0;
-
+//Variable para controlar la opacidad.s
 let opacidad = 1;
 
+//Intervalos para que se ejecute las funciones.
 setInterval(cambiarImagenes, 2000, `img`);
 setInterval(efectos, 500, `img`);
 
-
+//Esta función hace que roten las imágenes de ese tag.
 function cambiarImagenes(tag) {
     
 
@@ -29,7 +30,7 @@ function cambiarImagenes(tag) {
     contar++;
 
 }
-
+//Esta función ejecuta el efecto de opacidad.
 function efectos(tag) {
     
     var cont = doc.getElementsByTagName(tag);
