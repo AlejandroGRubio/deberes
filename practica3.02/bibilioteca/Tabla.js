@@ -2,7 +2,7 @@
 
 
 var doc = window.document;
-
+//Crea una tabla según las medidas.
 export function generarTabla(largo, ancho) {
     
     var tabla = doc.createElement('table');

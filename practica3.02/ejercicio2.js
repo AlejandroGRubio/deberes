@@ -1,7 +1,7 @@
 "use strict";
 
 var doc = window.document;
-
+//Busca el númerp primo y devuelve true o false
 function esPrimo(num) {
     
     if (num == 0 || num == 1 || num == 4) {
@@ -16,7 +16,7 @@ function esPrimo(num) {
     return true;
 
 }
-
+//Crea una tabla según las medidas.
 function generarTabla(largo, ancho) {
     
     var tabla = doc.createElement('table');
@@ -59,17 +59,18 @@ function generarTabla(largo, ancho) {
 
 generarTabla(100,100);
 
-
+//Pinta los primos.
 const pintarPrimos = () => {
 
-    var elementos = [];
-
     var cont = doc.querySelectorAll('td');
+    var dato = ``;
     var numero = 0;
+
+
     for(var item of cont){
         
-        numero = item.innerHTML;
-        
+        dato = item.innerHTML;
+        numero = parseInt(dato);
 
         if (esPrimo(numero) == true) {
             item.id = `primo`;
