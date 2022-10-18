@@ -17,7 +17,7 @@ export function censurarPalabra(palabra) {
      //Luego lo elimina del html.
      item.innerHTML = ``;
      //Y lo vuelve a insertar, solo que reemplazando la palabra por <strong>Contenido Bloqueado</strong>, con el strong para poder modificarlo con css.
-     item.insertAdjacentHTML(`beforeend`,texto.replace(palabra, `<strong>Contenido Bloqueado</strong>`))
+     item.insertAdjacentHTML(`beforeend`,texto.replace(palabra, `<strong>Contenido Bloqueado</strong>`));
 
 
 
@@ -28,7 +28,7 @@ export function censurarPalabra(palabra) {
      
      texto = item.innerHTML;
      item.innerHTML = ``;
-     item.insertAdjacentHTML(`beforeend`,texto.replace(palabra, `<strong>Contenido Bloqueado</strong>`))
+     item.insertAdjacentHTML(`beforeend`,texto.replace(palabra, `<strong>Contenido Bloqueado</strong>`));
 
 
 
@@ -41,7 +41,7 @@ export function censurarPalabra(palabra) {
 
      texto = item.innerHTML;
      item.innerHTML = ``;
-     item.insertAdjacentHTML(`beforeend`,texto.replace(palabra, `<strong>Contenido Bloqueado</strong>`))
+     item.insertAdjacentHTML(`beforeend`,texto.replace(palabra, `<strong>Contenido Bloqueado</strong>`));
 
 
 
