@@ -59,27 +59,26 @@ function generarTabla(largo, ancho) {
 //Genera la tabla.
 generarTabla(100,100);
 
-//Pinta los primos.
+//Pinta los primos al apretar el botón.
 const pintarPrimos = () => {
 
-    var cont = doc.querySelectorAll('td');
+    
+    var cont = doc.getElementsByTagName('td');
     var dato = ``;
     var numero = 0;
 
 
-    for(var item of cont){
-        
-        dato = item.innerHTML;
-        numero = parseInt(dato);
 
+    for (let i = 0; i < cont.length; i++) {
+        
+        dato = cont[i].textContent;
+        numero = parseInt(dato);
         if (esPrimo(numero) == true) {
-            item.id = `primo`;
+            cont[i].id = `primo`;
         }
-   
-   
-   
-       }
-    
+
+        
+    }
 
 
 }
