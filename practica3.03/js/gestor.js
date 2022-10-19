@@ -15,7 +15,7 @@ function anyadirOnClick() {
 
 
     for (let i = 0; i < cont.length; i++) {
-        
+        //Poner onclick
         
     }
 
@@ -23,6 +23,7 @@ function anyadirOnClick() {
 
 }
 
+//Función que guarda el contenido de una clase y lo guarda en una variable.
 function guardarYBorrarPorTagYClase(tag, clase, guardar) {
 
     
@@ -39,7 +40,7 @@ function guardarYBorrarPorTagYClase(tag, clase, guardar) {
     }
 
 
-    //guarda en variables el contenido (0) de pendientes y acabadas. 
+    
 }
 
 
@@ -53,7 +54,7 @@ function pasarPendiente(texto) {
 
     
 
-    cont.insertAdjacentHTML(`beforeend`,`<div class="tarea">${tags.replace(`<p>Texto de la tarea</p>`, `<p>${texto}</p>`)} </div>`);
+    cont.insertAdjacentHTML(`beforeend`, texto);
 
 
 
