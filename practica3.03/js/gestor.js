@@ -9,7 +9,7 @@ let contAcabadas;
 
 
 
-function anyadirOnClick() {
+function addOnClick(textBotton, datosOnClick) {
     
     var cont = doc.getElementsByTagName(`input`);
 
