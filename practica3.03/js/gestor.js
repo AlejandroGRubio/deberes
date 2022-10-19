@@ -4,6 +4,11 @@
 var doc = window.document;
 
 
+let contPendientes;
+let contAcabadas;
+
+
+
 function anyadirOnClick() {
     
     var cont = doc.getElementsByTagName(`input`);
@@ -18,7 +23,22 @@ function anyadirOnClick() {
 
 }
 
-function gurdarYBorrar() {
+function guardarYBorrarPorTagYClase(tag, clase, guardar) {
+
+    
+    var zonaPendiente = doc.getElementsByClassName(clase);
+
+    guardar = `<${tag} class=${clase}>${zonaPendiente[0].innerHTML}</${tag}>`;
+
+    console.log(zonaPendiente.length);
+     
+    
+
+    while (zonaPendiente.length > 0) {
+        zonaPendiente[0].remove();
+    }
+
+
     //guarda en variables el contenido (0) de pendientes y acabadas. 
 }
 
@@ -31,10 +51,7 @@ function pasarPendiente(texto) {
 
     var cont = doc.getElementById(`pendientes`);
 
-    var zonaPendiente = doc.getElementsByClassName(`tarea`);
-
-
-    var tags = zonaPendiente[0].innerHTML;
+    
 
     cont.insertAdjacentHTML(`beforeend`,`<div class="tarea">${tags.replace(`<p>Texto de la tarea</p>`, `<p>${texto}</p>`)} </div>`);
 
@@ -61,4 +78,5 @@ const anyadir = () => {
 };
 
 
-
+guardarYBorrarPorTagYClase(`div`, `tarea`, contPendientes);
+guardarYBorrarPorTagYClase(`div`, `acabada`, contAcabadas);
