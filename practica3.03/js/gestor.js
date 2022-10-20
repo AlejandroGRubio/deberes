@@ -8,14 +8,14 @@ let contPendientes;
 let contAcabadas;
 
 
-
-function addOnClick(textBotton, datosOnClick) {
+//Añade a la etiqueta de esa clase el atributo onClick con el nombre de función y valor.
+function addOnClickPorClase(clase, datosOnClick, valorFunc = ``) {
     
-    var cont = doc.getElementsByTagName(`input`);
+    var cont = doc.getElementsByClassName(clase);
 
 
     for (let i = 0; i < cont.length; i++) {
-        //Poner onclick
+        cont[i].setAttribute(`onClick`, `${datosOnClick}(${valorFunc})`);
         
     }
 
@@ -23,15 +23,28 @@ function addOnClick(textBotton, datosOnClick) {
 
 }
 
+//Cambia el contenido de una variable, indicando el texto antiguo y el nuevo a remplazar.
+function cambiarContenido(varTexto, textoAnti, textoNuevo) {
+    
+    var devolverT;
+
+    return varTexto.replace(textoAnti, textoNuevo);
+
+
+
+
+}
+
+
+
+
 //Función que guarda el contenido de una clase y lo guarda en una variable.
-function guardarYBorrarPorTagYClase(tag, clase, guardar) {
+function guardarYBorrarPorTagYClase(tag, clase) {
 
     
     var zonaPendiente = doc.getElementsByClassName(clase);
 
-    guardar = `<${tag} class=${clase}>${zonaPendiente[0].innerHTML}</${tag}>`;
-
-    console.log(zonaPendiente.length);
+    var guardar = `<${tag} class=${clase}>${zonaPendiente[0].innerHTML}</${tag}>`;
      
     
 
@@ -39,35 +52,39 @@ function guardarYBorrarPorTagYClase(tag, clase, guardar) {
         zonaPendiente[0].remove();
     }
 
-
+    return guardar;
     
 }
 
 
 
 
-
+//Pasa a Pendientes el texto que se le indique
 function pasarPendiente(texto) {
     
 
     var cont = doc.getElementById(`pendientes`);
 
-    
-
-    cont.insertAdjacentHTML(`beforeend`, texto);
+    var textoP = cambiarContenido(contPendientes, `Texto de la tarea`, texto);
 
 
 
+
+    cont.insertAdjacentHTML(`beforeend`, textoP);
+
+
+    addOnClickPorClase(`del`, `borrar`);
+    addOnClickPorClase(`end`, `acabar`);
 
 }
 
+//Selecciona el texto del textarea y lo manda a la funcion pasarPendiente.
 const anyadir = () => {
 
-    var cont = doc.getElementsByClassName(`textarea`);
+    var cont = doc.getElementsByTagName(`textarea`);
 
-    console.log(cont[0].value);
-
-    if (cont[0].value == undefined) {
+    if (cont[0].value == ``) {
+        
         cont[0].value = `Escribe algo venga.`;
         return console.log(`Miras aquí pero no escribes nada. ;-;`);
     }
@@ -79,5 +96,29 @@ const anyadir = () => {
 };
 
 
-guardarYBorrarPorTagYClase(`div`, `tarea`, contPendientes);
-guardarYBorrarPorTagYClase(`div`, `acabada`, contAcabadas);
+
+
+
+
+
+const acabar = (text) => {
+
+    var cont = text;
+    console.log(cont);
+
+
+
+}
+
+
+
+
+
+
+
+
+contPendientes = guardarYBorrarPorTagYClase(`div`, `tarea`);
+contAcabadas = guardarYBorrarPorTagYClase(`div`, `acabada`);
+addOnClickPorClase(`add`, `anyadir`);
+addOnClickPorClase(`sho`, `mostrar`);
+
