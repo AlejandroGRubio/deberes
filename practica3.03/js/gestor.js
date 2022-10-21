@@ -136,8 +136,17 @@ const anyadir = () => {
 
 };
 
+//Seleeciona el elemento y lo borra.
+const borrar = () => {
+
+    var cont = doc.getElementById(contadorBorrarAcabar);
+
+    cont.remove();
+
+    contadorBorrarAcabar++;
 
 
+}
 
 
 
@@ -179,10 +188,22 @@ const archivar = () => {
 
     cont.setAttribute(`class`, `oculto`);
 
+    contadorVolverArchivar--;
+
 }
 
+//Selecciona todos los elementos con clase oculto y se la cambia a acabada para que se vuelvan a ver.
+const mostrar = () => {
 
+    var cont = doc.getElementsByClassName(`oculto`);
 
+    for (let i = 0; i < cont.length; i++) {
+        cont[0].setAttribute(`class`, `acabada`);
+        
+    }
+    contadorVolverArchivar++; 
+
+}
 
 
 
