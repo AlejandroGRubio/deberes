@@ -41,3 +41,8 @@
 #mostrar {
   text-align: right;
 }
+
+.oculto{
+  display: none;
+}
+

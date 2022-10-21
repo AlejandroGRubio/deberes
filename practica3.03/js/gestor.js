@@ -7,6 +7,12 @@ var doc = window.document;
 let contPendientes;
 let contAcabadas;
 
+let contadorPendientes = 0;
+let contadorAcabadas = -1;
+
+let contadorBorrarAcabar = 0;
+let contadorVolverArchivar = -1;
+
 
 //Añade a la etiqueta de esa clase el atributo onClick con el nombre de función y valor.
 function addOnClickPorClase(clase, datosOnClick, valorFunc = ``) {
@@ -22,6 +28,11 @@ function addOnClickPorClase(clase, datosOnClick, valorFunc = ``) {
 
 
 }
+
+
+
+
+
 
 //Cambia el contenido de una variable, indicando el texto antiguo y el nuevo a remplazar.
 function cambiarContenido(varTexto, textoAnti, textoNuevo) {
@@ -44,7 +55,7 @@ function guardarYBorrarPorTagYClase(tag, clase) {
     
     var zonaPendiente = doc.getElementsByClassName(clase);
 
-    var guardar = `<${tag} class=${clase}>${zonaPendiente[0].innerHTML}</${tag}>`;
+    var guardar = `<${tag} class=${clase} id="">${zonaPendiente[0].innerHTML}</${tag}>`;
      
     
 
@@ -67,7 +78,7 @@ function pasarPendiente(texto) {
 
     var textoP = cambiarContenido(contPendientes, `Texto de la tarea`, texto);
 
-
+    textoP = cambiarContenido(textoP, `id=""`, `id=${contadorPendientes}`);
 
 
     cont.insertAdjacentHTML(`beforeend`, textoP);
@@ -75,8 +86,38 @@ function pasarPendiente(texto) {
 
     addOnClickPorClase(`del`, `borrar`);
     addOnClickPorClase(`end`, `acabar`);
+    contadorPendientes++;
+}
+
+
+
+//Pasa a Acabadas el texto que se le indique.
+function pasarAcabadas(texto) {
+    
+    var cont = doc.getElementById(`acabadas`);
+
+
+    var textoA = cambiarContenido(contAcabadas, `Texto de la tarea`, texto);
+
+    textoA = cambiarContenido(textoA, `id=""`, `id=${contadorAcabadas}`);
+
+
+    cont.insertAdjacentHTML("beforeend", textoA);
+
+    cont = doc.getElementById(contadorAcabadas);
+
+    cont.lastElementChild.firstElementChild.setAttribute(`onclick`, `archivar()`);
+    cont.lastElementChild.lastElementChild.setAttribute(`onclick`, `volver()`);
+
+    contadorAcabadas--;
+
 
 }
+
+
+
+
+
 
 //Selecciona el texto del textarea y lo manda a la funcion pasarPendiente.
 const anyadir = () => {
@@ -100,15 +141,46 @@ const anyadir = () => {
 
 
 
+//Selecciona el texto de este elemento y lo pasa a Acabadas, y después lo elimina de Pendientes.
+const acabar = () => {
 
-const acabar = (text) => {
+    var cont = doc.getElementById(contadorBorrarAcabar);
 
-    var cont = text;
-    console.log(cont);
+    var texto = cont.innerText;
+
+    pasarAcabadas(texto);
+
+    cont.remove();
+
+    contadorBorrarAcabar++;
+}
+
+//Selecciona el texto de este elemento y lo vuelve a mandar Pendientes.
+const volver = () => {
+
+    var cont = doc.getElementById(contadorVolverArchivar);
+
+    var texto = cont.innerText;
+
+    pasarPendiente(texto);
+
+    cont.remove();
+
+    contadorVolverArchivar--;
 
 
 
 }
+
+//Selecciona el elemento y le cambia la clase a oculto para que desaparezca.
+const archivar = () => {
+
+    var cont = doc.getElementById(contadorVolverArchivar);
+
+    cont.setAttribute(`class`, `oculto`);
+
+}
+
 
 
 
