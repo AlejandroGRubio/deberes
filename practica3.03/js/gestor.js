@@ -84,8 +84,15 @@ function pasarPendiente(texto) {
     cont.insertAdjacentHTML(`beforeend`, textoP);
 
 
-    addOnClickPorClase(`del`, `borrar`);
-    addOnClickPorClase(`end`, `acabar`);
+    addOnClickPorClase(`del`, `borrar`, `this`);
+    addOnClickPorClase(`end`, `acabar`, `this`);
+
+
+
+
+    cont.lastElementChild.lastElementChild.firstElementChild.setAttribute(`id`, contadorPendientes + 100);
+    cont.lastElementChild.lastElementChild.lastElementChild.setAttribute(`id`, contadorPendientes + 100);
+
     contadorPendientes++;
 }
 
@@ -106,8 +113,11 @@ function pasarAcabadas(texto) {
 
     cont = doc.getElementById(contadorAcabadas);
 
-    cont.lastElementChild.firstElementChild.setAttribute(`onclick`, `archivar()`);
-    cont.lastElementChild.lastElementChild.setAttribute(`onclick`, `volver()`);
+    cont.lastElementChild.firstElementChild.setAttribute(`onclick`, `archivar(this)`);
+    cont.lastElementChild.lastElementChild.setAttribute(`onclick`, `volver(this)`);
+
+    cont.lastElementChild.firstElementChild.setAttribute(`id`, contadorAcabadas - 100);
+    cont.lastElementChild.lastElementChild.setAttribute(`id`, contadorAcabadas - 100);
 
     contadorAcabadas--;
 
@@ -137,13 +147,16 @@ const anyadir = () => {
 };
 
 //Seleeciona el elemento y lo borra.
-const borrar = () => {
+const borrar = (e) => {
 
-    var cont = doc.getElementById(contadorBorrarAcabar);
+   var id = parseInt(e.id) - 100;
+
+
+    var cont = doc.getElementById(`${id}`);
 
     cont.remove();
 
-    contadorBorrarAcabar++;
+    
 
 
 }
@@ -151,9 +164,12 @@ const borrar = () => {
 
 
 //Selecciona el texto de este elemento y lo pasa a Acabadas, y después lo elimina de Pendientes.
-const acabar = () => {
+const acabar = (e) => {
 
-    var cont = doc.getElementById(contadorBorrarAcabar);
+    var id = parseInt(e.id) - 100;
+
+
+    var cont = doc.getElementById(`${id}`);
 
     var texto = cont.innerText;
 
@@ -161,34 +177,38 @@ const acabar = () => {
 
     cont.remove();
 
-    contadorBorrarAcabar++;
 }
 
 //Selecciona el texto de este elemento y lo vuelve a mandar Pendientes.
-const volver = () => {
+const volver = (e) => {
 
-    var cont = doc.getElementById(contadorVolverArchivar);
+    var id = parseInt(e.id) + 100;
+
+    var cont = doc.getElementById(`${id}`);
 
     var texto = cont.innerText;
+
+
 
     pasarPendiente(texto);
 
     cont.remove();
 
-    contadorVolverArchivar--;
+    
 
 
 
 }
 
 //Selecciona el elemento y le cambia la clase a oculto para que desaparezca.
-const archivar = () => {
+const archivar = (e) => {
 
-    var cont = doc.getElementById(contadorVolverArchivar);
+    var id = parseInt(e.id) + 100;
+
+    var cont = doc.getElementById(`${id}`);
 
     cont.setAttribute(`class`, `oculto`);
 
-    contadorVolverArchivar--;
 
 }
 
@@ -201,7 +221,6 @@ const mostrar = () => {
         cont[0].setAttribute(`class`, `acabada`);
         
     }
-    contadorVolverArchivar++; 
 
 }
 
