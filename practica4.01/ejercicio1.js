@@ -10,9 +10,10 @@ window.onload = () => {
     var idComenzar = doc.getElementById(`comenzar`);
     var idParar = doc.getElementById(`parar`);
 
-    var idInterval = idComenzar.addEventListener(`click`, atributos.comenzar(`<h1>¡Hola Feo!</h1>`))
 
+    idComenzar.addEventListener(`click`, atributos.comenzar);
 
+ 
 
 
 } // Fin del código onload.

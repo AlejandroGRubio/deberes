@@ -3,12 +3,25 @@
 
 var doc = window.document;
 
+var idInterval;
 
-
-export function comenzar(texto) {
+export function comenzar() {
     
 
-return setInterval()
+idInterval = setInterval(imprimir, 2000);
+
+
+}
+
+
+export function imprimir(){
+
+
+    
+
+
+
+    
 
 
 }
