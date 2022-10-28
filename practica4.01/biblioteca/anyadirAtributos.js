@@ -56,8 +56,14 @@ export function generarColor(){
 
 }
 
+//Devuelve las coordenas aprovenchando el event que se le pasa.
+export function mostrarCoor(coor) {
+    
+    return `x: ${coor.screenX}, y: ${coor.screenY}`
 
 
+
+}
 
 
 
