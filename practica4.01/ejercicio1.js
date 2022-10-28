@@ -13,7 +13,7 @@ window.onload = () => {
 
     idComenzar.addEventListener(`click`, atributos.comenzar);
 
-    idParar.addEventListener(`click`, atributos.detener)
+    idParar.addEventListener(`click`, atributos.detener);
 
  
 
