@@ -4,7 +4,7 @@
 var doc = window.document;
 
 
-
+//Genera un número aleatorio, teniendo un mínimo y un máximo.
 export function generarNumRandom(min, max) {
     
     var valor = Math.floor(Math.random() * max);
@@ -21,12 +21,7 @@ export function generarNumRandom(min, max) {
 
 }
 
-
-
-
-
-
-
+//Crea y añade inputs checkbox, con un name y el número de checkbox que se quiere añadir.
 export function generarCheckbox(datoName, numValueMin, numValueMax, veces = 1) {
     
     for (let i = 0; i < veces; i++) {
@@ -48,3 +43,47 @@ export function generarCheckbox(datoName, numValueMin, numValueMax, veces = 1) {
 
 }
 
+//Crea e inserta un boton con una id y el texto de su interior.
+export function generarBoton(nom, nomId) {
+    
+    var boton = doc.createElement(`button`);
+    boton.innerHTML = nom;
+    boton.setAttribute(`id`, nomId);
+    doc.body.appendChild(boton);
+
+}
+
+
+//A traves del name busca y marca los checked con un value par.
+export function marcarParesCheckbox(nameIdent){
+
+    var cont = doc.getElementsByTagName(`input`);
+
+    for (let i = 0; i < cont.length; i++) {
+        if (cont[i].name == nameIdent && (cont[i].value%2) == 0) {
+            
+            cont[i].setAttribute(`checked`, `true`);
+
+        }
+        
+    }
+
+}
+
+//Desmarca todos los checkbox segun su name.
+export function desmarcarTodosCheckbox(nameIdent) {
+    
+    var cont = doc.getElementsByTagName(`input`);
+
+    for (let i = 0; i < cont.length; i++) {
+        if (cont[i].name == nameIdent) {
+            
+            cont[i].removeAttribute(`checked`);
+
+        }
+        
+    }
+
+
+
+}
