@@ -29,12 +29,4 @@ window.onload = () => {
 
     });
 
-
-
-
-
-
-
-
-
 } //Fin del código onload.

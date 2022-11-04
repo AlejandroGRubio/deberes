@@ -1,0 +1,17 @@
+.estilo1{
+    color: red;
+    background-color: beige;
+}
+.estilo2{
+    color: green;
+}
+.estilo3{
+    background-color: aquamarine;
+}
+.error{
+    color: red;
+    text-decoration: underline;
+}
+.ocultoError{
+    display: none;
+}

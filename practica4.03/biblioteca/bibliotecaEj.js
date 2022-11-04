@@ -83,6 +83,73 @@ export function desmarcarTodosCheckbox(nameIdent) {
         }
         
     }
+}
+
+//Comprueba el contenido indicando si es true o false.
+export function comprobarFormularioById(sectId) {
+    
+
+    var cont = doc.getElementById(sectId);
+
+
+    if (cont.value == ``) {
+        return false;
+    }
+    else{
+        return true;
+    }
+
+
+
+}
+
+//Inserta donde se le indique un parrafo, con un texto.
+export function generarTextoError(texto, nomClase, ubiId) {
+    
+
+    var cont = doc.createElement(`p`);
+
+    cont.innerHTML = texto;
+    cont.setAttribute(`class`, nomClase);
+
+    doc.getElementById(ubiId).appendChild(cont);
+
+
+}
+
+//Elimina el texto de error anterior.
+export function quitarTextoError(nomClase, cambioClase){
+
+    var cont = doc.getElementsByClassName(nomClase);
+    console.log(cont.length);
+    if (cont.length > 0) {
+        while (cont.length > 0) {
+            cont[0].remove();
+        }
+    }
+
+
+}
+
+//Genera una etiqueta, con un texto y una clase.
+export function generarEtiquetaConClase(etiqueta, texto, nomClase) {
+    
+    var cont = doc.createElement(etiqueta);
+    cont.innerHTML = texto;
+    cont.setAttribute(`class`, nomClase);
+
+
+    return cont;
+
+
+}
+//Inserta una etiqueta.
+export function insertarEtiquetaById(etiqueta, texto, nomClase, ubiId) {
+    
+    var cont = doc.getElementById(ubiId);
+
+    cont.appendChild(generarEtiquetaConClase(etiqueta, texto, nomClase));
+
 
 
 
