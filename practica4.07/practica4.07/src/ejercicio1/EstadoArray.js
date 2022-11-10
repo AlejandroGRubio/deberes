@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./css/estado.css";
 
 
 
@@ -10,6 +11,7 @@ function EstadoArray(props) {
 
     const [numeros, setNumeros] = useState(estadoArrayInit);
 
+    //Crea un número aleatorio y lo añade al setNumeros.
     const generarNumero = () => {
 
        
@@ -27,11 +29,12 @@ function EstadoArray(props) {
 
         setNumeros([...numeros, num]);
     };
-
+    //Cambia el contenido de setNumeros al estado inicial.
     const eliminarNumeros = () => {
         setNumeros(estadoArrayInit);
     };
 
+    //Quita el número y añade el array sin ese número.
     const eliminarNumero = (elimNum) => {
 
         const nuevosNumeros = numeros.filter((numero) => {
