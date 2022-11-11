@@ -27,7 +27,7 @@ function Euromillon(props) {
 
         numGen = [...numGen, ganar];
 
-        setBoleto([...boleto,numGen]);
+        setBoleto([...boleto,{num1: numGen[0], num2: numGen[1], num3: numGen[2], num4: numGen[3], num5: numGen[4], est1: numGen[5], est2: numGen[6], clase: numGen[7]}]);
         
 
     };
@@ -51,7 +51,7 @@ function Euromillon(props) {
                 <p>
                     <ul>
                         {boleto.map((boletos) => {
-                            return <li className={boletos[7]}>{boletos[0]},{boletos[1]},{boletos[2]},{boletos[3]},{boletos[4]}-{boletos[5]},{boletos[6]}</li>
+                            return <li className={boletos.clase}>{boletos.num1},{boletos.num2},{boletos.num3},{boletos.num4},{boletos.num5}-{boletos.est1},{boletos.est2}</li>
                         })}
 
 
