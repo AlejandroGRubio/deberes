@@ -1,15 +1,16 @@
 "use strict";
 
 
-
+//Genera un número entre los mínimos y máximos que le pases.
 export function generarNumero(min, max) {
     
-   var num = Math.floor(Math.random() * max - 1) +min;
+   var num = Math.floor(Math.random() * max) +min;
 
    return num;
 
 }
 
+//Comprueba si el array es igual al otro array pasados por parametro.
 export function comprobarArraysIguales(arr1 , arr2) {
     
 
