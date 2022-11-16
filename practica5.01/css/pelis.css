@@ -1,0 +1,14 @@
+.clicked{
+    text-decoration: underline;
+    color: lightyellow;
+}
+
+.noClicked{
+
+    color: yellow;
+
+
+}
+body{
+    background-color: black;
+}
