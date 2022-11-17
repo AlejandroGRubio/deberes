@@ -6,14 +6,11 @@ export function generarListasPelis(arrObjPelis, idUbi) {
 
     var listaPelis = doc.createElement(`ul`);
 
-    
-
-
     arrObjPelis.map((pelis) => {
 
         var apartado = doc.createElement(`li`);
 
-        apartado.innerHTML = pelis.title;
+        apartado.innerHTML = `${pelis.episode_id} - ${pelis.title}`;
 
         apartado.setAttribute(`class`, `noClicked`);
 
@@ -25,6 +22,77 @@ export function generarListasPelis(arrObjPelis, idUbi) {
     });
 
     doc.getElementById(idUbi).appendChild(listaPelis);
+
+
+}
+
+
+export function generarInfoPelis(nombrePeli, objPelis, idUbi) {
+    
+    if (doc.getElementsByClassName(`mostrarInfo`) != undefined) {
+            
+        var selec = doc.getElementsByClassName(`mostrarInfo`);
+        
+        
+        for (let i = 0; i < selec.length; i++) {
+            selec[i].remove();
+            
+        }
+    }
+
+    var cuerpo = doc.createElement(`div`);
+
+    var codId = nombrePeli.charAt(0);
+
+    cuerpo.setAttribute(`class`, `mostrarInfo`);
+
+    objPelis.map((infoPelis) => {
+
+        if (infoPelis.episode_id == codId) {
+
+            var titulo = doc.createElement(`h1`);
+
+            titulo.innerHTML = infoPelis.title;
+
+            var sinopsis = doc.createElement(`p`);
+
+            sinopsis.innerHTML = infoPelis.opening_crawl;
+
+            var director = doc.createElement(`p`);
+
+            director.innerHTML = `Director: ${infoPelis.director}`;
+
+            var productor = doc.createElement(`p`);
+
+            productor.innerHTML = `Productor: ${infoPelis.producer}`;
+
+            var numerosFechaMal = infoPelis.release_date;
+
+            var numerosFechaBien = `${numerosFechaMal.charAt(8)}${numerosFechaMal.charAt(9)}-${numerosFechaMal.charAt(5)}${numerosFechaMal.charAt(6)}-${numerosFechaMal.charAt(0)}${numerosFechaMal.charAt(1)}${numerosFechaMal.charAt(2)}${numerosFechaMal.charAt(3)}`;
+
+            var fecha = doc.createElement(`p`);
+
+            fecha.innerHTML = `Fecha de lanzamiento: ${numerosFechaBien}`;
+
+            cuerpo.appendChild(titulo);
+            cuerpo.appendChild(sinopsis);
+            cuerpo.appendChild(director);
+            cuerpo.appendChild(productor);
+            cuerpo.appendChild(fecha);
+
+        }
+
+        console.log(cuerpo);
+
+        doc.getElementById(idUbi).appendChild(cuerpo);
+
+
+    });
+
+
+
+
+
 
 
 }

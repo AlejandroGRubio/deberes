@@ -38,6 +38,7 @@ window.onload = () =>{
     doc.getElementById(`divPelis`).addEventListener(`click`, (e) => {
 
        console.log(e.target.tagName);
+       console.log(e.target.innerText);
 
         if (doc.getElementsByClassName(`clicked`) != undefined) {
             
@@ -50,13 +51,21 @@ window.onload = () =>{
             }
         }
 
-        
-
-
        if (e.target.tagName == `LI`) {
             e.target.className = `clicked`;
+
+        fetch(url)
+            .then((respuesta) => {
+            return respuesta.json();
+        })
+            .then((datos) => {
+            console.log(datos.results);
+            biblioPelis.generarInfoPelis(e.target.innerText,datos.results, `divInfo`);
+      
+        });
        }
 
+       
 
 
 
