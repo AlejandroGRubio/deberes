@@ -60,7 +60,7 @@ window.onload = () =>{
         })
             .then((datos) => {
             console.log(datos.results);
-            biblioPelis.generarInfoPelis(e.target.innerText,datos.results, `divInfo`);
+            biblioPelis.generarInfoPelis(e.target.innerText,datos.results, `divInfo`, 10);
       
         });
        }

@@ -28,7 +28,7 @@ export function generarListasPelis(arrObjPelis, idUbi) {
 }
 
 //Creamos el apartado con la info de la pelicula seleccionada y le añadimos los datos de la misma, para luego añadirla donde indica el id.
-export function generarInfoPelis(nombrePeli, objPelis, idUbi) {
+export function generarInfoPelis(nombrePeli, objPelis, idUbi, numPer) {
     
     if (doc.getElementsByClassName(`mostrarInfo`) != undefined) {
             
@@ -44,6 +44,8 @@ export function generarInfoPelis(nombrePeli, objPelis, idUbi) {
     var cuerpo = doc.createElement(`div`);
 
     var codId = nombrePeli.charAt(0);
+
+    var urlPersonajes;
 
     cuerpo.setAttribute(`class`, `mostrarInfo`);
 
@@ -75,11 +77,17 @@ export function generarInfoPelis(nombrePeli, objPelis, idUbi) {
 
             fecha.innerHTML = `Fecha de lanzamiento: ${numerosFechaBien}`;
 
+            var datosPersonajes = doc.createElement(`div`);
+            datosPersonajes.setAttribute(`id`, `personajes`);
+
+            urlPersonajes = infoPelis.characters;
+
             cuerpo.appendChild(titulo);
             cuerpo.appendChild(sinopsis);
             cuerpo.appendChild(director);
             cuerpo.appendChild(productor);
             cuerpo.appendChild(fecha);
+            cuerpo.appendChild(datosPersonajes);
 
         }
 
@@ -87,11 +95,50 @@ export function generarInfoPelis(nombrePeli, objPelis, idUbi) {
 
         doc.getElementById(idUbi).appendChild(cuerpo);
 
+        sacarDatosPersonajes(urlPersonajes, numPer, `personajes`);
+
 
     });
 
+}
+
+export function sacarDatosPersonajes(arrayUrl, numPersonajes, idUbi){
 
 
+    for (let i = 0; i < numPersonajes; i++) {
+
+        fetch(arrayUrl[i])
+            .then((respuesta) => {
+                return respuesta.json();
+        })
+            .then((datos) => {
+                console.log(datos);
+               // imprimirNombrePersonajes(datos, idUbi);
+      
+        });
+
+
+
+        
+    }
+
+
+    
+
+
+
+    
+}
+
+function imprimirNombrePersonajes(obj, idUbi) {
+    
+    var parrafoNombre = doc.createElement(`p`);
+
+    parrafoNombre.className = `infoPersonaje`;
+    
+    parrafoNombre.innerHTML = obj.name;
+
+    doc.getElementById(idUbi).appendChild(parrafoNombre);
 
 
 
