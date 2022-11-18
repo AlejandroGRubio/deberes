@@ -2,6 +2,7 @@
 
 var doc = window.document;
 
+//Con un objeto con las pelis, creamos una lista y la añadimos al lugar donde esté esa id.
 export function generarListasPelis(arrObjPelis, idUbi) {
 
     var listaPelis = doc.createElement(`ul`);
@@ -26,7 +27,7 @@ export function generarListasPelis(arrObjPelis, idUbi) {
 
 }
 
-
+//Creamos el apartado con la info de la pelicula seleccionada y le añadimos los datos de la misma, para luego añadirla donde indica el id.
 export function generarInfoPelis(nombrePeli, objPelis, idUbi) {
     
     if (doc.getElementsByClassName(`mostrarInfo`) != undefined) {

@@ -2,10 +2,10 @@
 import * as biblioPelis from "./biblioteca/bibliotecaPelis.js";
 
 
-
+//Es normal que tarde a veces, en clase le costaba bastante, pero funcionar funciona.
 window.onload = () =>{
 
-
+    //Creamos los elementos para el html.
     const url = "http://swapi.dev/api/films";
 
     var doc = window.document;
@@ -19,12 +19,12 @@ window.onload = () =>{
 
     divInfo.setAttribute(`id`, `divInfo`);
 
-
+    //Los añadimos al html.
     doc.body.appendChild(divPelis);
     doc.body.appendChild(divInfo);
 
 
-
+    //Generamos la lista de películas.
     fetch(url)
     .then((respuesta) => {
         return respuesta.json();
