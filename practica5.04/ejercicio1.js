@@ -58,7 +58,7 @@ window.onload = () =>{
             return respuesta.json();
         })
             .then((datos) => {
-            biblioPelis.generarInfoPelis(e.target.innerText,datos.results, `divInfo`);
+            biblioPelis.generarInfoPelis(e.target.innerText, datos.results, `divInfo`);
       
         });
        }
