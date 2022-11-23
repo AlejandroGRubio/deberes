@@ -51,27 +51,27 @@ export function generarInfoPelis(nombrePeli, objPelis, idUbi) {
 
     cuerpo.setAttribute(`class`, `mostrarInfo`);
 
-    objPelis.map(async (infoPelis) => {
+    objPelis.map((infoPelis) => {
 
         if (infoPelis.episode_id == codId) {
 
             var titulo = doc.createElement(`h1`);
 
-            titulo.innerHTML = await infoPelis.title;
+            titulo.innerHTML = infoPelis.title;
 
             var sinopsis = doc.createElement(`p`);
 
-            sinopsis.innerHTML = await infoPelis.opening_crawl;
+            sinopsis.innerHTML = infoPelis.opening_crawl;
 
             var director = doc.createElement(`p`);
 
-            director.innerHTML = `Director: ${ await infoPelis.director}`;
+            director.innerHTML = `Director: ${infoPelis.director}`;
 
             var productor = doc.createElement(`p`);
 
-            productor.innerHTML = `Productor: ${await infoPelis.producer}`;
+            productor.innerHTML = `Productor: ${infoPelis.producer}`;
 
-            var numerosFechaMal = await infoPelis.release_date;
+            var numerosFechaMal = infoPelis.release_date;
 
             var numerosFechaBien = `${numerosFechaMal.charAt(8)}${numerosFechaMal.charAt(9)}-${numerosFechaMal.charAt(5)}${numerosFechaMal.charAt(6)}-${numerosFechaMal.charAt(0)}${numerosFechaMal.charAt(1)}${numerosFechaMal.charAt(2)}${numerosFechaMal.charAt(3)}`;
 
@@ -82,7 +82,7 @@ export function generarInfoPelis(nombrePeli, objPelis, idUbi) {
             var datosPersonajes = doc.createElement(`div`);
             datosPersonajes.setAttribute(`id`, `personajes`);
 
-            urlPersonajes = await infoPelis.characters;
+            urlPersonajes = infoPelis.characters;
 
             cuerpo.appendChild(titulo);
             cuerpo.appendChild(sinopsis);
@@ -121,7 +121,7 @@ export function generarInfoPelis(nombrePeli, objPelis, idUbi) {
         }
 
 
-        if (e.target.tagName == `P`) {
+        if (e.target.tagName == `P` && e.target.className == `infoPersonaje`) {
             e.target.className = `infoPersonajePulsado`;
             e.target.firstElementChild.className = `datos`;
 
