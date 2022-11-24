@@ -3,13 +3,13 @@
 
 export function devolverDatos(url) {
     
-    fetch(url)
+   return(fetch(url)
     .then((respuesta) => {
         return respuesta.json();
     })
     .then((datos) => {
         return datos.results;
-    })
+    }));
 
 
 }

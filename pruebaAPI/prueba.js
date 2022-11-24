@@ -32,7 +32,7 @@ window.onload = () => {
 
     guardarDos();
 
-
+    console.log(5);
    
 
 }
