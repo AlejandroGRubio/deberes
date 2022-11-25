@@ -102,7 +102,7 @@ function imprimirDatosPersonajes(obj) {
 
     var cuerpo = doc.createElement(`div`);
 
-    cuerpo.setAttribute(`class`, `noMostrarInfoPersonajes`);
+    cuerpo.setAttribute(`id`, `noMostrarInfoPersonajes`);
 
 
 
@@ -112,6 +112,11 @@ function imprimirDatosPersonajes(obj) {
 
         var nombre = doc.createElement(`p`);
         nombre.innerHTML = `Nombre: ${datosPersonaje.name}`;
+
+        var cuerpoDatos = doc.createElement(`div`);
+
+        cuerpoDatos.setAttribute(`class`, `noDatosPersonaje`);
+
 
         var genero = doc.createElement(`p`);
         genero.innerHTML = `Género: ${datosPersonaje.gender}`;
@@ -129,12 +134,15 @@ function imprimirDatosPersonajes(obj) {
         colorOjos.innerHTML = `Color de ojos: ${datosPersonaje.eye_color}`;
 
 
+        
+        cuerpoDatos.appendChild(genero);
+        cuerpoDatos.appendChild(altura);
+        cuerpoDatos.appendChild(peso);
+        cuerpoDatos.appendChild(colorPelo);
+        cuerpoDatos.appendChild(colorOjos);
+
+        nombre.appendChild(cuerpoDatos);
         cuerpo.appendChild(nombre);
-        cuerpo.appendChild(genero);
-        cuerpo.appendChild(altura);
-        cuerpo.appendChild(peso);
-        cuerpo.appendChild(colorPelo);
-        cuerpo.appendChild(colorOjos);
 
 
         doc.getElementById(`personajes`).appendChild(cuerpo);
