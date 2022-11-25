@@ -1,0 +1,33 @@
+.clicked{
+    text-decoration: underline;
+    color: lightyellow;
+}
+
+.noClicked{
+
+    color: yellow;
+
+
+}
+body{
+    background-color: black;
+}
+
+.mostrarInfo{
+    color: yellow;
+    border: 0.1em solid yellow;
+    text-align: center;
+}
+
+
+.ocultoDatos{
+    display: none;
+}
+
+.datos{
+    color: lightyellow;
+    text-decoration: none;
+}
+
+
+
