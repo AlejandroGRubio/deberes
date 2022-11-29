@@ -27,7 +27,7 @@ function Colorines() {
         setColorFondo(color);
     
     }
-    //Añade un addEventListener, para que cuando le demos clic, genere un nuevo color.
+    //Añade un addEventListener, para que cuando le damos clic, genere un nuevo color.
     useEffect(()=>{
 
 
