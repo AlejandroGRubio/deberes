@@ -27,20 +27,28 @@ function Colorines() {
         setColorFondo(color);
     
     }
-    //Cuando cambia el valor de colorFondo, se actualiza y cambia el color de fondo de la pantalla.
+    //Añade un addEventListener, para que cuando le demos clic, genere un nuevo color.
     useEffect(()=>{
 
+
+        window.addEventListener("click", generarColor);
+
+        return() => {
+            window.removeEventListener("click", generarColor);
+        };
+
+
+    }, []);
+
+    //Cuando cambia el color, se actualiza y cambia el color de fondo.
+    useEffect(()=>{
         document.body.style.backgroundColor = colorFondo;
-
-
-
-
     }, [colorFondo]);
 
     return(
 
         <React.Fragment>
-                <button onClick={generarColor}>Cambiar Color de Fondo</button>
+                
         </React.Fragment>
 
 
