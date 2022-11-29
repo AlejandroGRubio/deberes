@@ -8,7 +8,7 @@ function Colorines() {
 
 
 
-
+    //Genera un color aleatorio y lo guarda.
     function generarColor(){
 
 
@@ -27,7 +27,7 @@ function Colorines() {
         setColorFondo(color);
     
     }
-
+    //Cuando cambia el valor de colorFondo, se actualiza y cambia el color de fondo de la pantalla.
     useEffect(()=>{
 
         document.body.style.backgroundColor = colorFondo;
