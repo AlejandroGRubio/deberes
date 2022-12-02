@@ -14,15 +14,16 @@ function App() {
 
     const [peliculas, setPeliculas] = useState(valoresIniciales);
     const [pelicula, setPelicula] = useState(peliInicial);
-
-    
+    const [personajes, setPersonajes] = useState(valoresIniciales);
+    const [naves, setNaves] = useState(valoresIniciales);
+    const [vehiculos, setVehiculos] = useState(valoresIniciales);
 
     useEffect(()=>{
 
         getPeliculas(url, setPeliculas);
 
 
-    },[])
+    },[]);
 
     console.log(peliculas);
 
@@ -36,7 +37,7 @@ function App() {
               <ListaPelis peliculas={peliculas} funcion={getPeliculaDatos} pelicula = {setPelicula}/>
 
             {Object.keys(pelicula).length !== 0 ? (
-              <DatosPeli pelicula = {pelicula}/>
+              <DatosPeli pelicula = {pelicula} personajes = {personajes} setPersonajes = {setPersonajes} naves = {naves} setNaves = {setNaves} vehiculos = {vehiculos} setVehiculos = {setVehiculos}/>
             ) : ("No se ha seleccionado una película.")}
 
               
