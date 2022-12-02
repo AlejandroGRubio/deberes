@@ -20,5 +20,24 @@ export function devolverDatos(url) {
 };
 
 
+export function devolverDatosOtro(url) {
+    
+    return(fetch(url)
+     .then((respuesta) => {
+         return respuesta.json();
+     })
+     .then((datos) => {
+         return datos;
+         
+     })
+     .catch(() => {
+        return new Error("Fallo en la carga");
+     })
+     );
+ 
+ 
+};
+
+
 
 

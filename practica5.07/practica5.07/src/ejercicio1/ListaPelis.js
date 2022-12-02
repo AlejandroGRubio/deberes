@@ -13,7 +13,8 @@ function ListaPelis(props) {
 
         <div id="divPelis" onClick = {(evento) =>{
             if (evento.target.tagName == `LI`) {
-                props.funcion(evento.target.id);
+                console.log(evento.target.id);
+                props.funcion(evento.target.id, props.pelicula);
             }
 
             }}>

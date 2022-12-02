@@ -1,12 +1,13 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
-import { getPeliculasYDatos } from "./ejercicio1/biblioteca/getDatosApi.js";
+import { getPeliculas, getPeliculaDatos } from "./ejercicio1/biblioteca/getDatosApi.js";
 import ListaPelis from "./ejercicio1/ListaPelis.js";
-import { peliculaSeleccionada } from './ejercicio1/biblioteca/seleccionDatos.js';
+import DatosPeli from './ejercicio1/DatosPeli.js';
+
 
 function App() {
 
-  const url = "https://swapi.dev/api/films";
+  const url = "https://swapi.py4e.com/api/films";
 
     const valoresIniciales = [];
     const peliInicial = {};
@@ -18,7 +19,7 @@ function App() {
 
     useEffect(()=>{
 
-        getPeliculasYDatos(url, setPeliculas);
+        getPeliculas(url, setPeliculas);
 
 
     },[])
@@ -32,9 +33,11 @@ function App() {
           <div className="contenedorStarWars">
 
               
-              <ListaPelis peliculas={peliculas} funcion={peliculaSeleccionada}/>
+              <ListaPelis peliculas={peliculas} funcion={getPeliculaDatos} pelicula = {setPelicula}/>
 
-
+            {Object.keys(pelicula).length !== 0 ? (
+              <DatosPeli pelicula = {pelicula}/>
+            ) : ("No se ha seleccionado una película.")}
 
               
               

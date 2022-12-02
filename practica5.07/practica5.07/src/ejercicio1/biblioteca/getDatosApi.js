@@ -1,10 +1,10 @@
 "use strict";
 
-import { devolverDatos } from "./datosAPI.js";
+import { devolverDatos, devolverDatosOtro } from "./datosAPI.js";
 
 
 
-export const getPeliculasYDatos = async (url, funcSet) => {
+export const getPeliculas = async (url, funcSet) => {
 
     let datos = await devolverDatos(url);
 
@@ -14,3 +14,16 @@ export const getPeliculasYDatos = async (url, funcSet) => {
 
 
 }
+
+export const getPeliculaDatos = async (url, funcSet) => {
+
+    let datos = await devolverDatosOtro(url);
+
+    if (!datos.message) {
+        funcSet(datos);
+    }
+
+
+}
+
+
