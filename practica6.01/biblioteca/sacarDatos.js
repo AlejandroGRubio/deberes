@@ -13,12 +13,15 @@ import {
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 
 
-export const devolverDoc = async (coleccion) => {
+export const devolverDoc = async (coleccion, idUbi) => {
 
 
     var datosDocumento = await getDocs(coleccion);
 
-    return datosDocumento;
+    let datos = document.getElementById(idUbi);
+
+    
+
 
 
 }

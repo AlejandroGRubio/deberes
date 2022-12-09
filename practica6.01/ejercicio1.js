@@ -21,9 +21,9 @@ window.onload = () => {
 
     const listaColeccion = collection(db, "productos");
 
-    const documentoFire = devolverDoc(listaColeccion);
+    const documentoFire = devolverDoc(listaColeccion, `datos`);
 
-    console.log(documentoFire);
+    
 
 
 
