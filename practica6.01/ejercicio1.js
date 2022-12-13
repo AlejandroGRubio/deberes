@@ -12,16 +12,21 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { devolverDoc } from "./biblioteca/sacarDatos.js";
+import { imprimirTodosLosDatos } from "./biblioteca/sacarDatos.js";
 
 window.onload = () => {
 
 
     const db = getFirestore(app);
 
-    const listaColeccion = collection(db, "productos");
+    //const listaColeccion = collection(db, "productos");
 
-    const documentoFire = devolverDoc(listaColeccion, `datos`);
+    //const documentoFire = devolverDoc(listaColeccion, `datos`);
+
+
+  imprimirTodosLosDatos(db, "productos", "allProducts");
+
+
 
     
 
