@@ -19,10 +19,6 @@ window.onload = () => {
 
     const db = getFirestore(app);
 
-    //const listaColeccion = collection(db, "productos");
-
-    //const documentoFire = devolverDoc(listaColeccion, `datos`);
-
 
   imprimirTodosLosDatos(db, "productos", "allProducts");
 
