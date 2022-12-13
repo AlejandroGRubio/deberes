@@ -23,12 +23,23 @@ export const imprimirTodosLosDatos = async (db, nomBase, idUbi) => {
 
   mostrarDatos(productosDocumentos, idUbi);
 
-    
+}
 
+export const imprimirDatosFiltro = async (db, nomBase, idUbi, tipoFiltro) => {
 
+  const productos = collection(db, nomBase);
 
+  const productosDocumentos = await getDocs(productos);
 
-
+  if (tipoFiltro == `nombre`) {
+    console.log(`nombre`);
+  }
+  else if (tipoFiltro == `precio`) {
+    console.log(`precio`);
+  }
+  else if (tipoFiltro == `peso`) {
+    console.log(`peso`);
+  }
 
 
 }
