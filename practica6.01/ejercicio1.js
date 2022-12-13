@@ -17,7 +17,7 @@ import { imprimirTodosLosDatos } from "./biblioteca/sacarDatos.js";
 window.onload = () => {
 
 
-    const db = getFirestore(app);
+  const db = getFirestore(app);
 
 
   imprimirTodosLosDatos(db, "productos", "allProducts");
