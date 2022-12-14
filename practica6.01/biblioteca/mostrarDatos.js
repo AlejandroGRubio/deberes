@@ -2,7 +2,7 @@
 
 
 
-
+//Con la lista, da formato y lo imprime en la ubicación seleccionada.
 export function mostrarDatos(lista, idUbi){
 
     var doc = window.document;
@@ -56,6 +56,7 @@ export function mostrarDatos(lista, idUbi){
       });
 }
 
+//Con la lista y según el filtro con el nombre, da formato y lo imprime en la ubicación seleccionada.
 export function mostrarDatosNombre(lista, idUbi){
 
   var doc = window.document;
@@ -74,6 +75,11 @@ export function mostrarDatosNombre(lista, idUbi){
     ubi.appendChild(noDatos);
   }
   else{
+
+    var datosResul = doc.createElement(`p`);
+    datosResul.setAttribute(`id`, `datosResul`);
+    datosResul.innerHTML = `Los resultados del filtro por nombre de ${filtro} son:`;
+    ubi.appendChild(datosResul);
 
     lista.docs.map((docu) => {
 
@@ -124,8 +130,11 @@ export function mostrarDatosNombre(lista, idUbi){
 
   }
 
+  doc.getElementById(`formDatos`).value = ``;
+
 }
 
+//Con la lista y según el filtro con el precio, da formato y lo imprime en la ubicación seleccionada.
 export function mostrarDatosPrecio(lista, idUbi) {
 
   var doc = window.document;
@@ -144,6 +153,11 @@ export function mostrarDatosPrecio(lista, idUbi) {
     ubi.appendChild(noDatos);
   }
   else{
+
+    var datosResul = doc.createElement(`p`);
+    datosResul.setAttribute(`id`, `datosResul`);
+    datosResul.innerHTML = `Los resultados del filtro por precio de ${filtro} son:`;
+    ubi.appendChild(datosResul);
 
     lista.docs.map((docu) => {
 
@@ -193,8 +207,12 @@ export function mostrarDatosPrecio(lista, idUbi) {
     });
 
   }
+
+  doc.getElementById(`formDatos`).value = ``;
+
 } 
 
+//Con la lista y según el filtro con el peso, da formato y lo imprime en la ubicación seleccionada.
 export function mostrarDatosPeso(lista, idUbi) {
 
   var doc = window.document;
@@ -213,6 +231,11 @@ export function mostrarDatosPeso(lista, idUbi) {
     ubi.appendChild(noDatos);
   }
   else{
+
+    var datosResul = doc.createElement(`p`);
+    datosResul.setAttribute(`id`, `datosResul`);
+    datosResul.innerHTML = `Los resultados del filtro por peso de ${filtro} son:`;
+    ubi.appendChild(datosResul);
 
     lista.docs.map((docu) => {
 
@@ -262,11 +285,14 @@ export function mostrarDatosPeso(lista, idUbi) {
     });
 
   }
+
+  doc.getElementById(`formDatos`).value = ``;
+
 } 
 
 
 
-
+//Con la lista y según el orden con el nombre, da formato y lo imprime en la ubicación seleccionada.
 export function ordenarDatosPorNombre(lista, idUbi) {
   
   var datos = [];
@@ -337,6 +363,7 @@ export function ordenarDatosPorNombre(lista, idUbi) {
   });
 }
 
+//Con la lista y según el orden con el precio, da formato y lo imprime en la ubicación seleccionada.
 export function ordenarDatosPorPrecio(lista, idUbi) {
   
   var datos = [];
@@ -408,6 +435,7 @@ export function ordenarDatosPorPrecio(lista, idUbi) {
 
 }
 
+//Con la lista y según el orden con el peso, da formato y lo imprime en la ubicación seleccionada.
 export function ordenarDatosPorPeso(lista, idUbi) {
   
   var datos = [];

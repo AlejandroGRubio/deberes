@@ -13,7 +13,7 @@ import {
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { mostrarDatos, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio, ordenarDatosPorNombre, ordenarDatosPorPeso, ordenarDatosPorPrecio } from "./mostrarDatos.js";
 
-
+//Imprime los datos de la base de datos y los muestra.
 export const imprimirTodosLosDatos = async (db, nomBase, idUbi) => {
 
 
@@ -25,6 +25,7 @@ export const imprimirTodosLosDatos = async (db, nomBase, idUbi) => {
 
 }
 
+//Imprime los datos de la base de datos, según el filtro seleccionado.
 export const imprimirDatosFiltro = async (db, nomBase, idUbi, tipoFiltro) => {
 
   const productos = collection(db, nomBase);
@@ -44,6 +45,7 @@ export const imprimirDatosFiltro = async (db, nomBase, idUbi, tipoFiltro) => {
 
 }
 
+//Imprime los datos de la base de datos, según el orden seleccionado.
 export const imprimirDatosOrdenar = async(db, nomBase, idUbi, tipoOrden) => {
 
   const productos = collection(db, nomBase);

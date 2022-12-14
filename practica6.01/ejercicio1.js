@@ -20,10 +20,10 @@ window.onload = () => {
 
   const db = getFirestore(app);
 
-
+  //Imprime los datos de la base de datos al cargar la página.
   imprimirTodosLosDatos(db, "productos", "allProducts");
 
-
+  //Añade un evento al botón Buscar.
   doc.getElementById(`buscarDatos`).addEventListener(`click`, () => {
 
     doc.getElementById(`allProducts`).className = `oculto`;
@@ -40,9 +40,8 @@ window.onload = () => {
 
   });
 
+  //Añade el evento a los botones de Ordenar Por.
   doc.getElementById(`ordenar`).addEventListener(`click`, (e) => {
-
-    
 
     if (e.target.tagName == `BUTTON`) {
 
@@ -58,11 +57,17 @@ window.onload = () => {
         imprimirDatosOrdenar(db, `productos`, `productsFilter`, `peso`);
       }
     }
+  });
 
+  //Añade el evento al botón Restablecer Datos.
+  doc.getElementById(`restaurarDatos`).addEventListener(`click`, () => {
 
+    doc.getElementById(`productsFilter`).innerHTML = ``;
+    
+    
+    doc.getElementById(`allProducts`).className = ``;
 
-
-  })
+  });
     
 
 

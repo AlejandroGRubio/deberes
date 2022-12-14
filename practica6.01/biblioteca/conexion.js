@@ -3,7 +3,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 
-
+//Se conecta con la base de datos de Firebase.
 const firebaseConfig = {
   apiKey: "AIzaSyA9RcJtMWM2pEzdvqNvG7hfrRW9BCrobQU",
   authDomain: "practica6-01-7d545.firebaseapp.com",
