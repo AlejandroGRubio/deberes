@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/ejercicio1.css">
     <title>Lista de la compra</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
         <div id="filtros">
             <p>Filtrar por:</p>
             <form>
-                <input type="radio" name="filtrarPor" id="nombre" value="Nombre">
+                <input type="radio" name="filtrarPor" id="nombre" value="Nombre" checked>
                 <label for="nombre">Nombre</label>
                 <input type="radio" name="filtrarPor" id="precio" value="Precio">
                 <label for="precio">Precio</label>
@@ -28,14 +29,24 @@
                 <label for="formDatos">Inserte el dato a buscar: </label>
                 <input type="text" name="datosTextFiltro" id="formDatos">
                 <button id="buscarDatos">Buscar</button>
-                <button id="restaurarDatos">Reestablecer</button>
             </div>
 
 
 
         </div>
 
+        <div id="ordenar">
 
+            <p>Ordenar por:</p>
+            <div>
+                <button id="ordenarNombre">Ordenar Por Nombre</button>
+                <button id="ordenarPrecio">Ordenar Por Precio</button>
+                <button id="ordenarPeso">Ordenar Por Peso</button>
+            </div>
+
+        </div>
+        <br/>
+        <button id="restaurarDatos">Reestablecer Datos</button>
 
 
 
@@ -43,7 +54,9 @@
         </div>
 
 
-        <div id="productsFilter"></div>
+        <div id="productsFilter">
+
+        </div>
 
 
 

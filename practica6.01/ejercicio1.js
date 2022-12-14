@@ -12,7 +12,7 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { imprimirDatosFiltro, imprimirTodosLosDatos } from "./biblioteca/sacarDatos.js";
+import { imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos } from "./biblioteca/sacarDatos.js";
 
 window.onload = () => {
 
@@ -38,11 +38,31 @@ window.onload = () => {
       imprimirDatosFiltro(db, `productos`, `productsFilter`, `peso`);
     }
 
-      
-
-
-
   });
+
+  doc.getElementById(`ordenar`).addEventListener(`click`, (e) => {
+
+    
+
+    if (e.target.tagName == `BUTTON`) {
+
+      doc.getElementById(`allProducts`).className = `oculto`;
+
+      if (e.target.id == `ordenarNombre`) {
+        imprimirDatosOrdenar(db, `productos`, `productsFilter`, `nombre`);
+      }
+      else if (e.target.id == `ordenarPrecio`) {
+        imprimirDatosOrdenar(db, `productos`, `productsFilter`, `precio`);
+      }
+      else if(e.target.id == `ordenarPeso`){
+        imprimirDatosOrdenar(db, `productos`, `productsFilter`, `peso`);
+      }
+    }
+
+
+
+
+  })
     
 
 

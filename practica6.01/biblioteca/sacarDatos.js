@@ -11,7 +11,7 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { mostrarDatos } from "./imprimirDatos.js";
+import { mostrarDatos, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio, ordenarDatosPorNombre, ordenarDatosPorPeso, ordenarDatosPorPrecio } from "./mostrarDatos.js";
 
 
 export const imprimirTodosLosDatos = async (db, nomBase, idUbi) => {
@@ -32,13 +32,32 @@ export const imprimirDatosFiltro = async (db, nomBase, idUbi, tipoFiltro) => {
   const productosDocumentos = await getDocs(productos);
 
   if (tipoFiltro == `nombre`) {
-    console.log(`nombre`);
+    mostrarDatosNombre(productosDocumentos, idUbi);
   }
   else if (tipoFiltro == `precio`) {
-    console.log(`precio`);
+    mostrarDatosPrecio(productosDocumentos, idUbi);
   }
   else if (tipoFiltro == `peso`) {
-    console.log(`peso`);
+    mostrarDatosPeso(productosDocumentos, idUbi);
+  }
+
+
+}
+
+export const imprimirDatosOrdenar = async(db, nomBase, idUbi, tipoOrden) => {
+
+  const productos = collection(db, nomBase);
+
+  const productosDocumentos = await getDocs(productos);
+
+  if (tipoOrden == `nombre`) {
+    ordenarDatosPorNombre(productosDocumentos, idUbi);
+  }
+  else if (tipoOrden == `precio`) {
+    ordenarDatosPorPrecio(productosDocumentos, idUbi);
+  }
+  else if (tipoOrden == `peso`) {
+    ordenarDatosPorPeso(productosDocumentos, idUbi);
   }
 
 
