@@ -1,3 +1,29 @@
 .oculto{
     display: none;
 }
+
+img{
+    width: 20%;
+}
+
+h1{
+    text-align: center;
+}
+
+#allProducts{
+    text-align: center;
+    padding: 0.5em;
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+#productsFilter{
+    text-align: center;
+    padding: 0.5em;
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+#datosResul{
+    color: brown;
+}
