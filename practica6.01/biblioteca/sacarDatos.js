@@ -11,7 +11,7 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { mostrarDatos, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio, ordenarDatosPorNombre, ordenarDatosPorPeso, ordenarDatosPorPrecio } from "./mostrarDatos.js";
+import { mostrarDatos, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio } from "./mostrarDatos.js";
 
 //Imprime los datos de la base de datos y los muestra.
 export const imprimirTodosLosDatos = async (db, nomBase, idUbi) => {
@@ -30,15 +30,37 @@ export const imprimirDatosFiltro = async (db, nomBase, idUbi, tipoFiltro) => {
 
   const productos = collection(db, nomBase);
 
-  const productosDocumentos = await getDocs(productos);
+  var doc = window.document;
 
-  if (tipoFiltro == `nombre`) {
+  var filtro = doc.getElementById(`formDatos`).value;
+
+
+  if (tipoFiltro == `Nombre`) {
+
+    const consulta = await query(productos, where(tipoFiltro, "==", filtro));
+
+    const productosDocumentos = await getDocs(consulta);
+
     mostrarDatosNombre(productosDocumentos, idUbi);
   }
-  else if (tipoFiltro == `precio`) {
+  else if (tipoFiltro == `Precio`) {
+
+    filtro = parseFloat(doc.getElementById(`formDatos`).value, 10);
+
+    const consulta = await query(productos, where(tipoFiltro, "<=", filtro));
+
+    const productosDocumentos = await getDocs(consulta);
+
     mostrarDatosPrecio(productosDocumentos, idUbi);
   }
-  else if (tipoFiltro == `peso`) {
+  else if (tipoFiltro == `Peso`) {
+
+    filtro = parseFloat(doc.getElementById(`formDatos`).value, 10);
+
+    const consulta = await query(productos, where(tipoFiltro, "<=", filtro));
+
+    const productosDocumentos = await getDocs(consulta);
+
     mostrarDatosPeso(productosDocumentos, idUbi);
   }
 
@@ -48,18 +70,37 @@ export const imprimirDatosFiltro = async (db, nomBase, idUbi, tipoFiltro) => {
 //Imprime los datos de la base de datos, según el orden seleccionado.
 export const imprimirDatosOrdenar = async(db, nomBase, idUbi, tipoOrden) => {
 
+  var doc = window.document;
+
   const productos = collection(db, nomBase);
 
-  const productosDocumentos = await getDocs(productos);
+  var ubi = doc.getElementById(idUbi);
 
-  if (tipoOrden == `nombre`) {
-    ordenarDatosPorNombre(productosDocumentos, idUbi);
+  ubi.innerHTML = ``;
+
+  if (tipoOrden == `Nombre`) {
+
+    const consulta = await query(productos, orderBy(tipoOrden));
+
+    const productosDocumentos = await getDocs(consulta);
+
+    mostrarDatos(productosDocumentos, idUbi);
   }
-  else if (tipoOrden == `precio`) {
-    ordenarDatosPorPrecio(productosDocumentos, idUbi);
+  else if (tipoOrden == `Precio`) {
+
+    const consulta = await query(productos, orderBy(tipoOrden));
+
+    const productosDocumentos = await getDocs(consulta);
+
+    mostrarDatos(productosDocumentos, idUbi);
   }
-  else if (tipoOrden == `peso`) {
-    ordenarDatosPorPeso(productosDocumentos, idUbi);
+  else if (tipoOrden == `Peso`) {
+
+    const consulta = await query(productos, orderBy(tipoOrden));
+
+    const productosDocumentos = await getDocs(consulta);
+
+    mostrarDatos(productosDocumentos, idUbi);
   }
 
 

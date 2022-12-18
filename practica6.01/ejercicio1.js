@@ -29,13 +29,13 @@ window.onload = () => {
     doc.getElementById(`allProducts`).className = `oculto`;
 
     if (doc.getElementById(`nombre`).checked == true) {
-      imprimirDatosFiltro(db, `productos`, `productsFilter`, `nombre`);
+      imprimirDatosFiltro(db, `productos`, `productsFilter`, `Nombre`);
     }
     else if (doc.getElementById(`precio`).checked == true) {
-      imprimirDatosFiltro(db, `productos`, `productsFilter`, `precio`);
+      imprimirDatosFiltro(db, `productos`, `productsFilter`, `Precio`);
     }
     else if(doc.getElementById(`peso`).checked == true){
-      imprimirDatosFiltro(db, `productos`, `productsFilter`, `peso`);
+      imprimirDatosFiltro(db, `productos`, `productsFilter`, `Peso`);
     }
 
   });
@@ -48,13 +48,13 @@ window.onload = () => {
       doc.getElementById(`allProducts`).className = `oculto`;
 
       if (e.target.id == `ordenarNombre`) {
-        imprimirDatosOrdenar(db, `productos`, `productsFilter`, `nombre`);
+        imprimirDatosOrdenar(db, `productos`, `productsFilter`, `Nombre`);
       }
       else if (e.target.id == `ordenarPrecio`) {
-        imprimirDatosOrdenar(db, `productos`, `productsFilter`, `precio`);
+        imprimirDatosOrdenar(db, `productos`, `productsFilter`, `Precio`);
       }
       else if(e.target.id == `ordenarPeso`){
-        imprimirDatosOrdenar(db, `productos`, `productsFilter`, `peso`);
+        imprimirDatosOrdenar(db, `productos`, `productsFilter`, `Peso`);
       }
     }
   });
