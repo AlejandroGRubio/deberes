@@ -345,7 +345,7 @@ export function mostrarDatosPeso(lista, idUbi) {
 } 
 
 //Genera un formulario y manda un objeto con los datos añadidos al formulario.
-export function generarFormularioYDevolverDatos(db, nomBase, idUbi) {
+export function generarFormularioYDevolverDatos(db, nomBase, idUbi, objProd) {
 
   var doc = window.document;
 
@@ -365,22 +365,25 @@ export function generarFormularioYDevolverDatos(db, nomBase, idUbi) {
 
   var idImagenEdit = generarId(6);
 
+  var datosProductoOriginal = objProd;
+  console.log(datosProductoOriginal);
+
   formulario.innerHTML = `
   </br>
   <label for="${idNomEdit}">Nombre: </label>
-  <input type="text" name="${idNomEdit}" id="${idNomEdit}">
+  <input type="text" name="${idNomEdit}" id="${idNomEdit}" value= "${datosProductoOriginal.Nombre}">
   </br>
   <label for="${idDescEdit}">Descripción: </label>
-  <input type="text" name="${idDescEdit}" id="${idDescEdit}">
+  <input type="text" name="${idDescEdit}" id="${idDescEdit}" value= "${datosProductoOriginal.Descripcion}">
   </br>
   <label for="${idPrecioEdit}">Precio: </label>
-  <input type="text" name="${idPrecioEdit}" id="${idPrecioEdit}">
+  <input type="text" name="${idPrecioEdit}" id="${idPrecioEdit}" value= "${datosProductoOriginal.Precio}">
   </br>
   <label for="${idPesoEdit}">Peso: </label>
-  <input type="text" name="${idPesoEdit}" id="${idPesoEdit}">
+  <input type="text" name="${idPesoEdit}" id="${idPesoEdit}" value= "${datosProductoOriginal.Peso}">
   </br>
   <label for="${idImagenEdit}">URL Imagen: </label>
-  <input type="text" name="${idImagenEdit}" id="${idImagenEdit}">
+  <input type="text" name="${idImagenEdit}" id="${idImagenEdit}" value= "${datosProductoOriginal.Imagen}">
   </br>
   <button id="editarDatos">Guardar</button>
   <button id="cancelarEditarDatos">Cancelar</button>

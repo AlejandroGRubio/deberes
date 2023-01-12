@@ -12,7 +12,7 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { borrarDato, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
+import { borrarDato, devolverProductoYEditar, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
 import { anyadirNuevosDatos, generarFormularioYDevolverDatos } from "./biblioteca/mostrarDatos.js";
 
 window.onload = () => {
@@ -78,7 +78,8 @@ window.onload = () => {
       
     
         if (e.target.innerText == `Editar`) {
-          generarFormularioYDevolverDatos(db, `productos`, e.target.parentNode.id);
+          devolverProductoYEditar(db, `productos`, e.target.parentNode.id);
+          //generarFormularioYDevolverDatos(db, `productos`, e.target.parentNode.id);
         }else if(e.target.innerText == `Eliminar`){
           borrarDato(db, `productos`, e.target.parentNode.id);
         }
@@ -98,7 +99,8 @@ window.onload = () => {
           if (doc.getElementById(`allProducts`) != undefined) {
             doc.getElementById(`allProducts`).remove();
           }
-          generarFormularioYDevolverDatos(db, `productos`, e.target.parentNode.id);
+          devolverProductoYEditar(db, `productos`, e.target.parentNode.id);
+          //generarFormularioYDevolverDatos(db, `productos`, e.target.parentNode.id);
         }else if(e.target.innerText == `Eliminar`){
           if (doc.getElementById(`allProducts`) != undefined) {
             doc.getElementById(`allProducts`).remove();

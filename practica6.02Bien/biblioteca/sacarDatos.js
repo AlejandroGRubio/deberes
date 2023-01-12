@@ -183,7 +183,7 @@ export const numProductos = async (db, nomBase, idUbi) => {
 
   var infor = docu.createElement(`p`);
 
-  infor.innerText = `Actualmente hay ${numP} productos`;
+  infor.innerText = `Actualmente hay ${numP} productos.`;
 
   docu.getElementById(idUbi).appendChild(infor);
 
@@ -212,8 +212,22 @@ export const mediaPrecioProductos = async (db, nomBase, idUbi) => {
   });
   var infor = docu.createElement(`p`);
 
-  infor.innerText = `La media de los precios de los productos son ${precioTotal / numP}`;
+  infor.innerText = `La media de los precios de los productos son ${precioTotal / numP}.`;
 
   docu.getElementById(idUbi).appendChild(infor);
+
+}
+
+
+export const devolverProductoYEditar = async (db, nomBase, idProd) => {
+
+  const productos = collection(db, nomBase);
+
+  const ObjProducto = await doc(productos, idProd);
+
+  const ObjProductoFinal = await getDoc(ObjProducto);
+
+  generarFormularioYDevolverDatos(db, nomBase, idProd, ObjProductoFinal.data());
+
 
 }
