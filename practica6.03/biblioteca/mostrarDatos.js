@@ -1,6 +1,6 @@
 "use strict";
 
-import { crearUsuario } from "./autentificacion.js";
+import { crearUsuario, iniciarSesion } from "./autentificacion.js";
 import { generarId } from "./otrasFunciones.js";
 import { anyadirALaBase, editarDatos } from "./sacarDatos.js";
 
@@ -468,6 +468,19 @@ export function crearNuevoUsuario(db, nomBase) {
 
 
   crearUsuario(correo, pass, usuario, db, nomBase);
+
+
+  
+}
+
+export function iniciarSesionUsuario() {
+
+  var doc = window.document;
+
+  var correo = doc.getElementById(`sesionMail`).value;
+  var pass = doc.getElementById(`sesionPass`).value;
+
+  iniciarSesion(correo, pass);
 
 
   

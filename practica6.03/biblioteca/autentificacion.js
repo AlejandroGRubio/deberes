@@ -48,4 +48,22 @@ export const crearUsuario = async (user, pass, nombreUsuario, db, nomBase) =>{
         console.log(`Error en: ${error.message}`);
     }
 
-}
+};
+
+export const iniciarSesion = async (user, pass) => {
+
+    signInWithEmailAndPassword(autentificar, user, pass)
+    .then((credenciales) => {
+
+        console.log("Sesión Iniciada");
+        console.log(credenciales.user); 
+
+
+
+    })
+    .catch((error) =>{
+        console.log(`Error en: ${error.message}`);
+    });
+
+
+};
