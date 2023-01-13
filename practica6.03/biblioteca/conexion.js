@@ -2,6 +2,7 @@
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 
 //Se conecta con la base de datos de Firebase.
 const firebaseConfig = {
@@ -17,5 +18,7 @@ const firebaseConfig = {
 
   const app = initializeApp(firebaseConfig);
 
+  const autentificar = getAuth(app);
 
-  export { app };
+
+  export { app, autentificar };

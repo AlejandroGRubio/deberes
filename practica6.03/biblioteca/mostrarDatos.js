@@ -1,5 +1,6 @@
 "use strict";
 
+import { crearUsuario } from "./autentificacion.js";
 import { generarId } from "./otrasFunciones.js";
 import { anyadirALaBase, editarDatos } from "./sacarDatos.js";
 
@@ -454,8 +455,20 @@ export function anyadirNuevosDatos(db, nomBase, idUbi) {
 
   anyadirALaBase(db, nomBase, nuevosDatos);
 
+}
 
 
+export function crearNuevoUsuario(db, nomBase) {
+
+  var doc = window.document;
+
+  var usuario = doc.getElementById(`crearUsernameReg`).value;
+  var correo = doc.getElementById(`crearMailReg`).value;
+  var pass = doc.getElementById(`crearPassReg`).value;
 
 
+  crearUsuario(correo, pass, usuario, db, nomBase);
+
+
+  
 }

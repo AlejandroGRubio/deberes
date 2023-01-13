@@ -12,6 +12,30 @@
 
         <h1>Lista de la compra</h1>
 
+        <div id="formCrearUsuarios">
+            <p>Registrarse</p>
+            <label for="nombreUsuarioReg">Usuario: </label>
+            <input type="text" name="nombreUsuarioReg" id="crearUsernameReg">
+        </br>
+            <label for="correoUsuarioReg">Correo: </label>
+            <input type="email" name="correoUsuarioReg" id="crearMailReg">
+        </br>
+            <label for="passwordUsuarioReg">Contraseña: </label>
+            <input type="password" name="passwordUsuarioReg" id="crearPassReg">
+        </br>
+        <button id="botonRegistro">Registrarse</button>
+        </div>
+
+        <div id="formIniciarSesion">
+            <p>Iniciar Sesion</p>
+            <label for="correoUsuarioSesion">Correo: </label>
+            <input type="email" name="correoUsuarioSesion" id="sesionMail">
+        </br>
+            <label for="passwordUsuarioSesion">Contraseña: </label>
+            <input type="password" name="passwordUsuarioSesion" id="sesionPass">
+        </br>
+        <button id="botonInicioSesion">Iniciar Sesion</button>
+        </div>
 
         <div id="filtros">
             <p>Filtrar por:</p>
@@ -48,7 +72,7 @@
     </br>
         <button id="botonMostrarAnyadirDatos">Añadir Datos</button>
         <div id="anyadirDatos" class="oculto">
-
+        </br>
         <label for="anyadirDatosNombre">Nombre: </label>
         <input type="text" name="anyadirDatosNombre" id="anyadirDatosNombre">
         </br>

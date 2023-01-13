@@ -13,7 +13,7 @@ import {
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { borrarDato, devolverProductoYEditar, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
-import { anyadirNuevosDatos, generarFormularioYDevolverDatos } from "./biblioteca/mostrarDatos.js";
+import { anyadirNuevosDatos, crearNuevoUsuario, generarFormularioYDevolverDatos } from "./biblioteca/mostrarDatos.js";
 
 window.onload = () => {
 
@@ -142,6 +142,31 @@ window.onload = () => {
 
 
   });
+
+
+  doc.getElementById(`formCrearUsuarios`).addEventListener(`click`, (e) => {
+
+    if (e.target.tagName == `BUTTON`) {
+      
+      if (e.target.innerText == `Registrarse`) {
+        crearNuevoUsuario(db, `usuarios`);
+      }
+
+
+
+
+    }
+
+
+
+  });
+
+
+
+
+
+
+
 
 
   numProductos(db, `productos`, `infoNumProduc`);
