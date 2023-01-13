@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/ejercicio1.css">
+    <title>Lista de la compra</title>
+</head>
+<body>
+    <div id="datos">
+
+        <h1>Lista de la compra</h1>
+
+
+        <div id="filtros">
+            <p>Filtrar por:</p>
+            <form>
+                <input type="radio" name="filtrarPor" id="nombre" value="Nombre" checked>
+                <label for="nombre">Nombre</label>
+                <input type="radio" name="filtrarPor" id="precio" value="Precio">
+                <label for="precio">Precio</label>
+                <input type="radio" name="filtrarPor" id="peso" value="Peso">
+                <label for="peso">Peso</label>
+            </form>
+
+            <div id="datosFiltro">
+                <br/>
+                <label for="formDatos">Inserte el dato a buscar: </label>
+                <input type="text" name="datosTextFiltro" id="formDatos">
+                <button id="buscarDatos">Buscar</button>
+            </div>
+
+
+
+        </div>
+
+        <div id="ordenar">
+
+            <p>Ordenar por:</p>
+            <div>
+                <button id="ordenarNombre">Ordenar Por Nombre</button>
+                <button id="ordenarPrecio">Ordenar Por Precio</button>
+                <button id="ordenarPeso">Ordenar Por Peso</button>
+            </div>
+
+        </div>
+    </br>
+        <button id="botonMostrarAnyadirDatos">Añadir Datos</button>
+        <div id="anyadirDatos" class="oculto">
+
+        <label for="anyadirDatosNombre">Nombre: </label>
+        <input type="text" name="anyadirDatosNombre" id="anyadirDatosNombre">
+        </br>
+        <label for="anyadirDatosDesc">Descripción: </label>
+        <input type="text" name="anyadirDatosDesc" id="anyadirDatosDesc">
+        </br>
+        <label for="anyadirDatosPrecio">Precio: </label>
+        <input type="text" name="anyadirDatosPrecio" id="anyadirDatosPrecio">
+        </br>
+        <label for="anyadirDatosPeso">Peso: </label>
+        <input type="text" name="anyadirDatosPeso" id="anyadirDatosPeso">
+        </br>
+        <label for="anyadirDatosImagen">URL Imagen: </label>
+        <input type="text" name="anyadirDatosImagen" id="anyadirDatosImagen">
+        </br>
+        <button id="anyadirNuevosDatos">Guardar</button>
+
+
+        </div>
+
+        <br/>
+        <p><button id="restaurarDatos">Restablecer Datos</button></p>
+
+
+
+        <div id="allProducts" class="">
+        </div>
+
+
+        <div id="productsFilter">
+
+        </div>
+
+        <div id="infoNumProduc"></div>
+
+        <div id="precioMedioProduc"></div>
+
+
+
+
+
+
+
+    </div>
+    <script type="module" src="./ejercicio1.js"></script>
+</body>
+</html>
