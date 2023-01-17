@@ -47,9 +47,13 @@ export function mostrarDatos(lista, idUbi){
 
         botonEditar.innerText = `Editar`;
 
+        botonEditar.setAttribute(`class`, `ocultoNoSesion`);
+
         var botonEliminar = doc.createElement(`button`);
 
         botonEliminar.innerText = `Eliminar`;
+
+        botonEliminar.setAttribute(`class`, `ocultoNoSesion`);
   
   
         cuerpo.appendChild(nombre);
@@ -484,4 +488,22 @@ export function iniciarSesionUsuario() {
 
 
   
+}
+
+export function mostrarDatosInicioSesion(){
+
+  var doc = window.document;
+
+  var datosOcultos = doc.getElementsByClassName(`ocultoNoSesion`);
+
+  datosOcultos.map((ocultos)=>{
+
+    ocultos.className = `sesionAdmin`;
+
+
+  })
+
+
+
+
 }

@@ -22,6 +22,7 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+import { devolverDatosUsuarioYComprobarPermisos } from "./sacarDatos.js";
 
 
 export const crearUsuario = async (user, pass, nombreUsuario, db, nomBase) =>{
@@ -42,8 +43,6 @@ export const crearUsuario = async (user, pass, nombreUsuario, db, nomBase) =>{
             rol: "usuario",
         });
 
-
-        //credenciales.user.uid (uid del usuario).
     } catch (error) {
         console.log(`Error en: ${error.message}`);
     }
@@ -54,12 +53,6 @@ export const iniciarSesion = async (user, pass) => {
 
     signInWithEmailAndPassword(autentificar, user, pass)
     .then((credenciales) => {
-
-        console.log("Sesión Iniciada");
-        console.log(credenciales.user); 
-
-
-
     })
     .catch((error) =>{
         console.log(`Error en: ${error.message}`);
@@ -67,3 +60,28 @@ export const iniciarSesion = async (user, pass) => {
 
 
 };
+
+
+export const verificarPermisosUsuario = async (db, nomBase) => {
+
+   //console.log(autentificar.currentUser.uid);
+   
+   
+    if (autentificar.currentUser.uid != null) {
+    
+    devolverDatosUsuarioYComprobarPermisos(db, nomBase, autentificar.currentUser.uid);
+
+
+
+
+   }
+   
+   
+    
+
+
+
+
+
+
+}

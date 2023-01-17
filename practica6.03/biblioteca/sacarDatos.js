@@ -14,7 +14,7 @@ import {
     deleteDoc,
     addDoc,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { generarFormularioYDevolverDatos, mostrarDatos, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio } from "./mostrarDatos.js";
+import { generarFormularioYDevolverDatos, mostrarDatos, mostrarDatosInicioSesion, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio } from "./mostrarDatos.js";
 
 
 //Imprime los datos de la base de datos y los muestra.
@@ -187,7 +187,7 @@ export const numProductos = async (db, nomBase, idUbi) => {
 
   docu.getElementById(idUbi).appendChild(infor);
 
-}
+};
 
 //Muestra la media de los precios de la base de datos.
 export const mediaPrecioProductos = async (db, nomBase, idUbi) => {
@@ -216,7 +216,7 @@ export const mediaPrecioProductos = async (db, nomBase, idUbi) => {
 
   docu.getElementById(idUbi).appendChild(infor);
 
-}
+};
 
 
 export const devolverProductoYEditar = async (db, nomBase, idProd) => {
@@ -230,4 +230,23 @@ export const devolverProductoYEditar = async (db, nomBase, idProd) => {
   generarFormularioYDevolverDatos(db, nomBase, idProd, ObjProductoFinal.data());
 
 
-}
+};
+
+
+export const devolverDatosUsuarioYComprobarPermisos = async (db, nomBase, uid) => {
+
+  const usuarios = collection(db, nomBase);
+
+  const usuarioDoc = doc(usuarios, uid);
+
+  const usuariosDocumentos = await getDoc(usuarioDoc);
+
+  if (usuariosDocumentos.data().rol == `admin`) {
+    mostrarDatosInicioSesion();
+  }
+
+
+  console.log(usuariosDocumentos.data());
+
+
+};

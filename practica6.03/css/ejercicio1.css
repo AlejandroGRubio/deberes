@@ -2,6 +2,10 @@
     display: none;
 }
 
+.ocultoNoSesion{
+    display: none;
+}
+
 img{
     width: 20%;
 }

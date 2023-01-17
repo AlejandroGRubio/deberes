@@ -14,12 +14,16 @@ import {
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { borrarDato, devolverProductoYEditar, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
 import { anyadirNuevosDatos, crearNuevoUsuario, generarFormularioYDevolverDatos, iniciarSesionUsuario } from "./biblioteca/mostrarDatos.js";
+import { verificarPermisosUsuario } from "./biblioteca/autentificacion.js";
 
 window.onload = () => {
 
   var doc = window.document;
 
   const db = getFirestore(app);
+
+  
+
 
   //Imprime los datos de la base de datos al cargar la página.
   imprimirTodosLosDatos(db, "productos", "allProducts");
@@ -160,8 +164,9 @@ window.onload = () => {
 
     if (e.target.tagName == `BUTTON`) {
       
-      if (e.target.innerText == `IniciarSesion`) {
+      if (e.target.innerText == `Iniciar Sesion`) {
         iniciarSesionUsuario();
+        verificarPermisosUsuario(db, `usuarios`);
       }
 
     }
