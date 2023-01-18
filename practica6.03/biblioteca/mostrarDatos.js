@@ -494,14 +494,20 @@ export function mostrarDatosInicioSesion(){
 
   var doc = window.document;
 
-  var datosOcultos = doc.getElementsByClassName(`ocultoNoSesion`);
+  if (doc.getElementsByClassName(`ocultoNoSesion`) != undefined) {
+    var datosOcultos = doc.getElementsByClassName(`ocultoNoSesion`);
 
-  datosOcultos.map((ocultos)=>{
+    var datosOcultosArray = [...datosOcultos];
+
+    datosOcultosArray.map((ocultos)=>{
 
     ocultos.className = `sesionAdmin`;
 
 
-  })
+  });
+  }
+
+  
 
 
 

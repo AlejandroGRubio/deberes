@@ -246,7 +246,4 @@ export const devolverDatosUsuarioYComprobarPermisos = async (db, nomBase, uid) =
   }
 
 
-  console.log(usuariosDocumentos.data());
-
-
 };

@@ -12,7 +12,7 @@
 
         <h1>Lista de la compra</h1>
 
-        <div id="formCrearUsuarios">
+        <div id="formCrearUsuarios" class="formUser">
             <p>Registrarse</p>
             <label for="nombreUsuarioReg">Usuario: </label>
             <input type="text" name="nombreUsuarioReg" id="crearUsernameReg">
@@ -26,7 +26,7 @@
         <button id="botonRegistro">Registrarse</button>
         </div>
 
-        <div id="formIniciarSesion">
+        <div id="formIniciarSesion" class="formUser">
             <p>Iniciar Sesion</p>
             <label for="correoUsuarioSesion">Correo: </label>
             <input type="email" name="correoUsuarioSesion" id="sesionMail">
@@ -34,7 +34,12 @@
             <label for="passwordUsuarioSesion">Contraseña: </label>
             <input type="password" name="passwordUsuarioSesion" id="sesionPass">
         </br>
-        <button id="botonInicioSesion">Iniciar Sesion</button>
+        <button id="botonInicioSesion">Iniciar Sesión</button>
+        </div>
+        </br>
+        <div class="ocultoInicioSesion">
+            <p id="idUsuarioSesion"></p>
+            <button id="cerrarSesion">Cerrar Sesión</button>
         </div>
 
         <div id="filtros">
@@ -94,7 +99,7 @@
         </div>
 
         <br/>
-        <p><button id="restaurarDatos" class="ocultoNoSesion">Restablecer Datos</button></p>
+        <p><button id="restaurarDatos">Restablecer Datos</button></p>
 
 
 
