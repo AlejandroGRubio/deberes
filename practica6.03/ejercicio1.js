@@ -179,7 +179,7 @@ window.onload = () => {
 
 
 
-
+//Cambiar var doc en todos los js, por una variable para todos.
 
 
 

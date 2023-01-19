@@ -519,3 +519,28 @@ export function mostrarDatosInicioSesion(){
   }
 
 }
+
+export function ocultarDatosDeInicioSesion(){
+
+  var doc = window.document;
+
+  if (doc.getElementsByClassName(`formUser`) != undefined) {
+    var datosOcultar = doc.getElementsByClassName(`formUser`);
+
+    var datosOcultarArray = [...datosOcultar];
+
+    datosOcultarArray.map((ocultar)=>{
+
+    ocultar.className = `ocultoFormUser`;
+
+
+  });
+
+
+  }
+
+
+
+
+
+}

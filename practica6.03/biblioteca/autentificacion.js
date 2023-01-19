@@ -23,6 +23,7 @@ import {
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 import { devolverDatosUsuarioYComprobarPermisos } from "./sacarDatos.js";
+import { ocultarDatosDeInicioSesion } from "./mostrarDatos.js";
 
 
 export const crearUsuario = async (user, pass, nombreUsuario, db, nomBase) =>{
@@ -55,6 +56,7 @@ export const iniciarSesion = async (user, pass, db) => {
     signInWithEmailAndPassword(autentificar, user, pass)
     .then((credenciales) => {
         verificarPermisosUsuario(db, `usuarios`);
+        indicarNombreUsuario();
     })
     .catch((error) =>{
         console.log(`Error en: ${error.message}`);
@@ -68,6 +70,7 @@ export const verificarPermisosUsuario = async (db, nomBase) => {
    
     if (autentificar.currentUser) {
     
+    ocultarDatosDeInicioSesion();
     devolverDatosUsuarioYComprobarPermisos(db, nomBase, autentificar.currentUser.uid);
 
    }
@@ -82,6 +85,19 @@ export const cerrarSesion = () => {
         console.log(error.message);
     }
 
+
+
+}
+
+
+export const indicarNombreUsuario = async () => {
+
+    var docu = window.document;
+
+    docu.getElementById("idUsuarioSesion").innerText = `Sesión iniciada con: ${autentificar.currentUser}`;
+
+
+    docu.getElementsByClassName("ocultoInicioSesion")[0].className = `inicioSesion`;
 
 
 }
