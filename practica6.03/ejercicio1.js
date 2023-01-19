@@ -169,8 +169,7 @@ window.onload = () => {
     if (e.target.tagName == `BUTTON`) {
       
       if (e.target.innerText == `Iniciar Sesión`) {
-        iniciarSesionUsuario();
-        verificarPermisosUsuario(db, `usuarios`);
+        iniciarSesionUsuario(db);
       }
 
     }

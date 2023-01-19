@@ -49,12 +49,12 @@ export const crearUsuario = async (user, pass, nombreUsuario, db, nomBase) =>{
 
 };
 
-export const iniciarSesion = async (user, pass) => {
+export const iniciarSesion = async (user, pass, db) => {
 
     console.log(`iniciar sesion`);
     signInWithEmailAndPassword(autentificar, user, pass)
     .then((credenciales) => {
-        console.log(`sesion iniciada`);
+        verificarPermisosUsuario(db, `usuarios`);
     })
     .catch((error) =>{
         console.log(`Error en: ${error.message}`);
@@ -65,10 +65,8 @@ export const iniciarSesion = async (user, pass) => {
 
 
 export const verificarPermisosUsuario = async (db, nomBase) => {
-
-   console.log(autentificar.currentUser.uid);
    
-    if (autentificar.currentUser.uid != null) {
+    if (autentificar.currentUser) {
     
     devolverDatosUsuarioYComprobarPermisos(db, nomBase, autentificar.currentUser.uid);
 

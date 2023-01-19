@@ -14,6 +14,7 @@ import {
     deleteDoc,
     addDoc,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import { verificarPermisosUsuario } from "./autentificacion.js";
 import { generarFormularioYDevolverDatos, mostrarDatos, mostrarDatosInicioSesion, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio } from "./mostrarDatos.js";
 
 
@@ -67,7 +68,7 @@ export const imprimirDatosFiltro = async (db, nomBase, idUbi, tipoFiltro) => {
 
     mostrarDatosPeso(productosDocumentos, idUbi);
   }
-
+  verificarPermisosUsuario(db, `usuarios`);
 
 }
 
@@ -89,6 +90,8 @@ export const imprimirDatosOrdenar = async(db, nomBase, idUbi, tipoOrden) => {
     const productosDocumentos = await getDocs(consulta);
 
     mostrarDatos(productosDocumentos, idUbi);
+
+    
   }
   else if (tipoOrden == `Precio`) {
 
@@ -106,7 +109,7 @@ export const imprimirDatosOrdenar = async(db, nomBase, idUbi, tipoOrden) => {
 
     mostrarDatos(productosDocumentos, idUbi);
   }
-
+  verificarPermisosUsuario(db, `usuarios`);
 
 }
 

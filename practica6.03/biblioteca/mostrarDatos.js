@@ -1,6 +1,6 @@
 "use strict";
 
-import { crearUsuario, iniciarSesion } from "./autentificacion.js";
+import { crearUsuario, iniciarSesion, verificarPermisosUsuario } from "./autentificacion.js";
 import { generarId } from "./otrasFunciones.js";
 import { anyadirALaBase, editarDatos } from "./sacarDatos.js";
 
@@ -72,6 +72,7 @@ export function mostrarDatos(lista, idUbi){
 
 
         ubi.appendChild(cuerpo);
+
         
 
       });
@@ -136,9 +137,13 @@ export function mostrarDatosNombre(lista, idUbi){
 
         botonEditar.innerText = `Editar`;
 
+        botonEditar.setAttribute(`class`, `ocultoNoSesion`);
+
         var botonEliminar = doc.createElement(`button`);
 
         botonEliminar.innerText = `Eliminar`;
+
+        botonEliminar.setAttribute(`class`, `ocultoNoSesion`);
 
 
         cuerpo.appendChild(nombre);
@@ -227,9 +232,13 @@ export function mostrarDatosPrecio(lista, idUbi) {
 
         botonEditar.innerText = `Editar`;
 
+        botonEditar.setAttribute(`class`, `ocultoNoSesion`);
+
         var botonEliminar = doc.createElement(`button`);
 
         botonEliminar.innerText = `Eliminar`;
+
+        botonEliminar.setAttribute(`class`, `ocultoNoSesion`);
 
 
         cuerpo.appendChild(nombre);
@@ -318,9 +327,13 @@ export function mostrarDatosPeso(lista, idUbi) {
 
         botonEditar.innerText = `Editar`;
 
+        botonEditar.setAttribute(`class`, `ocultoNoSesion`);
+
         var botonEliminar = doc.createElement(`button`);
 
         botonEliminar.innerText = `Eliminar`;
+
+        botonEliminar.setAttribute(`class`, `ocultoNoSesion`);
 
 
         cuerpo.appendChild(nombre);
@@ -477,16 +490,14 @@ export function crearNuevoUsuario(db, nomBase) {
   
 }
 
-export function iniciarSesionUsuario() {
+export function iniciarSesionUsuario(db) {
 
   var doc = window.document;
 
   var correo = doc.getElementById(`sesionMail`).value;
   var pass = doc.getElementById(`sesionPass`).value;
 
-  iniciarSesion(correo, pass);
-
-
+  iniciarSesion(correo, pass, db);
   
 }
 
@@ -506,10 +517,5 @@ export function mostrarDatosInicioSesion(){
 
   });
   }
-
-  
-
-
-
 
 }
