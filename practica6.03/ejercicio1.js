@@ -13,7 +13,7 @@ import {
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { borrarDato, devolverProductoYEditar, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
-import { anyadirNuevosDatos, crearNuevoUsuario, generarFormularioYDevolverDatos, iniciarSesionUsuario } from "./biblioteca/mostrarDatos.js";
+import { anyadirNuevosDatos, crearNuevoUsuario, generarFormularioYDevolverDatos, iniciarSesionUsuario, ocultarDatosCerrarSesion } from "./biblioteca/mostrarDatos.js";
 import { cerrarSesion, verificarPermisosUsuario } from "./biblioteca/autentificacion.js";
 
 window.onload = () => {
@@ -176,10 +176,26 @@ window.onload = () => {
 
   });
 
+  doc.getElementById('cerrarSesion').addEventListener('click', (e) => {
+
+    if (e.target.tagName == 'BUTTON') {
+      
+      if (e.target.innerText == `Cerrar Sesión`) {
+        ocultarDatosCerrarSesion();
+      }
+
+
+
+    }
+
+
+  });
+
 
 
 
 //Cambiar var doc en todos los js, por una variable para todos.
+//Validar Guarda git.
 
 
 

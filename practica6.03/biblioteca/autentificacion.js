@@ -56,7 +56,7 @@ export const iniciarSesion = async (user, pass, db) => {
     signInWithEmailAndPassword(autentificar, user, pass)
     .then((credenciales) => {
         verificarPermisosUsuario(db, `usuarios`);
-        indicarNombreUsuario();
+        indicarNombreUsuario(db, 'usuarios');
     })
     .catch((error) =>{
         console.log(`Error en: ${error.message}`);
@@ -90,11 +90,19 @@ export const cerrarSesion = () => {
 }
 
 
-export const indicarNombreUsuario = async () => {
+export const indicarNombreUsuario = async (db, nomBase) => {
 
     var docu = window.document;
 
-    docu.getElementById("idUsuarioSesion").innerText = `Sesión iniciada con: ${autentificar.currentUser}`;
+    const usuarios = collection(db, nomBase);
+
+    const usuarioDoc = doc(usuarios, autentificar.currentUser.uid);
+
+    const usuariosDocumentos = await getDoc(usuarioDoc);
+
+    var nombreUsuario = usuariosDocumentos.data().nombre;
+
+    docu.getElementById("idUsuarioSesion").innerText = `Sesión iniciada con: ${nombreUsuario}`;
 
 
     docu.getElementsByClassName("ocultoInicioSesion")[0].className = `inicioSesion`;

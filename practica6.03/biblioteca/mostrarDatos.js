@@ -43,6 +43,8 @@ export function mostrarDatos(lista, idUbi){
   
         imagen.setAttribute(`src`, docu.data().Imagen);
 
+        var botones = doc.createElement('div');
+
         var botonEditar = doc.createElement(`button`);
 
         botonEditar.innerText = `Editar`;
@@ -54,6 +56,11 @@ export function mostrarDatos(lista, idUbi){
         botonEliminar.innerText = `Eliminar`;
 
         botonEliminar.setAttribute(`class`, `ocultoNoSesion`);
+
+        
+        botones.appendChild(botonEditar);
+        botones.appendChild(botonEliminar);
+        
   
   
         cuerpo.appendChild(nombre);
@@ -66,9 +73,7 @@ export function mostrarDatos(lista, idUbi){
 
         cuerpo.appendChild(imagen);
 
-        cuerpo.appendChild(botonEditar);
-
-        cuerpo.appendChild(botonEliminar);
+        cuerpo.appendChild(botones);
 
 
         ubi.appendChild(cuerpo);
@@ -538,9 +543,51 @@ export function ocultarDatosDeInicioSesion(){
 
 
   }
+}
 
 
+export function ocultarDatosCerrarSesion(){
 
+    var doc = window.document;
 
+    if (doc.getElementsByClassName('ocultoFormUser') != undefined) {
+      
+      var datosSinOcultar = doc.getElementsByClassName(`ocultoFormUser`);
 
+      var datosSinOcultarArray = [...datosSinOcultar];
+
+      datosSinOcultarArray.map((ocultar)=>{
+
+      ocultar.className = `formUser`;
+
+    });
+
+    }
+
+    if (doc.getElementsByClassName('sesionAdmin') != undefined) {
+      
+      var datosSinOcultar = doc.getElementsByClassName(`sesionAdmin`);
+
+      var datosSinOcultarArray = [...datosSinOcultar];
+
+      datosSinOcultarArray.map((ocultar)=>{
+
+      ocultar.className = `ocultoNoSesion`;
+
+    });
+    }
+
+    if (doc.getElementsByClassName('inicioSesion') != undefined) {
+      
+      var datosSinOcultar = doc.getElementsByClassName(`inicioSesion`);
+
+      var datosSinOcultarArray = [...datosSinOcultar];
+
+      datosSinOcultarArray.map((ocultar)=>{
+
+      ocultar.className = `ocultoInicioSesion`;
+
+    });
+
+    }
 }
