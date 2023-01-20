@@ -12,7 +12,7 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { borrarDato, devolverProductoYEditar, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, listarListasDeUsuarios, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
+import { borrarDato, devolverListaYEditar, devolverProductoYEditar, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, listarListasDeUsuarios, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
 import { anyadirNuevosDatos, crearNuevoUsuario, generarFormularioYDevolverDatos, iniciarSesionUsuario, ocultarDatosCerrarSesion } from "./biblioteca/mostrarDatos.js";
 import { anyadirNuevaLista, cerrarSesion, verificarPermisosUsuario } from "./biblioteca/autentificacion.js";
 
@@ -87,7 +87,6 @@ window.onload = () => {
     
         if (e.target.innerText == `Editar`) {
           devolverProductoYEditar(db, `productos`, e.target.parentNode.id);
-          //generarFormularioYDevolverDatos(db, `productos`, e.target.parentNode.id);
         }else if(e.target.innerText == `Eliminar`){
           borrarDato(db, `productos`, e.target.parentNode.id);
         }
@@ -108,7 +107,6 @@ window.onload = () => {
             doc.getElementById(`allProducts`).remove();
           }
           devolverProductoYEditar(db, `productos`, e.target.parentNode.id);
-          //generarFormularioYDevolverDatos(db, `productos`, e.target.parentNode.id);
         }else if(e.target.innerText == `Eliminar`){
           if (doc.getElementById(`allProducts`) != undefined) {
             doc.getElementById(`allProducts`).remove();
@@ -196,11 +194,23 @@ window.onload = () => {
     if (e.target.tagName == 'BUTTON') {
       
       if (e.target.innerText == `Ver Listas`) {
-        doc.getElementById(`listadoListasCompra`).className = `pulsadoVerListas`;
+        if (doc.getElementById(`listadoListasCompra`).className == `noPulsadoVerListas`) {
+          doc.getElementById(`listadoListasCompra`).className = `pulsadoVerListas`;
+        }
+        else if (doc.getElementById(`listadoListasCompra`).className == `pulsadoVerListas`) {
+          doc.getElementById(`listadoListasCompra`).className = `noPulsadoVerListas`
+        }
+        
       }
 
       if (e.target.innerText == `Añadir Lista`) {
-        doc.getElementById(`formularioAnyadirLista`).className = `verAnyadirLista`;
+        if (doc.getElementById(`formularioAnyadirLista`).className == `oculto`) {
+          doc.getElementById(`formularioAnyadirLista`).className = `verAnyadirLista`;
+        }
+        else if (doc.getElementById(`formularioAnyadirLista`).className == `verAnyadirLista`) {
+          doc.getElementById(`formularioAnyadirLista`).className = `oculto`;
+        }
+        
       }
 
       if (e.target.innerText == `Guardar Lista`) {
@@ -209,6 +219,11 @@ window.onload = () => {
       }
 
 
+    }
+
+    if (e.target.tagName == `P`) {
+      console.log(e.target.parentNode.id);
+      devolverListaYEditar(db, `listas`, e.target.parentNode.id);
     }
 
 

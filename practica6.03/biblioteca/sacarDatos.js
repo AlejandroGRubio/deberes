@@ -260,3 +260,16 @@ export const listarListasDeUsuarios = async (db, nomBase, uid) => {
   mostrarListas(todasLasListas, uid);
 
 };
+
+export const devolverListaYEditar = async (db, nomBase, idProd) => {
+
+  const listas = collection(db, nomBase);
+
+  const lista = await doc(listas, idProd);
+
+  const listaFinal = await getDoc(lista);
+
+  //generarFormularioYDevolverDatos(db, nomBase, idProd, ObjProductoFinal.data());
+
+
+};
