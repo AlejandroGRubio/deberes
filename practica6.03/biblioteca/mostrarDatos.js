@@ -1,7 +1,7 @@
 "use strict";
 
 import { crearUsuario, iniciarSesion, verificarPermisosUsuario } from "./autentificacion.js";
-import { generarId } from "./otrasFunciones.js";
+import { formatearFecha, generarId } from "./otrasFunciones.js";
 import { anyadirALaBase, editarDatos } from "./sacarDatos.js";
 
 
@@ -614,6 +614,37 @@ export function ocultarDatosCerrarSesion(){
       ocultar.className = `ocultoListas`;
     });
     }
+
+
+}
+
+export function mostrarListas(lista, uid) {
+  
+  var doc = window.document;
+
+  var ubi = doc.getElementById("listadoListasCompra");
+
+  ubi.innerHTML = ``;
+
+  lista.docs.map((docu) => {
+
+    if (docu.data().propietario == uid) {
+      
+      var cuerpo = doc.createElement(`div`);
+      cuerpo.setAttribute(`id`, docu.id);
+
+
+      var nombre = doc.createElement(`p`);
+
+      var fecha = formatearFecha(docu.data().fechaCreacion);
+
+      nombre.innerHTML = `-> Nombre: ${docu.data().nombreLista} / Fecha Creación: ${fecha}`;
+
+      cuerpo.appendChild(nombre);
+
+      ubi.appendChild(cuerpo);
+    }
+  });
 
 
 }

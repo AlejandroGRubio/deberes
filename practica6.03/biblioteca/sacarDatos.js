@@ -15,7 +15,7 @@ import {
     addDoc,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { verificarPermisosUsuario } from "./autentificacion.js";
-import { generarFormularioYDevolverDatos, mostrarDatos, mostrarDatosInicioSesion, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio } from "./mostrarDatos.js";
+import { generarFormularioYDevolverDatos, mostrarDatos, mostrarDatosInicioSesion, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio, mostrarListas } from "./mostrarDatos.js";
 
 
 //Imprime los datos de la base de datos y los muestra.
@@ -248,5 +248,15 @@ export const devolverDatosUsuarioYComprobarPermisos = async (db, nomBase, uid) =
     mostrarDatosInicioSesion();
   }
 
+
+};
+
+export const listarListasDeUsuarios = async (db, nomBase, uid) => {
+
+  const listas = collection(db, nomBase);
+
+  const todasLasListas = await getDocs(listas);
+
+  mostrarListas(todasLasListas, uid);
 
 };

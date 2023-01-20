@@ -16,13 +16,15 @@ import {
     updateDoc,
     deleteDoc,
     addDoc,
+    serverTimestamp
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
-import { devolverDatosUsuarioYComprobarPermisos } from "./sacarDatos.js";
+import { anyadirALaBase, devolverDatosUsuarioYComprobarPermisos, listarListasDeUsuarios } from "./sacarDatos.js";
 import { ocultarDatosDeInicioSesion } from "./mostrarDatos.js";
 
 
@@ -60,7 +62,8 @@ export const iniciarSesion = async (user, pass, db) => {
         docu.getElementById(`errorInicioSesion`).innerText = ``;
         verificarPermisosUsuario(db, `usuarios`);
         indicarNombreUsuario(db, 'usuarios');
-        
+        listarListasDeUsuarios(db, `listas`, autentificar.currentUser.uid);
+
     })
     .catch((error) =>{
         docu.getElementById(`errorInicioSesion`).innerText = `Error: Correo o Contraseña incorrectos.`
@@ -113,4 +116,29 @@ export const indicarNombreUsuario = async (db, nomBase) => {
     docu.getElementsByClassName("ocultoInicioSesion")[0].className = `inicioSesion`;
 
 
-}
+};
+
+
+export const anyadirNuevaLista = async (db, nomBase) => {
+
+
+    var doc = window.document;
+
+    var nuevosDatos = {
+      nombreLista: doc.getElementById(`anyadirListaNombre`).value,
+      fechaCreacion: serverTimestamp(),
+      propietario: autentificar.currentUser.uid,
+      productos: [],
+      cantidadProductos: [],
+      precioTotal: ``,
+    };
+  
+    anyadirALaBase(db, nomBase, nuevosDatos);
+
+
+};
+
+
+
+
+//serverTimeStamp importar desde firebase.

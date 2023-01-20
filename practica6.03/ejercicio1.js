@@ -12,9 +12,9 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { borrarDato, devolverProductoYEditar, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
+import { borrarDato, devolverProductoYEditar, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, listarListasDeUsuarios, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
 import { anyadirNuevosDatos, crearNuevoUsuario, generarFormularioYDevolverDatos, iniciarSesionUsuario, ocultarDatosCerrarSesion } from "./biblioteca/mostrarDatos.js";
-import { cerrarSesion, verificarPermisosUsuario } from "./biblioteca/autentificacion.js";
+import { anyadirNuevaLista, cerrarSesion, verificarPermisosUsuario } from "./biblioteca/autentificacion.js";
 
 window.onload = () => {
 
@@ -187,6 +187,30 @@ window.onload = () => {
 
 
     }
+
+
+  });
+
+  doc.getElementById(`listaDeLaCompra`).addEventListener(`click`, (e) => {
+
+    if (e.target.tagName == 'BUTTON') {
+      
+      if (e.target.innerText == `Ver Listas`) {
+        doc.getElementById(`listadoListasCompra`).className = `pulsadoVerListas`;
+      }
+
+      if (e.target.innerText == `Añadir Lista`) {
+        doc.getElementById(`formularioAnyadirLista`).className = `verAnyadirLista`;
+      }
+
+      if (e.target.innerText == `Guardar Lista`) {
+        anyadirNuevaLista(db, `listas`);
+        doc.getElementById(`anyadirListaNombre`).value = ``;
+      }
+
+
+    }
+
 
 
   });
