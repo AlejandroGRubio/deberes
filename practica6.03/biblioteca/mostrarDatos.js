@@ -540,9 +540,20 @@ export function ocultarDatosDeInicioSesion(){
 
 
   });
-
-
   }
+
+  if (doc.getElementsByClassName(`ocultoListas`) != undefined) {
+    
+    var listasOcultar = doc.getElementsByClassName(`ocultoListas`);
+
+    var listasOcultarArray = [...listasOcultar];
+
+    listasOcultarArray.map((noOcultar)=>{
+
+    noOcultar.className = `verListas`;
+  });
+  }
+
 }
 
 
@@ -559,6 +570,9 @@ export function ocultarDatosCerrarSesion(){
       datosSinOcultarArray.map((ocultar)=>{
 
       ocultar.className = `formUser`;
+
+      doc.getElementById(`sesionMail`).value = ``;
+      doc.getElementById(`sesionPass`).value = ``;
 
     });
 
@@ -588,6 +602,18 @@ export function ocultarDatosCerrarSesion(){
       ocultar.className = `ocultoInicioSesion`;
 
     });
-
     }
+
+    if (doc.getElementsByClassName(`verListas`) != undefined) {
+      var datosOcultar = doc.getElementsByClassName(`verListas`);
+  
+      var datosOcultarArray = [...datosOcultar];
+  
+      datosOcultarArray.map((ocultar)=>{
+  
+      ocultar.className = `ocultoListas`;
+    });
+    }
+
+
 }

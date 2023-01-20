@@ -52,13 +52,18 @@ export const crearUsuario = async (user, pass, nombreUsuario, db, nomBase) =>{
 
 export const iniciarSesion = async (user, pass, db) => {
 
-    console.log(`iniciar sesion`);
+    var docu = window.document;
+
+
     signInWithEmailAndPassword(autentificar, user, pass)
     .then((credenciales) => {
+        docu.getElementById(`errorInicioSesion`).innerText = ``;
         verificarPermisosUsuario(db, `usuarios`);
         indicarNombreUsuario(db, 'usuarios');
+        
     })
     .catch((error) =>{
+        docu.getElementById(`errorInicioSesion`).innerText = `Error: Correo o Contraseña incorrectos.`
         console.log(`Error en: ${error.message}`);
     });
 
