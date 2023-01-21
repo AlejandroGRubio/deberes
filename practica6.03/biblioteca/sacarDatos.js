@@ -15,7 +15,7 @@ import {
     addDoc,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { verificarPermisosUsuario } from "./autentificacion.js";
-import { generarFormularioYDevolverDatos, mostrarDatos, mostrarDatosInicioSesion, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio, mostrarListas } from "./mostrarDatos.js";
+import { generarFormularioListaYDevolverDatos, generarFormularioYDevolverDatos, mostrarDatos, mostrarDatosInicioSesion, mostrarDatosNombre, mostrarDatosPeso, mostrarDatosPrecio, mostrarListas } from "./mostrarDatos.js";
 
 
 //Imprime los datos de la base de datos y los muestra.
@@ -269,7 +269,40 @@ export const devolverListaYEditar = async (db, nomBase, idProd) => {
 
   const listaFinal = await getDoc(lista);
 
-  //generarFormularioYDevolverDatos(db, nomBase, idProd, ObjProductoFinal.data());
+  
+
+  generarFormularioListaYDevolverDatos(db, nomBase, idProd, listaFinal.data());
 
 
 };
+
+//Falta cambiar
+export const editarDatosLista = async (db, nomBase, idUbi, nuevosDatos) => {
+
+  const productos = collection(db, nomBase);
+
+  const editableRef = await doc(productos, idUbi);
+
+
+  if (nuevosDatos.Nombre != "") {
+    await updateDoc(editableRef, {Nombre: nuevosDatos.Nombre});
+  }
+
+  if (nuevosDatos.Descripcion != "") {
+    await updateDoc(editableRef, {Descripcion: nuevosDatos.Descripcion});
+  }
+
+  if (nuevosDatos.Precio != "") {
+    await updateDoc(editableRef, {Precio: nuevosDatos.Precio});
+  }
+
+  if (nuevosDatos.Peso != "") {
+    await updateDoc(editableRef, {Peso: nuevosDatos.Peso});
+  }
+
+  if (nuevosDatos.Imagen != "") {
+    await updateDoc(editableRef, {Imagen: nuevosDatos.Imagen});
+  }
+
+
+}

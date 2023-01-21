@@ -2,7 +2,7 @@
 
 import { crearUsuario, iniciarSesion, verificarPermisosUsuario } from "./autentificacion.js";
 import { formatearFecha, generarId } from "./otrasFunciones.js";
-import { anyadirALaBase, editarDatos } from "./sacarDatos.js";
+import { anyadirALaBase, editarDatos, editarDatosLista } from "./sacarDatos.js";
 
 
 
@@ -57,9 +57,17 @@ export function mostrarDatos(lista, idUbi){
 
         botonEliminar.setAttribute(`class`, `ocultoNoSesion`);
 
+
+        var botonAnyadir = doc.createElement(`button`);
+
+        botonAnyadir.innerText = `Añadir`;
+
+        botonAnyadir.setAttribute(`class`, `ocultoNoAnyadir`);
+
         
         botones.appendChild(botonEditar);
         botones.appendChild(botonEliminar);
+        botones.appendChild(botonAnyadir);
         
   
   
@@ -138,6 +146,8 @@ export function mostrarDatosNombre(lista, idUbi){
 
         imagen.setAttribute(`src`, docu.data().Imagen);
 
+        var botones = doc.createElement('div');
+
         var botonEditar = doc.createElement(`button`);
 
         botonEditar.innerText = `Editar`;
@@ -151,6 +161,17 @@ export function mostrarDatosNombre(lista, idUbi){
         botonEliminar.setAttribute(`class`, `ocultoNoSesion`);
 
 
+        var botonAnyadir = doc.createElement(`button`);
+
+        botonAnyadir.innerText = `Añadir`;
+
+        botonAnyadir.setAttribute(`class`, `ocultoNoAnyadir`);
+
+        
+        botones.appendChild(botonEditar);
+        botones.appendChild(botonEliminar);
+        botones.appendChild(botonAnyadir);
+
         cuerpo.appendChild(nombre);
 
         cuerpo.appendChild(desc);
@@ -161,9 +182,7 @@ export function mostrarDatosNombre(lista, idUbi){
 
         cuerpo.appendChild(imagen);
 
-        cuerpo.appendChild(botonEditar);
-
-        cuerpo.appendChild(botonEliminar);
+        cuerpo.appendChild(botones);
 
 
         ubi.appendChild(cuerpo);
@@ -233,6 +252,8 @@ export function mostrarDatosPrecio(lista, idUbi) {
 
         imagen.setAttribute(`src`, docu.data().Imagen);
 
+        var botones = doc.createElement('div');
+
         var botonEditar = doc.createElement(`button`);
 
         botonEditar.innerText = `Editar`;
@@ -246,6 +267,18 @@ export function mostrarDatosPrecio(lista, idUbi) {
         botonEliminar.setAttribute(`class`, `ocultoNoSesion`);
 
 
+        var botonAnyadir = doc.createElement(`button`);
+
+        botonAnyadir.innerText = `Añadir`;
+
+        botonAnyadir.setAttribute(`class`, `ocultoNoAnyadir`);
+
+        
+        botones.appendChild(botonEditar);
+        botones.appendChild(botonEliminar);
+        botones.appendChild(botonAnyadir);
+
+
         cuerpo.appendChild(nombre);
 
         cuerpo.appendChild(desc);
@@ -256,9 +289,9 @@ export function mostrarDatosPrecio(lista, idUbi) {
 
         cuerpo.appendChild(imagen);
 
-        cuerpo.appendChild(botonEditar);
+        cuerpo.appendChild(botones);
 
-        cuerpo.appendChild(botonEliminar);
+        
 
 
         ubi.appendChild(cuerpo);
@@ -328,6 +361,8 @@ export function mostrarDatosPeso(lista, idUbi) {
 
         imagen.setAttribute(`src`, docu.data().Imagen);
 
+        var botones = doc.createElement('div');
+
         var botonEditar = doc.createElement(`button`);
 
         botonEditar.innerText = `Editar`;
@@ -341,6 +376,18 @@ export function mostrarDatosPeso(lista, idUbi) {
         botonEliminar.setAttribute(`class`, `ocultoNoSesion`);
 
 
+        var botonAnyadir = doc.createElement(`button`);
+
+        botonAnyadir.innerText = `Añadir`;
+
+        botonAnyadir.setAttribute(`class`, `ocultoNoAnyadir`);
+
+        
+        botones.appendChild(botonEditar);
+        botones.appendChild(botonEliminar);
+        botones.appendChild(botonAnyadir);
+
+
         cuerpo.appendChild(nombre);
 
         cuerpo.appendChild(desc);
@@ -351,9 +398,8 @@ export function mostrarDatosPeso(lista, idUbi) {
 
         cuerpo.appendChild(imagen);
 
-        cuerpo.appendChild(botonEditar);
+        cuerpo.appendChild(botones);
 
-        cuerpo.appendChild(botonEliminar);
 
 
         ubi.appendChild(cuerpo);
@@ -389,7 +435,6 @@ export function generarFormularioYDevolverDatos(db, nomBase, idUbi, objProd) {
   var idImagenEdit = generarId(6);
 
   var datosProductoOriginal = objProd;
-  console.log(datosProductoOriginal);
 
   formulario.innerHTML = `
   </br>
@@ -648,3 +693,134 @@ export function mostrarListas(lista, uid) {
 
 
 }
+
+export function generarFormularioListaYDevolverDatos(db, nomBase, idUbi, objLista) {
+
+  var doc = window.document;
+
+  var formulario = doc.createElement(`div`);
+
+  var idRan = generarId(5);
+
+  formulario.id = idRan;
+
+  var idNomListaEdit = generarId(6);
+
+  var idCantProdEdit = generarId(6);
+
+  var idPrecioTotalEdit = generarId(6);
+
+  var idProductosEdit = generarId(6);
+
+  var datosListaOriginal = objLista;
+  console.log(datosListaOriginal);
+
+
+  //Implementar boton anyadir a la lista los productos.
+
+  mostrarBotonAnyadir();
+
+
+  formulario.innerHTML = `
+  </br>
+  <label for="${idNomListaEdit}">Nombre Lista: </label>
+  <input type="text" name="${idNomListaEdit}" id="${idNomListaEdit}" value= "${datosListaOriginal.nombreLista}">
+  </br>
+  <div id='seleccionProductos'>
+  
+  
+  </div>
+  </br>
+  <label for="${idPrecioEdit}">Precio: </label>
+  <input type="text" name="${idPrecioEdit}" id="${idPrecioEdit}" value= "${datosProductoOriginal.Precio}">
+  </br>
+  <label for="${idPesoEdit}">Peso: </label>
+  <input type="text" name="${idPesoEdit}" id="${idPesoEdit}" value= "${datosProductoOriginal.Peso}">
+  </br>
+  <label for="${idImagenEdit}">URL Imagen: </label>
+  <input type="text" name="${idImagenEdit}" id="${idImagenEdit}" value= "${datosProductoOriginal.Imagen}">
+  </br>
+  <button id="editarListaDatos">Guardar</button>
+  <button id="cancelarEditarListaDatos">Cancelar</button>
+  `;
+
+doc.getElementById(idUbi).appendChild(formulario);
+
+
+doc.getElementById(idRan).addEventListener(`click`, (e) => {
+
+
+  if (e.target.tagName == `BUTTON`) {
+      
+    
+    if (e.target.innerText == `Guardar`) {
+      var nuevosDatos = {
+        Nombre: doc.getElementById(idNomEdit).value,
+        Descripcion: doc.getElementById(idDescEdit).value,
+        Precio: doc.getElementById(idPrecioEdit).value,
+        Peso: doc.getElementById(idPesoEdit).value,
+        Imagen: doc.getElementById(idImagenEdit).value,
+      };
+
+      doc.getElementById(idRan).remove();
+
+      var infor = doc.createElement(`p`);
+
+      infor.innerText = `Recarga la página para mostrar los datos cambiados`;
+
+      doc.getElementById(idUbi).appendChild(infor);
+
+      
+      editarDatosLista(db, nomBase, idUbi, nuevosDatos);
+
+
+
+
+
+
+    }else if(e.target.innerText == `Cancelar`){
+
+      ocultarBotonAnyadir();
+      doc.getElementById(idRan).remove();
+    }
+
+}
+
+});
+
+  
+}
+
+
+function mostrarBotonAnyadir() {
+  
+
+  var datosOcultar = doc.getElementsByClassName(`ocultoNoAnyadir`);
+  
+      var datosOcultarArray = [...datosOcultar];
+  
+      datosOcultarArray.map((noOcultar)=>{
+  
+      noOcultar.className = `mostrarAnyadir`;
+    });
+
+
+
+}
+
+function ocultarBotonAnyadir() {
+  
+
+  var datosOcultar = doc.getElementsByClassName(`mostrarAnyadir`);
+  
+      var datosOcultarArray = [...datosOcultar];
+  
+      datosOcultarArray.map((ocultar)=>{
+  
+      ocultar.className = `ocultoNoAnyadir`;
+    });
+
+
+
+}
+
