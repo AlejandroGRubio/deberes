@@ -12,8 +12,8 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { borrarDato, devolverListaYEditar, devolverProductoYEditar, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, listarListasDeUsuarios, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
-import { anyadirNuevosDatos, crearNuevoUsuario, generarFormularioYDevolverDatos, iniciarSesionUsuario, ocultarDatosCerrarSesion } from "./biblioteca/mostrarDatos.js";
+import { borrarDato, devolverListaYEditar, devolverProductoYEditar, guardarIdProductoEnLista, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, listarListasDeUsuarios, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
+import { anyadirNuevosDatos, crearNuevoUsuario, generarFormularioYDevolverDatos, guardarAnyadirProductoPreLista, iniciarSesionUsuario, ocultarDatosCerrarSesion } from "./biblioteca/mostrarDatos.js";
 import { anyadirNuevaLista, cerrarSesion, verificarPermisosUsuario } from "./biblioteca/autentificacion.js";
 
 window.onload = () => {
@@ -86,9 +86,13 @@ window.onload = () => {
       
     
         if (e.target.innerText == `Editar`) {
-          devolverProductoYEditar(db, `productos`, e.target.parentNode.id);
+          devolverProductoYEditar(db, `productos`, e.target.parentNode.parentNode.id);
         }else if(e.target.innerText == `Eliminar`){
-          borrarDato(db, `productos`, e.target.parentNode.id);
+          borrarDato(db, `productos`, e.target.parentNode.parentNode.id);
+        }else if(e.target.innerText == `Añadir`){
+          
+          guardarAnyadirProductoPreLista(e.target.parentNode.parentNode.id, db);
+          guardarIdProductoEnLista(db, doc.getElementById("listaActual").value, e.target.parentNode.parentNode.id);
         }
     
     }
@@ -106,13 +110,18 @@ window.onload = () => {
           if (doc.getElementById(`allProducts`) != undefined) {
             doc.getElementById(`allProducts`).remove();
           }
-          devolverProductoYEditar(db, `productos`, e.target.parentNode.id);
+          devolverProductoYEditar(db, `productos`, e.target.parentNode.parentNode.id);
         }else if(e.target.innerText == `Eliminar`){
           if (doc.getElementById(`allProducts`) != undefined) {
             doc.getElementById(`allProducts`).remove();
           }
-          borrarDato(db, `productos`, e.target.parentNode.id);
+          borrarDato(db, `productos`, e.target.parentNode.parentNode.id);
+        }else if(e.target.innerText == `Añadir`){
+          
+          guardarAnyadirProductoPreLista(e.target.parentNode.parentNode.id, db);
+          guardarIdProductoEnLista(db, doc.getElementById("listaActual").value, e.target.parentNode.parentNode.id);
         }
+        
     
     }
 
@@ -221,11 +230,18 @@ window.onload = () => {
 
     }
 
+    
+
+
+
+  });
+
+
+  doc.getElementById(`listadoListasCompra`).addEventListener(`click`, (e) => {
+
     if (e.target.tagName == `P`) {
-      console.log(e.target.parentNode.id);
       devolverListaYEditar(db, `listas`, e.target.parentNode.id);
     }
-
 
 
   });

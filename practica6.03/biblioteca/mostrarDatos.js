@@ -1,8 +1,8 @@
 "use strict";
 
-import { crearUsuario, iniciarSesion, verificarPermisosUsuario } from "./autentificacion.js";
+import { crearUsuario, eliminarLista, iniciarSesion } from "./autentificacion.js";
 import { formatearFecha, generarId } from "./otrasFunciones.js";
-import { anyadirALaBase, editarDatos, editarDatosLista } from "./sacarDatos.js";
+import { anyadirALaBase, devolverObjDatosProducto, editarDatos } from "./sacarDatos.js";
 
 
 
@@ -694,7 +694,7 @@ export function mostrarListas(lista, uid) {
 
 }
 
-export function generarFormularioListaYDevolverDatos(db, nomBase, idUbi, objLista) {
+export function generarFormularioListaYDevolverDatos(db, objLista) {
 
   var doc = window.document;
 
@@ -706,45 +706,31 @@ export function generarFormularioListaYDevolverDatos(db, nomBase, idUbi, objList
 
   var idNomListaEdit = generarId(6);
 
-  var idCantProdEdit = generarId(6);
-
-  var idPrecioTotalEdit = generarId(6);
-
-  var idProductosEdit = generarId(6);
-
   var datosListaOriginal = objLista;
   console.log(datosListaOriginal);
 
-
-  //Implementar boton anyadir a la lista los productos.
 
   mostrarBotonAnyadir();
 
 
   formulario.innerHTML = `
   </br>
+  <input type="text" name="${datosListaOriginal.id}" id="listaActual" class="oculto" value= "${datosListaOriginal.id}">
   <label for="${idNomListaEdit}">Nombre Lista: </label>
-  <input type="text" name="${idNomListaEdit}" id="${idNomListaEdit}" value= "${datosListaOriginal.nombreLista}">
+  <input type="text" name="${idNomListaEdit}" id="${idNomListaEdit}" value= "${datosListaOriginal.data().nombreLista}">
   </br>
   <div id='seleccionProductos'>
-  
+    
   
   </div>
   </br>
-  <label for="${idPrecioEdit}">Precio: </label>
-  <input type="text" name="${idPrecioEdit}" id="${idPrecioEdit}" value= "${datosProductoOriginal.Precio}">
-  </br>
-  <label for="${idPesoEdit}">Peso: </label>
-  <input type="text" name="${idPesoEdit}" id="${idPesoEdit}" value= "${datosProductoOriginal.Peso}">
-  </br>
-  <label for="${idImagenEdit}">URL Imagen: </label>
-  <input type="text" name="${idImagenEdit}" id="${idImagenEdit}" value= "${datosProductoOriginal.Imagen}">
-  </br>
-  <button id="editarListaDatos">Guardar</button>
   <button id="cancelarEditarListaDatos">Cancelar</button>
+  <button id="borraListaDatos">Borrar Lista</button>
   `;
 
-doc.getElementById(idUbi).appendChild(formulario);
+  doc.getElementById(`datosLista`).appendChild(formulario);
+
+  mostrarDatosProductos(datosListaOriginal.data(), db);
 
 
 doc.getElementById(idRan).addEventListener(`click`, (e) => {
@@ -753,28 +739,12 @@ doc.getElementById(idRan).addEventListener(`click`, (e) => {
   if (e.target.tagName == `BUTTON`) {
       
     
-    if (e.target.innerText == `Guardar`) {
-      var nuevosDatos = {
-        Nombre: doc.getElementById(idNomEdit).value,
-        Descripcion: doc.getElementById(idDescEdit).value,
-        Precio: doc.getElementById(idPrecioEdit).value,
-        Peso: doc.getElementById(idPesoEdit).value,
-        Imagen: doc.getElementById(idImagenEdit).value,
-      };
+    if (e.target.innerText == `Borrar Lista`) {
+      
+      eliminarLista(db, datosListaOriginal.id);
+
 
       doc.getElementById(idRan).remove();
-
-      var infor = doc.createElement(`p`);
-
-      infor.innerText = `Recarga la página para mostrar los datos cambiados`;
-
-      doc.getElementById(idUbi).appendChild(infor);
-
-      
-      editarDatosLista(db, nomBase, idUbi, nuevosDatos);
-
-
-
 
 
 
@@ -793,7 +763,7 @@ doc.getElementById(idRan).addEventListener(`click`, (e) => {
 
 
 function mostrarBotonAnyadir() {
-  
+  var doc = window.document;
 
   var datosOcultar = doc.getElementsByClassName(`ocultoNoAnyadir`);
   
@@ -809,7 +779,7 @@ function mostrarBotonAnyadir() {
 }
 
 function ocultarBotonAnyadir() {
-  
+  var doc = window.document;
 
   var datosOcultar = doc.getElementsByClassName(`mostrarAnyadir`);
   
@@ -819,6 +789,152 @@ function ocultarBotonAnyadir() {
   
       ocultar.className = `ocultoNoAnyadir`;
     });
+
+
+
+}
+
+
+export function guardarAnyadirProductoPreLista(idProducto, db) {
+  
+  var doc = window.document;
+
+  console.log(`pasar ${idProducto}`);
+
+  var objProducto = devolverObjDatosProducto(db, idProducto);
+
+  var objDatosProducto = {
+    Nombre: objProducto.Nombre,
+    Precio: objProducto.Precio,
+    Peso: objProducto.Peso,
+  }
+
+  var cuerpo = doc.getElementById('seleccionProductos');
+
+
+      var cProducto = doc.createElement('div');
+
+      cProducto.setAttribute('id', idProducto);
+
+      var datosNombre = doc.createElement('p');
+
+      datosNombre.innerText = `Nombre: ${objDatosProducto.Nombre}`;
+
+
+      var datosPrecio = doc.createElement('p');
+
+      datosPrecio.setAttribute('class', 'precioListaPro');
+
+      datosPrecio.innerText = `Precio: ${objDatosProducto.Precio}`;
+
+
+      var datosPeso = doc.createElement(`p`);
+
+      datosPeso.setAttribute(`class`, `pesoListaPro`);
+
+      datosPeso.innerText = `Peso: ${objDatosProducto.Peso}`;
+
+
+      var limitador = doc.createElement(`p`);
+      limitador.innerText = `-----------------------------`;
+
+
+      cProducto.appendChild(datosNombre);
+      cProducto.appendChild(datosPrecio);
+      cProducto.appendChild(datosPeso);
+      cProducto.appendChild(limitador);
+
+      cuerpo.appendChild(cProducto);
+
+
+
+
+}
+
+
+function mostrarDatosProductos(objetoListaProductos, db) {
+
+  var doc = window.document;
+  var cuerpo = doc.getElementById('seleccionProductos');
+
+  console.log(objetoListaProductos.productos);
+
+
+  
+  if (objetoListaProductos.productos[0] != "1") {
+
+    var cuerpo = doc.getElementById('seleccionProductos');
+
+
+    objetoListaProductos.productos.map((producto)=> {
+
+
+      
+      var cProducto = doc.createElement('div');
+
+      cProducto.setAttribute('id', producto);
+
+      //var datosProducto = devolverObjDatosProducto(db, producto, `Nombre`);
+
+      var objProducto = {
+        Nombre: devolverObjDatosProducto(db, producto, `Nombre`),
+        Precio: devolverObjDatosProducto(db, producto, `Precio`),
+        Peso: devolverObjDatosProducto(db, producto, `Peso`),
+      }
+
+      //console.log(datosProducto);
+
+      var datosNombre = doc.createElement('p');
+
+      datosNombre.innerText = `Nombre: ${objProducto.Nombre}`;
+
+
+      var datosPrecio = doc.createElement('p');
+
+      datosPrecio.setAttribute('class', 'precioListaPro');
+
+      datosPrecio.innerText = `Precio: ${objProducto.Precio}`;
+
+
+      var datosPeso = doc.createElement(`p`);
+
+      datosPeso.setAttribute(`class`, `pesoListaPro`);
+
+      datosPeso.innerText = `Peso: ${objProducto.Peso}`;
+
+
+      var limitador = doc.createElement(`p`);
+      limitador.innerText = `-----------------------------`;
+
+
+      cProducto.appendChild(datosNombre);
+      cProducto.appendChild(datosPrecio);
+      cProducto.appendChild(datosPeso);
+      cProducto.appendChild(limitador);
+
+      cuerpo.appendChild(cProducto);
+
+
+
+
+    });
+
+    
+
+
+    
+
+    
+
+
+
+
+
+
+
+  }
+
+
 
 
 

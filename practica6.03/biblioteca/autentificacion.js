@@ -128,8 +128,7 @@ export const anyadirNuevaLista = async (db, nomBase) => {
       nombreLista: doc.getElementById(`anyadirListaNombre`).value,
       fechaCreacion: serverTimestamp(),
       propietario: autentificar.currentUser.uid,
-      productos: [],
-      cantidadProductos: [],
+      productos: ['1'],
       precioTotal: ``,
     };
   
@@ -140,5 +139,17 @@ export const anyadirNuevaLista = async (db, nomBase) => {
 
 
 
+export const eliminarLista = async (db, idLista) => {
 
-//serverTimeStamp importar desde firebase.
+
+    const listas = collection(db, `listas`);
+  
+    const borrado = await deleteDoc(doc(listas, idLista));
+
+
+
+};
+
+
+
+

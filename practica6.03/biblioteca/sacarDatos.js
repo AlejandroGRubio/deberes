@@ -271,38 +271,74 @@ export const devolverListaYEditar = async (db, nomBase, idProd) => {
 
   
 
-  generarFormularioListaYDevolverDatos(db, nomBase, idProd, listaFinal.data());
+  generarFormularioListaYDevolverDatos(db, listaFinal);
 
 
 };
 
-//Falta cambiar
-export const editarDatosLista = async (db, nomBase, idUbi, nuevosDatos) => {
-
-  const productos = collection(db, nomBase);
-
-  const editableRef = await doc(productos, idUbi);
 
 
-  if (nuevosDatos.Nombre != "") {
-    await updateDoc(editableRef, {Nombre: nuevosDatos.Nombre});
+export const devolverObjDatosProducto = async (db, idProd, palabra) => {
+
+
+  const productos = collection(db, 'productos');
+
+  console.log(idProd);
+
+  if (idProd != "1") {
+    const producto = await doc(productos, idProd);
+
+    const productoFinal = await getDoc(producto);
+
+    console.log(productoFinal.data());
+
+    return productoFinal.data().palabra;
   }
 
-  if (nuevosDatos.Descripcion != "") {
-    await updateDoc(editableRef, {Descripcion: nuevosDatos.Descripcion});
+  
+
+
+
+
+};
+
+
+
+
+
+
+export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
+
+  const listas = collection(db, `listas`);
+
+  console.log(idLista);
+
+  const editableRef = await doc(listas, idLista);
+
+  const valoresLista = await getDoc(editableRef);
+
+  console.log(valoresLista.data());
+
+  if (valoresLista.data().productos[0] == "1") {
+
+    var datos = [idProducto];
+
+    await updateDoc(editableRef, {productos: datos});
+    
+
+  }else{
+
+    var datos = valoresLista.data().productos;
+
+    datos = [...idProducto];
+
+    await updateDoc(editableRef, {productos: datos});
+
+
+
+
   }
 
-  if (nuevosDatos.Precio != "") {
-    await updateDoc(editableRef, {Precio: nuevosDatos.Precio});
-  }
+  
 
-  if (nuevosDatos.Peso != "") {
-    await updateDoc(editableRef, {Peso: nuevosDatos.Peso});
-  }
-
-  if (nuevosDatos.Imagen != "") {
-    await updateDoc(editableRef, {Imagen: nuevosDatos.Imagen});
-  }
-
-
-}
+};
