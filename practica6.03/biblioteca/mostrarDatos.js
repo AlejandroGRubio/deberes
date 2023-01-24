@@ -2,7 +2,7 @@
 
 import { crearUsuario, eliminarLista, iniciarSesion } from "./autentificacion.js";
 import { formatearFecha, generarId } from "./otrasFunciones.js";
-import { anyadirALaBase, calcularPesoPrecioTotalLista, devolverObjDatosProducto, editarDatos } from "./sacarDatos.js";
+import { anyadirALaBase, calcularPesoPrecioTotalLista, editarDatos } from "./sacarDatos.js";
 
 
 
@@ -524,7 +524,7 @@ export function anyadirNuevosDatos(db, nomBase, idUbi) {
 
 }
 
-
+//Selecciona los datos y los devuelve para crear un usuario.
 export function crearNuevoUsuario(db, nomBase) {
 
   var doc = window.document;
@@ -539,7 +539,7 @@ export function crearNuevoUsuario(db, nomBase) {
 
   
 }
-
+//Selecciona los datos y los devuelve para iniciar sesión.
 export function iniciarSesionUsuario(db) {
 
   var doc = window.document;
@@ -550,7 +550,7 @@ export function iniciarSesionUsuario(db) {
   iniciarSesion(correo, pass, db);
   
 }
-
+//Muestra los datos ocultos al iniciar sesión.
 export function mostrarDatosInicioSesion(){
 
   var doc = window.document;
@@ -569,7 +569,7 @@ export function mostrarDatosInicioSesion(){
   }
 
 }
-
+//Oculta los datos de inicio de sesión tras iniciar sesión.
 export function ocultarDatosDeInicioSesion(){
 
   var doc = window.document;
@@ -601,7 +601,7 @@ export function ocultarDatosDeInicioSesion(){
 
 }
 
-
+//Oculta los datos de cerrar sesión tras cerrar sesión.
 export function ocultarDatosCerrarSesion(){
 
     var doc = window.document;
@@ -662,7 +662,7 @@ export function ocultarDatosCerrarSesion(){
 
 
 }
-
+//Muestra la lista específica.
 export function mostrarListas(lista, uid) {
   
   var doc = window.document;
@@ -693,7 +693,7 @@ export function mostrarListas(lista, uid) {
 
 
 }
-
+//Crea el formulario para editar las listas.
 export function generarFormularioListaYDevolverDatos(db, objLista) {
 
   var doc = window.document;
@@ -767,7 +767,7 @@ doc.getElementById(idRan).addEventListener(`click`, (e) => {
   
 }
 
-
+//Muestra el botón de añadir.
 function mostrarBotonAnyadir() {
   var doc = window.document;
 
@@ -783,7 +783,7 @@ function mostrarBotonAnyadir() {
 
 
 }
-
+//Oculta el botón de añadir.
 function ocultarBotonAnyadir() {
   var doc = window.document;
 
@@ -801,7 +801,7 @@ function ocultarBotonAnyadir() {
 }
 
 
-
+//Muestra los datos del producto seleccionado en la lista.
 function mostrarDatosProductos(objetoListaProductos, db) {
 
   var doc = window.document;
@@ -850,29 +850,8 @@ function mostrarDatosProductos(objetoListaProductos, db) {
 
       cuerpo.appendChild(cProducto);
 
-
-
-
     });
-
-    
-
-
-    
-
-    
-
-
-
-
-
-
-
   }
-
-
-
-
 
 }
 

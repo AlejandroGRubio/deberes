@@ -27,7 +27,7 @@ import {
 import { anyadirALaBase, devolverDatosUsuarioYComprobarPermisos, listarListasDeUsuarios } from "./sacarDatos.js";
 import { ocultarDatosDeInicioSesion } from "./mostrarDatos.js";
 
-
+//Crea un usuario con los datos indicados.
 export const crearUsuario = async (user, pass, nombreUsuario, db, nomBase) =>{
 
     const usuarios = collection(db, nomBase);
@@ -51,7 +51,7 @@ export const crearUsuario = async (user, pass, nombreUsuario, db, nomBase) =>{
     }
 
 };
-
+//Inicia sesión con los datos indicados.
 export const iniciarSesion = async (user, pass, db) => {
 
     var docu = window.document;
@@ -73,7 +73,7 @@ export const iniciarSesion = async (user, pass, db) => {
 
 };
 
-
+//Verifica si el usuario que ha iniciado sesión tiene permisos.
 export const verificarPermisosUsuario = async (db, nomBase) => {
    
     if (autentificar.currentUser) {
@@ -84,7 +84,7 @@ export const verificarPermisosUsuario = async (db, nomBase) => {
    }
    
 }
-
+//Permite cerrar sesión.
 export const cerrarSesion = () => {
 
     try {
@@ -97,7 +97,7 @@ export const cerrarSesion = () => {
 
 }
 
-
+//Muestra la sesión iniciada en pantalla.
 export const indicarNombreUsuario = async (db, nomBase) => {
 
     var docu = window.document;
@@ -118,7 +118,7 @@ export const indicarNombreUsuario = async (db, nomBase) => {
 
 };
 
-
+//Crea una nueva lista.
 export const anyadirNuevaLista = async (db, nomBase) => {
 
 
@@ -137,15 +137,13 @@ export const anyadirNuevaLista = async (db, nomBase) => {
 };
 
 
-
+//Elimina la lista seleccionada.
 export const eliminarLista = async (db, idLista) => {
 
 
     const listas = collection(db, `listas`);
   
     const borrado = await deleteDoc(doc(listas, idLista));
-
-
 
 };
 

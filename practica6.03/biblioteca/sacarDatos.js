@@ -221,7 +221,7 @@ export const mediaPrecioProductos = async (db, nomBase, idUbi) => {
 
 };
 
-
+//Selecciona el producto y lo devuelve para editar en un formulario.
 export const devolverProductoYEditar = async (db, nomBase, idProd) => {
 
   const productos = collection(db, nomBase);
@@ -235,7 +235,7 @@ export const devolverProductoYEditar = async (db, nomBase, idProd) => {
 
 };
 
-
+//Comprueba el rol del usuario y muestra los datos correspondientes.
 export const devolverDatosUsuarioYComprobarPermisos = async (db, nomBase, uid) => {
 
   const usuarios = collection(db, nomBase);
@@ -250,7 +250,7 @@ export const devolverDatosUsuarioYComprobarPermisos = async (db, nomBase, uid) =
 
 
 };
-
+//Muestra las listas de un usuario específico.
 export const listarListasDeUsuarios = async (db, nomBase, uid) => {
 
   const listas = collection(db, nomBase);
@@ -260,7 +260,7 @@ export const listarListasDeUsuarios = async (db, nomBase, uid) => {
   mostrarListas(todasLasListas, uid);
 
 };
-
+//Indica una lista en específico y permite editar.
 export const devolverListaYEditar = async (db, nomBase, idProd) => {
 
   const listas = collection(db, nomBase);
@@ -277,43 +277,7 @@ export const devolverListaYEditar = async (db, nomBase, idProd) => {
 };
 
 
-
-export const devolverObjDatosProducto = async (db, idProd) => {
-
-
-  const productos = collection(db, 'productos');
-
-  if (idProd != "1" && idProd != "") {
-    const producto = await doc(productos, idProd);
-
-    const productoFinal = await getDoc(producto);
-
-    const objeto = {
-      Nombre: productoFinal.data().Nombre,
-      Precio: productoFinal.data().Precio,
-      Peso: productoFinal.data().Peso,
-    };
-    
-    return objeto;
-
-
-
-
-
-  }
-
-  
-
-
-
-
-};
-
-
-
-
-
-
+//Guarda los datos de un producto en la lista.
 export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
 
   const listas = collection(db, `listas`);
@@ -364,7 +328,7 @@ export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
 
 };
 
-
+//Muestra datos del objeto añadido.
 export const guardarAnyadirProductoPreLista = async (idProducto, db) => {
   
   var docu = window.document;
@@ -423,7 +387,7 @@ export const guardarAnyadirProductoPreLista = async (idProducto, db) => {
       
 
 }
-
+//Muestra el peso y precio total de una lista.
 export const calcularPesoPrecioTotalLista = async (db) => {
 
   var docu = window.document;

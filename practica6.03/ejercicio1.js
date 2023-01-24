@@ -47,7 +47,7 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { borrarDato, calcularPesoPrecioTotalLista, devolverListaYEditar, devolverProductoYEditar, guardarAnyadirProductoPreLista, guardarIdProductoEnLista, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
+import { borrarDato, devolverListaYEditar, devolverProductoYEditar, guardarAnyadirProductoPreLista, guardarIdProductoEnLista, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
 import { anyadirNuevosDatos, crearNuevoUsuario, iniciarSesionUsuario, ocultarDatosCerrarSesion } from "./biblioteca/mostrarDatos.js";
 import { anyadirNuevaLista, cerrarSesion, verificarPermisosUsuario } from "./biblioteca/autentificacion.js";
 
@@ -113,7 +113,7 @@ window.onload = () => {
 
   });
     
-
+  //Añade los eventos a los botones para editar, eliminar y añadir para allProducts.
   doc.getElementById(`allProducts`).addEventListener(`click`, (e) => {
 
 
@@ -133,7 +133,7 @@ window.onload = () => {
     }
 
   });
-
+  //Añade los eventos a los botones para editar, eliminar y añadir para productsFilter.
   doc.getElementById(`productsFilter`).addEventListener(`click`, (e) => {
 
 
@@ -161,7 +161,7 @@ window.onload = () => {
 
   });
 
-
+//Añade el evento para mostrar para añadir datos.
   doc.getElementById(`botonMostrarAnyadirDatos`).addEventListener(`click`, () => {
 
     if (doc.getElementById(`anyadirDatos`).className == `mostrarAnyadirDatos`) {
@@ -173,7 +173,7 @@ window.onload = () => {
 
   })
 
-
+//Añade el evento para añadir datos.
   doc.getElementById(`anyadirDatos`).addEventListener(`click`, (e) => {
 
 
@@ -192,7 +192,7 @@ window.onload = () => {
 
   });
 
-
+//Añade el evento para registrar un usuario.
   doc.getElementById(`formCrearUsuarios`).addEventListener(`click`, (e) => {
 
     if (e.target.tagName == `BUTTON`) {
@@ -204,7 +204,7 @@ window.onload = () => {
     }
 
   });
-
+//Añade el evento para iniciar sesion.
   doc.getElementById(`formIniciarSesion`).addEventListener(`click`, (e) => {
 
     if (e.target.tagName == `BUTTON`) {
@@ -216,7 +216,7 @@ window.onload = () => {
     }
 
   });
-
+//Añade el evento para cerrar sesion.
   doc.getElementById('cerrarSesion').addEventListener('click', (e) => {
 
     if (e.target.tagName == 'BUTTON') {
@@ -231,7 +231,7 @@ window.onload = () => {
 
 
   });
-
+//Añade los eventos para la lista de la compra.
   doc.getElementById(`listaDeLaCompra`).addEventListener(`click`, (e) => {
 
     if (e.target.tagName == 'BUTTON') {
@@ -270,7 +270,7 @@ window.onload = () => {
 
   });
 
-
+//Añade el evento para listar las listas de la compra.
   doc.getElementById(`listadoListasCompra`).addEventListener(`click`, (e) => {
 
     if (e.target.tagName == `P`) {
@@ -282,10 +282,10 @@ window.onload = () => {
 
 
 
-
+//Indica el número de productos.
   numProductos(db, `productos`, `infoNumProduc`);
 
-
+//Indica la media de los productos.
   mediaPrecioProductos(db, `productos`, `precioMedioProduc`);
 
 
