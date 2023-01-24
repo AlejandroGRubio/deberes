@@ -795,62 +795,6 @@ function ocultarBotonAnyadir() {
 }
 
 
-export function guardarAnyadirProductoPreLista(idProducto, db) {
-  
-  var doc = window.document;
-
-  console.log(`pasar ${idProducto}`);
-
-  var objProducto = devolverObjDatosProducto(db, idProducto);
-
-  var objDatosProducto = {
-    Nombre: objProducto.Nombre,
-    Precio: objProducto.Precio,
-    Peso: objProducto.Peso,
-  }
-
-  var cuerpo = doc.getElementById('seleccionProductos');
-
-
-      var cProducto = doc.createElement('div');
-
-      cProducto.setAttribute('id', idProducto);
-
-      var datosNombre = doc.createElement('p');
-
-      datosNombre.innerText = `Nombre: ${objDatosProducto.Nombre}`;
-
-
-      var datosPrecio = doc.createElement('p');
-
-      datosPrecio.setAttribute('class', 'precioListaPro');
-
-      datosPrecio.innerText = `Precio: ${objDatosProducto.Precio}`;
-
-
-      var datosPeso = doc.createElement(`p`);
-
-      datosPeso.setAttribute(`class`, `pesoListaPro`);
-
-      datosPeso.innerText = `Peso: ${objDatosProducto.Peso}`;
-
-
-      var limitador = doc.createElement(`p`);
-      limitador.innerText = `-----------------------------`;
-
-
-      cProducto.appendChild(datosNombre);
-      cProducto.appendChild(datosPrecio);
-      cProducto.appendChild(datosPeso);
-      cProducto.appendChild(limitador);
-
-      cuerpo.appendChild(cProducto);
-
-
-
-
-}
-
 
 function mostrarDatosProductos(objetoListaProductos, db) {
 
@@ -861,7 +805,7 @@ function mostrarDatosProductos(objetoListaProductos, db) {
 
 
   
-  if (objetoListaProductos.productos[0] != "1") {
+  if (objetoListaProductos.productos[0] != "1" && objetoListaProductos.productos[0] != "") {
 
     var cuerpo = doc.getElementById('seleccionProductos');
 
@@ -872,35 +816,25 @@ function mostrarDatosProductos(objetoListaProductos, db) {
       
       var cProducto = doc.createElement('div');
 
-      cProducto.setAttribute('id', producto);
-
-      //var datosProducto = devolverObjDatosProducto(db, producto, `Nombre`);
-
-      var objProducto = {
-        Nombre: devolverObjDatosProducto(db, producto, `Nombre`),
-        Precio: devolverObjDatosProducto(db, producto, `Precio`),
-        Peso: devolverObjDatosProducto(db, producto, `Peso`),
-      }
-
-      //console.log(datosProducto);
+      cProducto.setAttribute('id', producto.Id);
 
       var datosNombre = doc.createElement('p');
 
-      datosNombre.innerText = `Nombre: ${objProducto.Nombre}`;
+      datosNombre.innerText = `Nombre: ${producto.Nombre}`;
 
 
       var datosPrecio = doc.createElement('p');
 
       datosPrecio.setAttribute('class', 'precioListaPro');
 
-      datosPrecio.innerText = `Precio: ${objProducto.Precio}`;
+      datosPrecio.innerText = `Precio: ${producto.Precio}`;
 
 
       var datosPeso = doc.createElement(`p`);
 
       datosPeso.setAttribute(`class`, `pesoListaPro`);
 
-      datosPeso.innerText = `Peso: ${objProducto.Peso}`;
+      datosPeso.innerText = `Peso: ${producto.Peso}`;
 
 
       var limitador = doc.createElement(`p`);

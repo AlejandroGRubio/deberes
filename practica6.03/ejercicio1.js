@@ -12,8 +12,8 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { borrarDato, devolverListaYEditar, devolverProductoYEditar, guardarIdProductoEnLista, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, listarListasDeUsuarios, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
-import { anyadirNuevosDatos, crearNuevoUsuario, generarFormularioYDevolverDatos, guardarAnyadirProductoPreLista, iniciarSesionUsuario, ocultarDatosCerrarSesion } from "./biblioteca/mostrarDatos.js";
+import { borrarDato, devolverListaYEditar, devolverProductoYEditar, guardarAnyadirProductoPreLista, guardarIdProductoEnLista, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
+import { anyadirNuevosDatos, crearNuevoUsuario, iniciarSesionUsuario, ocultarDatosCerrarSesion } from "./biblioteca/mostrarDatos.js";
 import { anyadirNuevaLista, cerrarSesion, verificarPermisosUsuario } from "./biblioteca/autentificacion.js";
 
 window.onload = () => {
@@ -117,7 +117,6 @@ window.onload = () => {
           }
           borrarDato(db, `productos`, e.target.parentNode.parentNode.id);
         }else if(e.target.innerText == `Añadir`){
-          
           guardarAnyadirProductoPreLista(e.target.parentNode.parentNode.id, db);
           guardarIdProductoEnLista(db, doc.getElementById("listaActual").value, e.target.parentNode.parentNode.id);
         }

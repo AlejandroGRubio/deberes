@@ -278,21 +278,30 @@ export const devolverListaYEditar = async (db, nomBase, idProd) => {
 
 
 
-export const devolverObjDatosProducto = async (db, idProd, palabra) => {
+export const devolverObjDatosProducto = async (db, idProd) => {
 
 
   const productos = collection(db, 'productos');
 
   console.log(idProd);
 
-  if (idProd != "1") {
+  if (idProd != "1" && idProd != "") {
     const producto = await doc(productos, idProd);
 
     const productoFinal = await getDoc(producto);
 
-    console.log(productoFinal.data());
+    const objeto = {
+      Nombre: productoFinal.data().Nombre,
+      Precio: productoFinal.data().Precio,
+      Peso: productoFinal.data().Peso,
+    };
+    
+    return objeto;
 
-    return productoFinal.data().palabra;
+
+
+
+
   }
 
   
@@ -319,9 +328,27 @@ export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
 
   console.log(valoresLista.data());
 
-  if (valoresLista.data().productos[0] == "1") {
 
-    var datos = [idProducto];
+  const productos1 = collection(db, `productos`);
+
+  const producto = await doc(productos1, idProducto);
+
+  const valoresProducto = await getDoc(producto);
+
+  console.log(valoresProducto.data());
+
+  var objProducto = {
+    Id: idProducto,
+    Nombre: valoresProducto.data().Nombre,
+    Precio: valoresProducto.data().Precio,
+    Peso: valoresProducto.data().Peso,
+  }
+
+
+
+  if (valoresLista.data().productos[0] == "1" || valoresLista.data().productos[0] == "") {
+
+    var datos = [objProducto];
 
     await updateDoc(editableRef, {productos: datos});
     
@@ -330,7 +357,7 @@ export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
 
     var datos = valoresLista.data().productos;
 
-    datos = [...idProducto];
+    datos = [...objProducto];
 
     await updateDoc(editableRef, {productos: datos});
 
@@ -342,3 +369,66 @@ export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
   
 
 };
+
+
+export const guardarAnyadirProductoPreLista = async (idProducto, db) => {
+  
+  var docu = window.document;
+
+  const productos1 = collection(db, `productos`);
+
+  const producto = await doc(productos1, idProducto);
+
+  const valoresProducto = await getDoc(producto);
+
+  console.log(valoresProducto.data());
+
+  var objProducto = {
+    Id: idProducto,
+    Nombre: valoresProducto.data().Nombre,
+    Precio: valoresProducto.data().Precio,
+    Peso: valoresProducto.data().Peso,
+  }
+  
+
+  var cuerpo = docu.getElementById('seleccionProductos');
+
+
+      var cProducto = docu.createElement('div');
+
+      cProducto.setAttribute('id', objProducto.Id);
+
+      var datosNombre = docu.createElement(`p`);
+
+      datosNombre.innerText = `Nombre: ${objProducto.Nombre}`;
+
+
+      var datosPrecio = docu.createElement('p');
+
+      datosPrecio.setAttribute('class', 'precioListaPro');
+
+      datosPrecio.innerText = `Precio: ${objProducto.Precio}`;
+
+
+      var datosPeso = docu.createElement(`p`);
+
+      datosPeso.setAttribute(`class`, `pesoListaPro`);
+
+      datosPeso.innerText = `Peso: ${objProducto.Peso}`;
+
+
+      var limitador = docu.createElement(`p`);
+      limitador.innerText = `-----------------------------`;
+
+
+      cProducto.appendChild(datosNombre);
+      cProducto.appendChild(datosPrecio);
+      cProducto.appendChild(datosPeso);
+      cProducto.appendChild(limitador);
+
+      cuerpo.appendChild(cProducto);
+
+
+
+
+}
