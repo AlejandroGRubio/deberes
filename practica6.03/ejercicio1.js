@@ -1,4 +1,39 @@
 "use strict";
+
+//User = admin@admin.es
+//Password = 123456
+
+//User = juan@juan.es
+//Password = 123456
+
+//Reglas
+/*
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /productos/{document=**} {
+      allow read: if true;
+      allow update, delete, create: if request.auth != null && get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == "admin";
+    }
+    match /usuarios/{document=**}{
+    	allow create, read: if true;
+      allow update, delete: if request.auth != null && get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == "admin";
+    }
+    match /listas/{document=**}{
+    	allow create, read, update, delete: if request.auth != null;
+      
+    }
+  }
+}
+
+*/
+
+
+
+
+
+
 import { app } from "./biblioteca/conexion.js";
 import {
     getFirestore,
