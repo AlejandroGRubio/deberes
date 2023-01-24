@@ -129,7 +129,6 @@ export const anyadirNuevaLista = async (db, nomBase) => {
       fechaCreacion: serverTimestamp(),
       propietario: autentificar.currentUser.uid,
       productos: ['1'],
-      precioTotal: ``,
     };
   
     anyadirALaBase(db, nomBase, nuevosDatos);

@@ -2,7 +2,7 @@
 
 import { crearUsuario, eliminarLista, iniciarSesion } from "./autentificacion.js";
 import { formatearFecha, generarId } from "./otrasFunciones.js";
-import { anyadirALaBase, devolverObjDatosProducto, editarDatos } from "./sacarDatos.js";
+import { anyadirALaBase, calcularPesoPrecioTotalLista, devolverObjDatosProducto, editarDatos } from "./sacarDatos.js";
 
 
 
@@ -707,7 +707,6 @@ export function generarFormularioListaYDevolverDatos(db, objLista) {
   var idNomListaEdit = generarId(6);
 
   var datosListaOriginal = objLista;
-  console.log(datosListaOriginal);
 
 
   mostrarBotonAnyadir();
@@ -724,6 +723,11 @@ export function generarFormularioListaYDevolverDatos(db, objLista) {
   
   </div>
   </br>
+  <p>Precio Total:</p>
+  <p id="ubiPrecioTotal"></p>
+  <p>Peso Total:</p>
+  <p id="ubiPesoTotal"></p>
+  <p id="infoDelPeso"></p>
   <button id="cancelarEditarListaDatos">Cancelar</button>
   <button id="borraListaDatos">Borrar Lista</button>
   `;
@@ -731,6 +735,8 @@ export function generarFormularioListaYDevolverDatos(db, objLista) {
   doc.getElementById(`datosLista`).appendChild(formulario);
 
   mostrarDatosProductos(datosListaOriginal.data(), db);
+
+  calcularPesoPrecioTotalLista(db);
 
 
 doc.getElementById(idRan).addEventListener(`click`, (e) => {
@@ -801,10 +807,6 @@ function mostrarDatosProductos(objetoListaProductos, db) {
   var doc = window.document;
   var cuerpo = doc.getElementById('seleccionProductos');
 
-  console.log(objetoListaProductos.productos);
-
-
-  
   if (objetoListaProductos.productos[0] != "1" && objetoListaProductos.productos[0] != "") {
 
     var cuerpo = doc.getElementById('seleccionProductos');

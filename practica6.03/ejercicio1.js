@@ -12,7 +12,7 @@ import {
     orderBy,
     limit,
   } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { borrarDato, devolverListaYEditar, devolverProductoYEditar, guardarAnyadirProductoPreLista, guardarIdProductoEnLista, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
+import { borrarDato, calcularPesoPrecioTotalLista, devolverListaYEditar, devolverProductoYEditar, guardarAnyadirProductoPreLista, guardarIdProductoEnLista, imprimirDatosFiltro, imprimirDatosOrdenar, imprimirTodosLosDatos, mediaPrecioProductos, numProductos } from "./biblioteca/sacarDatos.js";
 import { anyadirNuevosDatos, crearNuevoUsuario, iniciarSesionUsuario, ocultarDatosCerrarSesion } from "./biblioteca/mostrarDatos.js";
 import { anyadirNuevaLista, cerrarSesion, verificarPermisosUsuario } from "./biblioteca/autentificacion.js";
 
@@ -244,12 +244,6 @@ window.onload = () => {
 
 
   });
-
-
-
-
-//Cambiar var doc en todos los js, por una variable para todos.
-//Validar Guarda git.
 
 
 

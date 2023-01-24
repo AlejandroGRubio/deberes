@@ -283,8 +283,6 @@ export const devolverObjDatosProducto = async (db, idProd) => {
 
   const productos = collection(db, 'productos');
 
-  console.log(idProd);
-
   if (idProd != "1" && idProd != "") {
     const producto = await doc(productos, idProd);
 
@@ -320,13 +318,9 @@ export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
 
   const listas = collection(db, `listas`);
 
-  console.log(idLista);
-
   const editableRef = await doc(listas, idLista);
 
   const valoresLista = await getDoc(editableRef);
-
-  console.log(valoresLista.data());
 
 
   const productos1 = collection(db, `productos`);
@@ -334,8 +328,6 @@ export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
   const producto = await doc(productos1, idProducto);
 
   const valoresProducto = await getDoc(producto);
-
-  console.log(valoresProducto.data());
 
   var objProducto = {
     Id: idProducto,
@@ -346,7 +338,7 @@ export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
 
 
 
-  if (valoresLista.data().productos[0] == "1" || valoresLista.data().productos[0] == "") {
+  if (valoresLista.data().productos[0] == "1") {
 
     var datos = [objProducto];
 
@@ -357,7 +349,7 @@ export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
 
     var datos = valoresLista.data().productos;
 
-    datos = [...objProducto];
+    datos.push(objProducto);
 
     await updateDoc(editableRef, {productos: datos});
 
@@ -365,6 +357,8 @@ export const guardarIdProductoEnLista = async (db, idLista, idProducto) => {
 
 
   }
+
+  calcularPesoPrecioTotalLista(db);
 
   
 
@@ -380,8 +374,6 @@ export const guardarAnyadirProductoPreLista = async (idProducto, db) => {
   const producto = await doc(productos1, idProducto);
 
   const valoresProducto = await getDoc(producto);
-
-  console.log(valoresProducto.data());
 
   var objProducto = {
     Id: idProducto,
@@ -428,7 +420,48 @@ export const guardarAnyadirProductoPreLista = async (idProducto, db) => {
 
       cuerpo.appendChild(cProducto);
 
+      
+
+}
+
+export const calcularPesoPrecioTotalLista = async (db) => {
+
+  var docu = window.document;
+
+  var listaActual = docu.getElementById(`listaActual`).value;
+
+  const listas = collection(db, `listas`);
+
+  const lista = await doc(listas, listaActual);
+
+  const listaDocumento = await getDoc(lista);
+
+  let totalPrecio = 0;
+
+  let totalPeso = 0;
+
+  if (listaDocumento.data().productos[0] != `1`) {
+    listaDocumento.data().productos.map((producto) =>{
+
+      totalPrecio = totalPrecio + parseFloat(producto.Precio);
+      totalPeso = totalPeso + parseFloat(producto.Peso, 10);
+  
+    });
+  }
+
+  
+
+  docu.getElementById(`infoDelPeso`).innerText = ``;
+
+  docu.getElementById("ubiPrecioTotal").innerText = ``;
+  docu.getElementById("ubiPrecioTotal").innerText = `${totalPrecio} €`;
+
+  docu.getElementById("ubiPesoTotal").innerText = ``;
+  docu.getElementById("ubiPesoTotal").innerText = `${totalPeso}`;
 
 
+  if(totalPeso > 8 ){
+    docu.getElementById(`infoDelPeso`).innerText = `Se recomienda usar el coche para recoger la compra.`;
+  }
 
 }
