@@ -15,7 +15,8 @@ function DatosVehiculos(props) {
        getDatosNavesVehi(props.arrayVehiculos, setVehiculos);
        
 
-    },[]);
+    },[datos]);
+    
 
     
 

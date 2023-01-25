@@ -15,7 +15,7 @@ function DatosNaves(props) {
        getDatosNavesVehi(props.arrayNaves, setNaves);
        
 
-    },[]);
+    },[datos]);
 
     
 
