@@ -13,7 +13,7 @@ function ListaPelis(props) {
 
         <div id="divPelis" onClick = {(evento) =>{
             if (evento.target.tagName == `LI`) {
-                //Le pasamos la función.
+                console.log(evento.target.id);
                 props.funcion(evento.target.id, props.pelicula);
             }
 
@@ -21,7 +21,7 @@ function ListaPelis(props) {
             <ul>
 
                 {props.peliculas.map((v,i,a) => {
-                    //Imprimimos los nombres de las películas.
+
                     return (
                         <li 
                             key={i}

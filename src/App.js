@@ -1,4 +1,4 @@
-import './ejercicio1/css/pelis.css';
+import './App.css';
 import React, { useState, useEffect } from "react";
 import { getPeliculas, getPeliculaDatos } from "./ejercicio1/biblioteca/getDatosApi.js";
 import ListaPelis from "./ejercicio1/ListaPelis.js";
@@ -15,13 +15,17 @@ function App() {
     const [peliculas, setPeliculas] = useState(valoresIniciales);
     const [pelicula, setPelicula] = useState(peliInicial);
     const [personajes, setPersonajes] = useState(valoresIniciales);
+    const [naves, setNaves] = useState(valoresIniciales);
+    const [vehiculos, setVehiculos] = useState(valoresIniciales);
 
     useEffect(()=>{
-      //Guardamos los datos en su useState correspondiente.
+
         getPeliculas(url, setPeliculas);
 
 
     },[]);
+
+    console.log(peliculas);
 
 
     return(
@@ -33,7 +37,7 @@ function App() {
               <ListaPelis peliculas={peliculas} funcion={getPeliculaDatos} pelicula = {setPelicula}/>
 
             {Object.keys(pelicula).length !== 0 ? (
-              <DatosPeli pelicula = {pelicula} personajes = {personajes} setPersonajes = {setPersonajes}/>
+              <DatosPeli pelicula = {pelicula} personajes = {personajes} setPersonajes = {setPersonajes} naves = {naves} setNaves = {setNaves} vehiculos = {vehiculos} setVehiculos = {setVehiculos}/>
             ) : ("No se ha seleccionado una película.")}
 
               

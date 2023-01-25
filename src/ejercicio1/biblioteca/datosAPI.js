@@ -1,6 +1,6 @@
 "use strict";
 
-//Sacamos los datos de la URL.
+
 export function devolverDatos(url) {
     
     return(fetch(url)
@@ -19,7 +19,7 @@ export function devolverDatos(url) {
  
 };
 
-//Sacamos los datos de la URL de otra forma.
+
 export function devolverDatosOtro(url) {
     
     return(fetch(url)

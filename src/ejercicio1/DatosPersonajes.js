@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { getDatosNavesVehi } from "./biblioteca/getDatosApi.js";
 import DatosNaves from "./DatosNaves.js";
-import DatosVehiculos from "./DatosVehiculos.js";
 
 
 function DatosPersonajes(props) {
     
+console.log(props.personajes);
 
 const [clases, setClaseDatos] = useState(`noClicked`);
+
+useEffect(()=>{
+
+    getDatosNavesVehi(props.personajes.starships, props.setNaves);
+
+
+},[])
+
+
+
 
 
 return(
@@ -49,8 +60,7 @@ return(
 
                 </div>
 
-                <DatosNaves arrayNaves = {v.starships}/>
-                <DatosVehiculos arrayVehiculos = {v.vehicles}/>
+                <DatosNaves />
                
             </div>
 

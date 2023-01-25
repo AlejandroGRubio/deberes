@@ -3,16 +3,16 @@ import { getDatosNavesVehi } from "./biblioteca/getDatosApi.js";
 
 
 
-function DatosNaves(props) {
+function DatosVehiculos(props) {
     
     var datos = [];
 
-    const [clasesNaves, setClaseDatosNaves] = useState(`noClickedNaves`);
-    const [naves, setNaves] = useState(datos);
+    const [clasesVehiculo, setClaseDatosVehiculo] = useState(`noClickedVehiculos`);
+    const [vehiculo, setVehiculos] = useState(datos);
 
     useEffect(()=>{
         //Guardamos los datos en su useState correspondiente.
-       getDatosNavesVehi(props.arrayNaves, setNaves);
+       getDatosNavesVehi(props.arrayVehiculos, setVehiculos);
        
 
     },[]);
@@ -24,40 +24,40 @@ function DatosNaves(props) {
     return(
 
         <React.Fragment>
-            <div id="divInfoNaves" onClick = {(evento) =>{
+            <div id="divInfoVehiculos" onClick = {(evento) =>{
             if (evento.target.tagName == `P`) {
                 
-                if (evento.target.className == `noClickedNaves`) {
-                    setClaseDatosNaves(`clickedNaves`);
+                if (evento.target.className == `noClickedVehiculos`) {
+                    setClaseDatosVehiculo(`clickedVehiculos`);
 
                 }
-                if (evento.target.className == `clickedNaves`) {
-                    setClaseDatosNaves(`noClickedNaves`);
+                if (evento.target.className == `clickedVehiculos`) {
+                    setClaseDatosVehiculo(`noClickedVehiculos`);
                 }
             }
 
             }}>
             
             <p 
-                    className={clasesNaves}
+                    className={clasesVehiculo}
                 >
-                Naves 
+                Vehiculos 
 
             </p>
 
-        {naves.map((v,i,a) => {
+        {vehiculo.map((v,i,a) => {
 
             return (
             <div key={i}>
 
-                <div className={clasesNaves}>
+                <div className={clasesVehiculo}>
                     <p>Nombre: {v.name}</p>
                     <p>Modelo: {v.model}</p>
                     <p>Manufacturado: {v.manufacturer}</p>
                     <p>Coste en creditos: {v.cost_in_credits}</p>
                     <p>Largo: {v.length}</p>
                     <p>Capacidad de carga: {v.cargo_capacity}</p>
-                    <p>Clase de nave: {v.starship_class}</p>
+                    <p>Clase de vehiculo: {v.vehicle_class}</p>
 
                 </div>
                
@@ -92,4 +92,4 @@ function DatosNaves(props) {
 
 }
 
-export default DatosNaves;
+export default DatosVehiculos;
