@@ -28,7 +28,7 @@ function DatosPelicula(props) {
                 <p>Productor: {contexto.pelicula.producer}</p>
                 <p>Fecha de lanzamiento: {fecha.charAt(8)}{fecha.charAt(9)}-{fecha.charAt(5)}{fecha.charAt(6)}-{fecha.charAt(0)}{fecha.charAt(1)}{fecha.charAt(2)}{fecha.charAt(3)}</p>
 
-                <DatosPersonajes personajes={props.personajes}/>
+                <DatosPersonajes/>
 
 
 

@@ -10,7 +10,7 @@ function DatosVehiculos(props) {
 
     useEffect(()=>{
         //Guardamos los datos en su useState correspondiente.
-       contexto.getDatosNavesVehi(props.arrayVehiculos, contexto.setVehiculos);
+       contexto.getDatosNavesVehi(contexto.datosVehi, contexto.setVehiculos);
        
 
     },[contexto.vehiculo]);
@@ -27,29 +27,29 @@ function DatosVehiculos(props) {
             if (evento.target.tagName == `P`) {
                 
                 if (evento.target.className == `noClickedVehiculos`) {
-                    setClaseDatosVehiculo(`clickedVehiculos`);
+                    contexto.setClaseDatosVehiculo(`clickedVehiculos`);
 
                 }
                 if (evento.target.className == `clickedVehiculos`) {
-                    setClaseDatosVehiculo(`noClickedVehiculos`);
+                    contexto.setClaseDatosVehiculo(`noClickedVehiculos`);
                 }
             }
 
             }}>
             
             <p 
-                    className={clasesVehiculo}
+                    className={contexto.clasesVehiculo}
                 >
                 Vehiculos 
 
             </p>
 
-        {vehiculo.map((v,i,a) => {
+        {contexto.vehiculo.map((v,i,a) => {
 
             return (
             <div key={i}>
 
-                <div className={clasesVehiculo}>
+                <div className={contexto.clasesVehiculo}>
                     <p>Nombre: {v.name}</p>
                     <p>Modelo: {v.model}</p>
                     <p>Manufacturado: {v.manufacturer}</p>

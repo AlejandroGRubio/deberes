@@ -15,10 +15,10 @@ function App() {
           <div className="contenedorStarWars">
           <DatosContexto>
 
-            <ListaPelis peliculas={peliculas} funcion={getPeliculaDatos} pelicula = {setPelicula}/>
+            <ListaPelis/>
 
             
-            <DatosPeli pelicula = {pelicula} personajes = {personajes} setPersonajes = {setPersonajes}/>
+            <DatosPeli/>
            
           
           </DatosContexto>    

@@ -49,8 +49,11 @@ return(
 
                 </div>
 
-                <DatosNaves arrayNaves = {v.starships}/>
-                <DatosVehiculos arrayVehiculos = {v.vehicles}/>
+                {contexto.datosVehi = v.vehicles}
+                {contexto.datosNave = v.starships}
+
+                <DatosNaves/>
+                <DatosVehiculos/>
                
             </div>
 

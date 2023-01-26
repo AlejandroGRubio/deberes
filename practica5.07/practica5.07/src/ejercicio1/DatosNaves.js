@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { getDatosNavesVehi } from "./biblioteca/getDatosApi.js";
+import React, { useContext, useEffect } from "react";
+import { datosContexto } from "./contextos/DatosContexto.js";
 
 
 
 function DatosNaves(props) {
     
-    var datos = [];
+    const contexto = useContext(datosContexto);
 
-    const [clasesNaves, setClaseDatosNaves] = useState(`noClickedNaves`);
-    const [naves, setNaves] = useState(datos);
+    
 
     useEffect(()=>{
         //Guardamos los datos en su useState correspondiente.
-       getDatosNavesVehi(props.arrayNaves, setNaves);
+       contexto.getDatosNavesVehi(contexto.datosNave, contexto.setNaves);
        
 
-    },[datos]);
+    },[contexto.naves]);
 
     
 
@@ -28,29 +27,29 @@ function DatosNaves(props) {
             if (evento.target.tagName == `P`) {
                 
                 if (evento.target.className == `noClickedNaves`) {
-                    setClaseDatosNaves(`clickedNaves`);
+                    contexto.setClaseDatosNaves(`clickedNaves`);
 
                 }
                 if (evento.target.className == `clickedNaves`) {
-                    setClaseDatosNaves(`noClickedNaves`);
+                    contexto.setClaseDatosNaves(`noClickedNaves`);
                 }
             }
 
             }}>
             
             <p 
-                    className={clasesNaves}
+                    className={contexto.clasesNaves}
                 >
                 Naves 
 
             </p>
 
-        {naves.map((v,i,a) => {
+        {contexto.naves.map((v,i,a) => {
 
             return (
             <div key={i}>
 
-                <div className={clasesNaves}>
+                <div className={contexto.clasesNaves}>
                     <p>Nombre: {v.name}</p>
                     <p>Modelo: {v.model}</p>
                     <p>Manufacturado: {v.manufacturer}</p>

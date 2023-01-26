@@ -1,5 +1,5 @@
 "use strict";
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 //Se crea el contexto.
 const datosContexto = createContext();
@@ -12,6 +12,11 @@ const DatosContexto = (props) => {
 
     const valoresIniciales = [];
     const peliInicial = {};
+
+    let datosVehi = [];
+    let datosNave = [];
+
+    
     
     const [peliculas, setPeliculas] = useState(valoresIniciales);
     const [pelicula, setPelicula] = useState(peliInicial);
@@ -21,6 +26,9 @@ const DatosContexto = (props) => {
 
     const [clasesVehiculo, setClaseDatosVehiculo] = useState(`noClickedVehiculos`);
     const [vehiculo, setVehiculos] = useState(valoresIniciales);
+
+    const [clasesNaves, setClaseDatosNaves] = useState(`noClickedNaves`);
+    const [naves, setNaves] = useState(valoresIniciales);
     
     //Sacamos y guardamos las películas.
     const getPeliculas = async (url, funcSet) => {
@@ -142,7 +150,9 @@ const DatosContexto = (props) => {
      
     };
 
-    const cosas = {};
+    const cosas = { datosVehi, datosNave, peliculas, setPeliculas, pelicula, setPelicula, personajes, setPersonajes, clases, setClaseDatos, clasesVehiculo, setClaseDatosVehiculo,
+        vehiculo, setVehiculos, clasesNaves, setClaseDatosNaves, naves, setNaves, getPeliculas, getPeliculaDatos, getDatosPersonajes, getDatosNavesVehi,
+    devolverDatos, devolverDatosOtro };
 
     return (
         // Se crea el proveedor del contexto a través del children.
@@ -154,6 +164,6 @@ const DatosContexto = (props) => {
 
 };
 
-export default DatosProveedor;
+export default DatosContexto;
 // Hay que exportar el contexto para que pueda ser utilizado.
 export { datosContexto };
