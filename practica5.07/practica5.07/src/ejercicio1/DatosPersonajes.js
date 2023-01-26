@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import DatosNaves from "./DatosNaves.js";
 import DatosVehiculos from "./DatosVehiculos.js";
-
+import { datosContexto } from "./contextos/DatosContexto.js";
 
 function DatosPersonajes(props) {
     
 
-const [clases, setClaseDatos] = useState(`noClicked`);
+    const contexto = useContext(datosContexto);
 
 
 return(
@@ -17,30 +17,30 @@ return(
             if (evento.target.tagName == `P`) {
                 
                 if (evento.target.className == `noClicked`) {
-                    setClaseDatos(`clicked`);
+                    contexto.setClaseDatos(`clicked`);
 
                 }
                 if (evento.target.className == `clicked`) {
-                    setClaseDatos(`noClicked`);
+                    contexto.setClaseDatos(`noClicked`);
                 }
             }
 
             }}>
 
 
-        {props.personajes.map((v,i,a) => {
+        {contexto.personajes.map((v,i,a) => {
 
             return (
             <div key={i}>
 
             
                 <p 
-                    className={clases}
+                    className={contexto.clases}
                 >
                 {v.name} 
 
                 </p>
-                <div className={clases}>
+                <div className={contexto.clases}>
                     <p>Género: {v.gender}</p>
                     <p>Altura: {v.height}</p>
                     <p>Peso: {v.mass}</p>

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { datosContexto } from "./contextos/DatosContexto.js";
 
 
 
 function ListaPelis(props) {
     
-
+    const contexto = useContext(datosContexto);
 
 
     return (
@@ -14,13 +15,13 @@ function ListaPelis(props) {
         <div id="divPelis" onClick = {(evento) =>{
             if (evento.target.tagName == `LI`) {
                 //Le pasamos la función.
-                props.funcion(evento.target.id, props.pelicula);
+                contexto.getPeliculaDatos(evento.target.id, contexto.setPelicula);
             }
 
             }}>
             <ul>
 
-                {props.peliculas.map((v,i,a) => {
+                {contexto.peliculas.map((v,i,a) => {
                     //Imprimimos los nombres de las películas.
                     return (
                         <li 

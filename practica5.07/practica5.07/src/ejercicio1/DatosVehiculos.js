@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { getDatosNavesVehi } from "./biblioteca/getDatosApi.js";
+import React, { useContext, useEffect } from "react";
+import { datosContexto } from "./contextos/DatosContexto.js";
 
 
 
 function DatosVehiculos(props) {
     
-    var datos = [];
+    const contexto = useContext(datosContexto);
 
-    const [clasesVehiculo, setClaseDatosVehiculo] = useState(`noClickedVehiculos`);
-    const [vehiculo, setVehiculos] = useState(datos);
 
     useEffect(()=>{
         //Guardamos los datos en su useState correspondiente.
-       getDatosNavesVehi(props.arrayVehiculos, setVehiculos);
+       contexto.getDatosNavesVehi(props.arrayVehiculos, contexto.setVehiculos);
        
 
-    },[datos]);
+    },[contexto.vehiculo]);
     
 
     

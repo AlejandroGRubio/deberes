@@ -1,5 +1,6 @@
 import './ejercicio1/css/pelis.css';
-import React, { useState, useEffect } from "react";
+import React from "react";
+import DatosContexto from './ejercicio1/contextos/DatosContexto.js';
 import ListaPelis from "./ejercicio1/ListaPelis.js";
 import DatosPeli from './ejercicio1/DatosPeli.js';
 
@@ -12,16 +13,15 @@ function App() {
 
       <React.Fragment>
           <div className="contenedorStarWars">
+          <DatosContexto>
 
-              
-              <ListaPelis peliculas={peliculas} funcion={getPeliculaDatos} pelicula = {setPelicula}/>
+            <ListaPelis peliculas={peliculas} funcion={getPeliculaDatos} pelicula = {setPelicula}/>
 
-            {Object.keys(pelicula).length !== 0 ? (
-              <DatosPeli pelicula = {pelicula} personajes = {personajes} setPersonajes = {setPersonajes}/>
-            ) : ("No se ha seleccionado una película.")}
-
-              
-              
+            
+            <DatosPeli pelicula = {pelicula} personajes = {personajes} setPersonajes = {setPersonajes}/>
+           
+          
+          </DatosContexto>    
           </div>
 
       </React.Fragment>

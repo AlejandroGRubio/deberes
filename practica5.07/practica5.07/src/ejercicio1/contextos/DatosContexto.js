@@ -16,6 +16,11 @@ const DatosContexto = (props) => {
     const [peliculas, setPeliculas] = useState(valoresIniciales);
     const [pelicula, setPelicula] = useState(peliInicial);
     const [personajes, setPersonajes] = useState(valoresIniciales);
+
+    const [clases, setClaseDatos] = useState(`noClicked`);
+
+    const [clasesVehiculo, setClaseDatosVehiculo] = useState(`noClickedVehiculos`);
+    const [vehiculo, setVehiculos] = useState(valoresIniciales);
     
     //Sacamos y guardamos las películas.
     const getPeliculas = async (url, funcSet) => {
@@ -137,9 +142,11 @@ const DatosContexto = (props) => {
      
     };
 
+    const cosas = {};
+
     return (
         // Se crea el proveedor del contexto a través del children.
-        <datosContexto.Provider value={datos}>
+        <datosContexto.Provider value={cosas}>
           {props.children}
         </datosContexto.Provider>
       );
