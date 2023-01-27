@@ -31,12 +31,12 @@ const DatosContexto = (props) => {
     const [naves, setNaves] = useState(valoresIniciales);
     
     //Sacamos y guardamos las películas.
-    const getPeliculas = async (url, funcSet) => {
+    const getPeliculas = async (url) => {
     
         let datos = await devolverDatos(url);
     
         if (!datos.message) {
-            funcSet(datos);
+            setPeliculas(datos);
         }
     
     
@@ -47,7 +47,7 @@ const DatosContexto = (props) => {
     
     useEffect(()=>{
       //Guardamos los datos en su useState correspondiente.
-        getPeliculas(url, setPeliculas);
+        getPeliculas(url);
     
     
     },[]);
@@ -66,7 +66,7 @@ const DatosContexto = (props) => {
     
     }
     
-    //Saacamos los datos de cada personaje.
+    //Sacamos los datos de cada personaje.
     const getDatosPersonajes = async ( arrayPer, funcSet) => {
     
         let contar = 0;
