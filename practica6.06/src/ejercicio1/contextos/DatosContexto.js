@@ -13,9 +13,6 @@ const DatosContexto = (props) => {
     const valoresIniciales = [];
     const peliInicial = {};
 
-    //let datosVehi = [];
-   // let datosNave = [];
-
     
     
     const [peliculas, setPeliculas] = useState(valoresIniciales);
