@@ -3,6 +3,11 @@ import React from "react";
 import DatosContexto from './ejercicio1/contextos/DatosContexto.js';
 import ListaPelis from "./ejercicio1/ListaPelis.js";
 import DatosPeli from './ejercicio1/DatosPeli.js';
+import ListaPersonajes from './ejercicio1/ListaPersonajes';
+import DatosPersonajes from './ejercicio1/DatosPersonajes';
+import ListaNaves from './ejercicio1/ListaNaves';
+import DatosNaves from './ejercicio1/DatosNaves';
+import ListaVehiculos from './ejercicio1/ListaVehiculos';
 
 
 function App() {
@@ -19,24 +24,28 @@ function App() {
               <ListaPelis/>
             </div>
 
-            <div id='listaActores'>
-
+            <div id='datosPelis'>
+              <DatosPeli/>
             </div>
 
-            <div id='datosActor'>
+            <div id='listaPersonajes'>
+                <ListaPersonajes/>
+            </div>
 
+            <div id='datosPersonajes'>
+                <DatosPersonajes/>
                 <div id='listaNaves'>
-
+                  <ListaNaves/>
                 </div>
 
                 <div id='listaVehiculo'>
-
+                  <ListaVehiculos/>
                 </div>
 
             </div>
 
             <div id='datosNaves'>
-
+                <DatosNaves/>
             </div>
 
 
@@ -47,7 +56,7 @@ function App() {
            
 
             
-            <DatosPeli/>
+            
            
           
           </DatosContexto>    

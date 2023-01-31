@@ -19,10 +19,15 @@ const DatosContexto = (props) => {
     const [pelicula, setPelicula] = useState(peliInicial);
     const [personajes, setPersonajes] = useState(valoresIniciales);
 
+
+    const [personaje, setPersonaje] = useState(peliInicial);
+    const [nave, setNave] = useState(peliInicial);
+    const [vehiculo, setVehiculo] = useState(peliInicial);
+
     const [clases, setClaseDatos] = useState(`noClicked`);
 
     const [clasesVehiculo, setClaseDatosVehiculo] = useState(`noClickedVehiculos`);
-    const [vehiculo, setVehiculos] = useState(valoresIniciales);
+    const [vehiculos, setVehiculos] = useState(valoresIniciales);
 
     const [clasesNaves, setClaseDatosNaves] = useState(`noClickedNaves`);
     const [naves, setNaves] = useState(valoresIniciales);
@@ -94,6 +99,51 @@ const DatosContexto = (props) => {
         setPersonajes(array);
 
     }
+
+
+    const getDatosPersonaje = async (url) => {
+
+        let datos = await devolverDatosOtro(url);
+
+        if (!datos.message) {
+            setPersonaje(datos);
+
+            getDatosNaves(datos.starships);
+
+            getDatosVehi(datos.vehicles);
+        }
+
+
+
+    }
+
+    const getDatosNave = async (url) => {
+
+        let datos = await devolverDatosOtro(url);
+
+        if (!datos.message) {
+            setNave(datos);
+
+        }
+
+
+
+    }
+
+    const getDatosVehiculo = async (url) => {
+
+        let datos = await devolverDatosOtro(url);
+
+        if (!datos.message) {
+            setVehiculo(datos);
+
+        }
+
+
+
+    }
+
+
     
     //Sacamos los datos de las naves o de los vehículos.
     const getDatosNaves = async (arrayN) => {
@@ -120,7 +170,6 @@ const DatosContexto = (props) => {
 
     const getDatosVehi = async (arrayV) => {
 
-        //console.log(arrayV);
     
         let contar = 0;
     
@@ -180,9 +229,9 @@ const DatosContexto = (props) => {
      
     };
 
-    const cosas = { getPeliculaDatos, peliculas, pelicula, personajes, naves, vehiculo, clases, clasesNaves, clasesVehiculo,
+    const cosas = { getPeliculaDatos, peliculas, pelicula, personajes, naves, vehiculos, clases, clasesNaves, clasesVehiculo,
      setClaseDatosVehiculo, setClaseDatos, setClaseDatosNaves, getDatosNaves, getDatosVehi, setVehiculos, setNaves,
-    arrNaves, arrVehi, valoresIniciales};
+    personaje, getDatosPersonaje, getDatosNave, nave, vehiculo, getDatosVehiculo};
 
     return (
         // Se crea el proveedor del contexto a través del children.
