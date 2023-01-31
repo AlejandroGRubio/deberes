@@ -13,10 +13,10 @@ function DatosNaves(props) {
         <React.Fragment>
             
             
-            <p>
+            <h1>
                 Datos de la Nave
 
-            </p>
+            </h1>
 
                 <div>
                     <p>Nombre: {contexto.nave.name}</p>

@@ -8,6 +8,7 @@ import DatosPersonajes from './ejercicio1/DatosPersonajes';
 import ListaNaves from './ejercicio1/ListaNaves';
 import DatosNaves from './ejercicio1/DatosNaves';
 import ListaVehiculos from './ejercicio1/ListaVehiculos';
+import DatosVehiculos from './ejercicio1/DatosVehiculos';
 
 
 function App() {
@@ -50,8 +51,7 @@ function App() {
 
 
             <div id='datosVehiculo'>
-
-              
+              <DatosVehiculos/>
             </div>
            
 

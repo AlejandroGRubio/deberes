@@ -14,7 +14,7 @@ function ListaPersonajes(params) {
 
         <React.Fragment>
 
-            <p>Personajes</p>
+            <h1>Personajes</h1>
 
             {Object.keys(contexto.pelicula).length !== 0 ? (
 

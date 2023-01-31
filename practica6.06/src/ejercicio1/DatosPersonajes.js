@@ -17,7 +17,7 @@ return(
 
        
             <div>
-                <p>Datos del Personaje</p>
+                <h1>Datos del Personaje</h1>
             
                 <p>
                 {contexto.personaje.name} 

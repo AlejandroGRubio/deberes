@@ -13,7 +13,7 @@ function ListaVehiculos(params) {
 
         <React.Fragment>
 
-            <p>Vehiculos</p>
+            <h1>Vehiculos</h1>
 
             {Object.keys(contexto.vehiculos).length !== 0 ? (
 
@@ -50,7 +50,7 @@ function ListaVehiculos(params) {
 
                 </div>
 
-            ) : ("No se ha seleccionado un personaje.")}
+            ) : ("Vehículos no disponibles.")}
 
 
 

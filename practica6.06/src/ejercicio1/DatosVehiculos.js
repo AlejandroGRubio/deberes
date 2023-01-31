@@ -12,10 +12,10 @@ function DatosVehiculos(props) {
         <React.Fragment>
             
             
-            <p>
+            <h1>
                 Datos del Vehiculo
 
-            </p>
+            </h1>
 
 
 

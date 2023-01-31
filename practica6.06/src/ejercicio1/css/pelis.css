@@ -72,6 +72,12 @@ div.clickedVehiculos{
     text-align: center;
 }
 
+#listaPersonajes, #datosPersonajes, #listaNaves, #listaVehiculo, #datosNaves, #datosVehiculo{
+    color: yellow;
+    border: 0.1em solid yellow;
+    text-align: center;
+}
+
 
 .ocultoDatos{
     display: none;

@@ -13,7 +13,7 @@ function ListaNaves(params) {
 
         <React.Fragment>
 
-            <p>Naves</p>
+            <h1>Naves</h1>
 
             {Object.keys(contexto.naves).length !== 0 ? (
 
@@ -50,7 +50,7 @@ function ListaNaves(params) {
 
                 </div>
 
-            ) : ("No se ha seleccionado un personaje.")}
+            ) : ("Naves no disponibles.")}
 
 
 
