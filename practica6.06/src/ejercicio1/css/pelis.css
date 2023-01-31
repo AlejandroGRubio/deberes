@@ -1,0 +1,83 @@
+body{
+    background-color: black;
+    color: yellow;
+}
+
+.noClickedPersonaje{
+    display: none;
+}
+
+p.clicked{
+    text-decoration: underline;
+    color: lightyellow;
+}
+
+.noClicked{
+
+    color: yellow;
+
+}
+div.noClicked{
+
+    display: none;
+
+}
+
+p.clickedNaves{
+    text-decoration: underline;
+    color: lightyellow;
+}
+
+.noClickedNaves{
+
+    color: yellow;
+
+}
+div.noClickedNaves{
+
+    display: none;
+
+}
+div.clickedNaves{
+
+    color: white;
+
+}
+
+p.clickedVehiculos{
+    text-decoration: underline;
+    color: lightyellow;
+}
+
+.noClickedVehiculos{
+
+    color: yellow;
+
+}
+div.noClickedVehiculos{
+
+    display: none;
+
+}
+div.clickedVehiculos{
+
+    color: grey;
+
+}
+
+
+#divInfo{
+    color: yellow;
+    border: 0.1em solid yellow;
+    text-align: center;
+}
+
+
+.ocultoDatos{
+    display: none;
+}
+
+.datos{
+    color: lightyellow;
+    text-decoration: none;
+}
