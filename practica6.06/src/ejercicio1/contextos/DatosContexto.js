@@ -24,18 +24,13 @@ const DatosContexto = (props) => {
     const [nave, setNave] = useState(peliInicial);
     const [vehiculo, setVehiculo] = useState(peliInicial);
 
-    const [clases, setClaseDatos] = useState(`noClicked`);
-
-    const [clasesVehiculo, setClaseDatosVehiculo] = useState(`noClickedVehiculos`);
+    
     const [vehiculos, setVehiculos] = useState(valoresIniciales);
-
-    const [clasesNaves, setClaseDatosNaves] = useState(`noClickedNaves`);
+    
     const [naves, setNaves] = useState(valoresIniciales);
 
 
-    let arrNaves = [];
 
-    let arrVehi = [];
     
     //Sacamos y guardamos las películas.
     const getPeliculas = async (url) => {
@@ -82,21 +77,24 @@ const DatosContexto = (props) => {
         let contar = 0;
     
         let array = [];
+        
     
     
         while (contar < 10 ) {
     
             var url = arrayPer[contar];
     
-            let datosPer = await devolverDatosOtro(url);
+            let datosPer = devolverDatosOtro(url);
 
     
             array = [...array, datosPer];
     
             contar++;
         }
+
+        let datosResuelto = await Promise.allSettled(array);
     
-        setPersonajes(array);
+        setPersonajes(datosResuelto);
 
     }
 
@@ -156,15 +154,15 @@ const DatosContexto = (props) => {
             
             var url = arrayN[contar];
     
-            let datos = await devolverDatosOtro(url);
+            let datos = devolverDatosOtro(url);
     
             array = [...array, datos];
     
             contar++;
         }
-        
+        let datosResuelto = await Promise.allSettled(array);
     
-       setNaves(array);
+       setNaves(datosResuelto);
     
     }
 
@@ -179,15 +177,16 @@ const DatosContexto = (props) => {
             
             var url = arrayV[contar];
     
-            let datos = await devolverDatosOtro(url);
+            let datos = devolverDatosOtro(url);
     
             array = [...array, datos];
     
             contar++;
         }
+        let datosResuelto = await Promise.allSettled(array);
         
     
-       setVehiculos(array);
+       setVehiculos(datosResuelto);
     
     }
     
@@ -229,8 +228,7 @@ const DatosContexto = (props) => {
      
     };
 
-    const cosas = { getPeliculaDatos, peliculas, pelicula, personajes, naves, vehiculos, clases, clasesNaves, clasesVehiculo,
-     setClaseDatosVehiculo, setClaseDatos, setClaseDatosNaves, getDatosNaves, getDatosVehi, setVehiculos, setNaves,
+    const cosas = { getPeliculaDatos, peliculas, pelicula, personajes, naves, vehiculos, getDatosNaves, getDatosVehi, setVehiculos, setNaves,
     personaje, getDatosPersonaje, getDatosNave, nave, vehiculo, getDatosVehiculo};
 
     return (

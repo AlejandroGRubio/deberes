@@ -36,9 +36,9 @@ function ListaPersonajes(params) {
 
 
                 <p 
-                    id={v.url}
+                    id={v.value.url}
                 >
-                    {v.name} 
+                    {v.value.name} 
 
                 </p>
     
